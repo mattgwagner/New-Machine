@@ -23,3 +23,5 @@ cinst papercut
 ## cinst python3
 
 ## cinst ruby
+
+## cinst python
