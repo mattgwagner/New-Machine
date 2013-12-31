@@ -6,8 +6,6 @@ if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
 
 ## Development Tools - Common
 
-cinst webpi
-
 cinst papercut
 
 ## cinst redis
