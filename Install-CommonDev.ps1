@@ -21,3 +21,5 @@ cinst papercut
 ## cinst android-sdk
 
 ## cinst python3
+
+## cinst ruby
