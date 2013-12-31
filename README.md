@@ -1,4 +1,6 @@
 New-Machine
 ===========
 
-A small script using Chocolatey and PowerShell to configure my machines
+This repo contains several small PowerShell scripts that utilize Chocolatey to setup new machines to my prefernces.
+
+They may or may not be useful for external consumption.
