@@ -8,15 +8,25 @@ if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
 
 cinst papercut
 
-## cinst redis
-
 ## cinst jenkins
 
 ## cinst rabbitmq
 
+## cinst nginx
+
+## Development Tools - Databases
+
+## cinst SQLite
+
+## cinst redis
+
 ## cinst mongodb
 
 ## cinst MongoVUE
+
+## cinst mysql
+
+## cinst postgresql
 
 ## Development Tools - Java
 
