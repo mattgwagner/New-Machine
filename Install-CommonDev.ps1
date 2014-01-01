@@ -14,14 +14,28 @@ cinst papercut
 
 ## cinst rabbitmq
 
+## cinst mongodb
+
 ## cinst MongoVUE
+
+## Development Tools - Java
+
+cinst java.jdk
+
+## cinst Grails
+
+## Development Tools - Ruby
+
+## cinst ruby
 
 ## Development Tools - Android
 
 ## cinst android-sdk
 
+## Development Tools - Python
+
 ## cinst python3
 
-## cinst ruby
-
 ## cinst python
+
+## cinst easy.install
