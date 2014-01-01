@@ -39,3 +39,13 @@ cinst thunderbird
 cinst GoogleChrome
 
 cinst Firefox
+
+## System Configuration
+
+## cinst openssh
+
+## cwindowsfeatures Microsoft-Hyper-V-All
+
+## cinst virtualbox
+
+## cinst vagrant

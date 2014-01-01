@@ -27,9 +27,3 @@ cwindowsfeatures  IIS-WebServerRole
 ## cwebpi ASPNET
 ## cwebpi UrlRewrite2
 ## cwebpi ASPNET_REGIIS_NET4
-
-## System Configuration
-
-## cinst openssh
-
-## cwindowsfeatures Microsoft-Hyper-V-All
