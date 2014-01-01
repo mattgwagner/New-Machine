@@ -20,7 +20,7 @@ cinst webpicommandline
 
 ## IIS Configuration
 
-cwindowsfeatures  IIS-WebServerRole
+cinst IIS-WebServerRole -source windowsfeatures
 
 ## cwebpi IIS7
 ## cwebpi IISManagementConsole

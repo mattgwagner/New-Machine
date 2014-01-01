@@ -8,6 +8,12 @@ if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
 
 cinst papercut
 
+cinst Microsoft-Hyper-V-All -source windowsFeatures
+
+## cinst virtualbox
+
+## cinst vagrant
+
 ## cinst jenkins
 
 ## cinst rabbitmq

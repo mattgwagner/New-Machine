@@ -6,6 +6,8 @@ if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
 
 ## Common Windows Tools
 
+## cinst openssh
+
 cinst f.lux
 
 cinst picasa
@@ -39,13 +41,3 @@ cinst thunderbird
 cinst GoogleChrome
 
 cinst Firefox
-
-## System Configuration
-
-## cinst openssh
-
-## cwindowsfeatures Microsoft-Hyper-V-All
-
-## cinst virtualbox
-
-## cinst vagrant
