@@ -6,6 +6,10 @@ if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
 
 ## Development Tools - .NET
 
+## cinst VisualStudio2013ExpressWeb
+
+cinst VisualStudio2013Professional -InstallArguments "WebTools"
+
 cinst DotNet4.0
 
 cinst DotNet4.5
@@ -13,10 +17,6 @@ cinst DotNet4.5
 cinst webpi
 
 cinst webpicommandline
-
-## cinst VisualStudio2013ExpressWeb
-
-cinst VisualStudio2013Professional -InstallArguments "WebTools"
 
 ## IIS Configuration
 
