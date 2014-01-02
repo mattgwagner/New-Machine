@@ -6,7 +6,9 @@ if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
 
 ## Common Windows Tools
 
-## cinst openssh
+## cinst freeSSHD
+
+## cinst Tunnelier
 
 cinst f.lux
 
@@ -18,7 +20,7 @@ cinst notepadplusplus
 
 cinst adobereader
 
-cinst libreoffice
+## cinst libreoffice
 
 cinst baretail
 
