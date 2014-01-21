@@ -11,9 +11,13 @@ cinst BoxStarter
 
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
 
+Disable-InternetExplorerESC
+
 Enable-RemoteDesktop
 
 Enable-MicrosoftUpdate
+
+Update-ExecutionPolicy
 
 # Install-WindowsUpdate
 
