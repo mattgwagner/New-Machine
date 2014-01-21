@@ -11,9 +11,9 @@ cinst BoxStarter
 
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
 
-# Enable-RemoteDesktop
+Enable-RemoteDesktop
 
-# Enable-MicrosoftUpdate
+Enable-MicrosoftUpdate
 
 # Install-WindowsUpdate
 
