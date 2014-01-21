@@ -11,8 +11,18 @@ cinst BoxStarter
 
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
 
-Enable-RemoteDesktop
+# Enable-RemoteDesktop
 
-Enable-MicrosoftUpdate
+# Enable-MicrosoftUpdate
 
-Install-WindowsUpdate
+# Install-WindowsUpdate
+
+.\Intall-Tools.ps1
+
+.\Install-Plex.ps1
+
+.\Install-CommonDev.ps1
+
+.\Install-Git.ps1
+
+.\Install-DotNetDev.ps1
