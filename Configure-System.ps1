@@ -9,7 +9,7 @@ cinst BoxStarter
 
 ## System Configuration
 
-Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
+Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
 
 Disable-InternetExplorerESC
 
@@ -19,14 +19,4 @@ Enable-MicrosoftUpdate
 
 Update-ExecutionPolicy
 
-# Install-WindowsUpdate
-
-.\Intall-Tools.ps1
-
-.\Install-Plex.ps1
-
-.\Install-CommonDev.ps1
-
-.\Install-Git.ps1
-
-.\Install-DotNetDev.ps1
+Install-WindowsUpdate
