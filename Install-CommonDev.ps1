@@ -33,3 +33,5 @@ cinst Microsoft-Hyper-V-All -source windowsFeatures
 ## Development Tools - Android
 
 ## cinst android-sdk
+
+## cinst AndroidStudio

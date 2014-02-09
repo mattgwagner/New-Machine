@@ -2,8 +2,6 @@ Import-Module .\Functions
 
 ## Common Windows Tools
 
-## cinst freeSSHD
-
 ## cinst Tunnelier
 
 cinst f.lux

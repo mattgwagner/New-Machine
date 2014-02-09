@@ -4,4 +4,12 @@ Import-Module .\Functions
 
 cinst java.jdk
 
+cinst maven
+
 ## cinst Grails
+
+## cinst scala
+
+## cinst groovy
+
+## cinst jruby

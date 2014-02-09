@@ -16,3 +16,5 @@ Enable-MicrosoftUpdate
 Update-ExecutionPolicy
 
 Install-WindowsUpdate
+
+## cinst freeSSHD
