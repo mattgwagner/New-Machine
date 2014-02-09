@@ -1,7 +1,3 @@
-$url = "http://ninite.com/plex/ninite.exe"
+Import-Module .\Functions
 
-$file = "plex.exe"
-
-(New-Object net.webclient).DownloadFile($url, $file)
-
-(New-Object -com shell.application).shellExecute($file)
+DownloadAndRun "http://ninite.com/plex/ninite.exe" "plex.exe"

@@ -1,8 +1,4 @@
-## Download Chocolatey Package Manager
-if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
-{
-	iex ((new-object net.webclient).DownloadString('http://chocolatey.org/install.ps1')) 
-}
+Import-Module .\Functions
 
 # Install BoxStarter to handle some system configuration
 cinst BoxStarter
