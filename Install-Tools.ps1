@@ -2,38 +2,38 @@ Import-Module .\Functions
 
 ## Common Windows Tools
 
-## cinst Tunnelier
-
-cinst f.lux
-
-cinst picasa
-
-cinst googledrive
-
-cinst notepadplusplus
-
-cinst adobereader
-
-## cinst libreoffice
-
-cinst baretail
-
-cinst greenshot
-
-cinst AdobeAIR
-
-cinst paint.net
-
 cinst ccleaner
 
 cinst grepwin
 
 cinst 7zip
 
-cinst thunderbird
+cinst notepadplusplus
+
+cinst adobereader
+
+cinst f.lux
+
+cinst greenshot
+
+## cinst Tunnelier
 
 ## Web Browsers
 
 cinst GoogleChrome
 
 cinst Firefox
+
+## Media Tools
+
+cinst picasa
+
+cinst googledrive
+
+cinst libreoffice
+
+cinst AdobeAIR
+
+cinst paint.net
+
+cinst thunderbird

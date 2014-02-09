@@ -4,6 +4,8 @@ Import-Module .\Functions
 
 cinst papercut
 
+cinst baretail
+
 cinst Microsoft-Hyper-V-All -source windowsFeatures
 
 ## cinst virtualbox
