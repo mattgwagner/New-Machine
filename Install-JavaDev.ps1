@@ -13,3 +13,9 @@ cinst maven
 ## cinst groovy
 
 ## cinst jruby
+
+## Development Tools - Android
+
+## cinst android-sdk
+
+## cinst AndroidStudio

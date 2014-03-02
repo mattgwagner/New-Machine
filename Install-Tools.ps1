@@ -37,3 +37,5 @@ cinst AdobeAIR
 cinst paint.net
 
 cinst thunderbird
+
+cinst qbittorrent

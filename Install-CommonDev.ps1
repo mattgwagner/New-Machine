@@ -31,9 +31,3 @@ cinst Microsoft-Hyper-V-All -source windowsFeatures
 ## cinst mysql
 
 ## cinst postgresql
-
-## Development Tools - Android
-
-## cinst android-sdk
-
-## cinst AndroidStudio
