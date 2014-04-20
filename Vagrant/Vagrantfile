@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	
 	# Port forward WinRM and RDP
 	config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
-	#config.vm.network :forwarded_port, guest: 3389, host: 3389
+	config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp"
 
 	# Create a public network, which generally matched to bridged network.
 	# Bridged networks make the machine appear as another physical device on
