@@ -11,6 +11,4 @@ if(-not $env:ChocolateyInstall -or -not (Test-Path "$env:ChocolateyInstall"))
 	iex ((new-object net.webclient).DownloadString('http://chocolatey.org/install.ps1')) 
 }
 
-Write-Host "Chocolatey Configured, Carry On!"
-
 Export-ModuleMember -Function @('DownloadAndRun')

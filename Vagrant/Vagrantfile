@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	# Use this to run local or remote scripts for provisioning
 	# config.vm.provision "shell", path: "local-setup.cmd"
+	# Run the chocolatey install, then push the tools over that we need on the VM
 
 	# Create a private network, which allows host-only access to the machine using a specific IP.
 	config.vm.network "private_network", ip: "192.168.33.10"
@@ -47,6 +48,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	# Bridged networks make the machine appear as another physical device on
 	# your network.
 	# config.vm.network "public_network"
+	
+	# Ensure that all networks are set to private
+	config.windows.set_work_network = true
 
 	# Provider-specific configuration so you can fine-tune various
 	# backing providers for Vagrant. These expose provider-specific options.

@@ -4,7 +4,6 @@ Import-Module .\Functions
 cinst BoxStarter
 
 ## System Configuration
-
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
 
 Disable-InternetExplorerESC
@@ -15,7 +14,7 @@ Enable-MicrosoftUpdate
 
 Update-ExecutionPolicy
 
-## This may not be desired, it'll run all Windows Updates available
+## This may not be desired, it will run all Windows Updates available
 Install-WindowsUpdate
 
 ## cinst freeSSHD

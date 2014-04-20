@@ -6,11 +6,11 @@ cinst papercut
 
 cinst baretail
 
-cinst Microsoft-Hyper-V-All -source windowsFeatures
+## cinst Microsoft-Hyper-V-All -source windowsFeatures
 
-## cinst virtualbox
+cinst virtualbox
 
-## cinst vagrant
+cinst vagrant
 
 ## cinst jenkins
 
