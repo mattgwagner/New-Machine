@@ -1,4 +1,6 @@
-Import-Module .\Functions
+$ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
+
+& "$ScriptPath\PowerShellProfile\Microsoft.PowerShell_profile.ps1"
 
 ## Development Tools - Ruby
 

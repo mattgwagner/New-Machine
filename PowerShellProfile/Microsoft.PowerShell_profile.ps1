@@ -138,3 +138,12 @@ function Load-Assembly($assembly)
 		[System.Reflection.Assembly]::LoadWithPartialName("$assembly")
 	}
 }
+
+function DownloadAndRun($url, $file)
+{
+	(New-Object net.webclient).DownloadFile($url, $file)
+
+	(New-Object -com shell.application).shellExecute($file)
+}
+
+Install-Chocolatey
