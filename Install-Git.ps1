@@ -4,15 +4,6 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 ## Development Tools - Git
 
-cinst githubforwindows
+chocolatey install git.install
 
-cinst TortoiseGit
-
-## Create a new PowerShell Profile
-if (!(test-path $profile)) 
-{
-    New-Item -path $profile -type file -force
-}
-
-## Add the GitHub profile shell
-Add-Content $profile ". (Resolve-Path '$env:LOCALAPPDATA\GitHub\shell.ps1')"
+chocolatey install TortoiseGit
