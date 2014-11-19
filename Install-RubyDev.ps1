@@ -4,12 +4,12 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 ## Development Tools - Ruby
 
-cinst ruby
+choco install ruby
 
 ## This will change based on the current ruby to be installed, but is required to use gem
 $env:PATH += ";C:\ruby193\bin"
 
-cinst ruby.devkit
+choco install ruby.devkit
 
 &gem update --system
 

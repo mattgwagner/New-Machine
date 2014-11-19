@@ -4,10 +4,12 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 ## Developer Tools
 
-chocolatey install grepwin
-chocolatey install greenshot
-chocolatey install baretail
+choco install grepwin
+choco install greenshot
+choco install baretail
 
-## chocolatey install vagrant
+## choco install virtualbox
 
-## chocolatey install freeSSHD
+## choco install vagrant
+
+## choco install freeSSHD

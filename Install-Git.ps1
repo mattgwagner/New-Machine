@@ -4,6 +4,6 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 ## Development Tools - Git
 
-chocolatey install git.install
+choco install git.install
 
-chocolatey install TortoiseGit
+choco install TortoiseGit

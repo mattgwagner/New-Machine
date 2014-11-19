@@ -4,8 +4,8 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 ## Development Tools - Python
 
-cinst python
+choco install python
 
-cinst pip
+choco install pip
 
-cinst easy.install
+choco install easy.install
