@@ -2,7 +2,7 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 & "$ScriptPath\PowerShellProfile\Microsoft.PowerShell_profile.ps1"
 
-chocolatey install VisualStudio2013Professional -InstallArguments "/Features:'WebTools'"
+chocolatey install VisualStudioCommunity2013 -InstallArguments "/Features:'WebTools'"
 
 chocolatey install SQLManagementStudio -source webpi
 
