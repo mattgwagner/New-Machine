@@ -1,6 +1,8 @@
 ## This configuration file uses BoxStarter to configure the system
 ## and Chocolatey to install necessary packages
 
+choco install BoxStarter
+
 ## System Configuration
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
 
@@ -22,16 +24,10 @@ choco install 7zip.install
 choco install notepadplusplus.install
 choco install adobereader
 choco install f.lux
+choco install paint.net
 
 ## Web Browsers
 choco install GoogleChrome
 choco install Firefox
 
-## Office Tools
 choco install libreoffice
-choco install thunderbird
-
-## Media Tools
-choco install AdobeAIR
-choco install qbittorrent
-choco install paint.net
