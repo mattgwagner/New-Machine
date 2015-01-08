@@ -9,6 +9,7 @@ choco install greenshot
 choco install baretail
 
 ## choco install redis-64
+## choco install redis-desktop-manager
 
 ## choco install virtualbox
 ## choco install vagrant
