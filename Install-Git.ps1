@@ -7,3 +7,5 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 choco install git.install
 
 choco install TortoiseGit
+
+choco install poshgit

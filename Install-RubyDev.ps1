@@ -4,6 +4,8 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 ## Development Tools - Ruby
 
+## choco install jruby
+
 choco install ruby
 
 ## This will change based on the current ruby to be installed, but is required to use gem
