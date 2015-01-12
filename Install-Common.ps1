@@ -14,6 +14,8 @@ choco install f.lux
 choco install paint.net
 choco install TeamViewer
 
+choco install btsync
+
 ## Web Browsers
 choco install GoogleChrome
 choco install Firefox
