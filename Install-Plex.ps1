@@ -1,6 +1,5 @@
-$url = "http://ninite.com/plex/ninite.exe"
-$file = "plex.exe"
+choco install plexmediaserver
 
-(New-Object net.webclient).DownloadFile($url, $file)
+## Filebot is probably optional, but great for handling renaming of tv episodes based on tvdb
 
-(New-Object -com shell.application).shellExecute($file)
+choco install filebot
