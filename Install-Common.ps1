@@ -40,4 +40,4 @@ choco install f.lux
 choco install btsync
 
 ## Run all available Windows Updates
-Install-WindowsUpdate
+Install-WindowsUpdate -AcceptEula
