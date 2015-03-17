@@ -23,25 +23,10 @@ function Install-Chocolatey()
 	}
 }
 
-function Open-IE ($url)
-{    
-    $ie = new-object -comobject internetexplorer.application;
-
-    $ie.Navigate($url);
-
-    $ie.Visible = $true;
-}
-
 function RemoteDesktop($server)
 {
 	mstsc /v:"$server" 
 }
-
-## "%ProgramFiles%\Internet Explorer\iexplore.exe"
-
-## "%ProgramFiles(x86)%\Mozilla Firefox\firefox.exe"
-
-## "%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"
 
 ## Try to find an app in x86 or the 'normal' ProgramFiles
 function Find-Program($folderName)
@@ -61,11 +46,6 @@ function Find-Program($folderName)
     {
         $p1
     }
-}
-
-function xsd()
-{
-	& (Find-Program "Microsoft SDKs\Windows\v7.0A\Bin\xsd.exe") $args
 }
 
 function touch($file) 
@@ -125,9 +105,7 @@ function Watch-File($filename, $lines = 5)
 Set-Alias tail Watch-File -Scope Global
 
 function Load-Assembly($assembly)
-{
-	echo $assembly
-	
+{	
 	if(test-path $assembly)
 	{
 		$assemblyPath = get-item $assembly

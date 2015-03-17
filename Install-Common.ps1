@@ -1,26 +1,7 @@
 ## This configuration file uses BoxStarter to configure the system
 ## and Chocolatey to install necessary packages
 
-## .NET Frameworks -- Some should already be installed
-choco install DotNet3.5
-choco install DotNet4.5.1
-
-## Common System Tools
-choco install ccleaner
-choco install 7zip.install
-choco install notepadplusplus.install
-choco install adobereader
-choco install f.lux
-choco install paint.net
-choco install TeamViewer
-
-choco install btsync
-
-## Web Browsers
-choco install GoogleChrome
-choco install Firefox
-
-choco install libreoffice
+## TODO Ensure chocolatey is installed if we're running this script directly
 
 choco install BoxStarter
 
@@ -33,5 +14,30 @@ Update-ExecutionPolicy
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
-## This may not be desired, it will run all Windows Updates available
+## .NET Frameworks -- Some should already be installed
+choco install DotNet3.5
+choco install DotNet4.5.1
+
+## Web Browsers
+choco install GoogleChrome
+choco install Firefox
+
+## Common System Tools
+choco install ccleaner
+choco install 7zip.install
+choco install notepadplusplus.install
+choco install adobereader
+choco install greenshot
+choco install grepwin
+choco install javaruntime
+
+choco install libreoffice
+
+## This might not be useful for non-desktop machines?
+choco install f.lux
+
+# Do we want btsync on all of the machines?
+choco install btsync
+
+## Run all available Windows Updates
 Install-WindowsUpdate
