@@ -37,7 +37,7 @@ choco install libreoffice
 choco install f.lux
 
 # Do we want btsync on all of the machines?
-choco install btsync
+# choco install btsync
 
 ## Run all available Windows Updates
 Install-WindowsUpdate -AcceptEula
