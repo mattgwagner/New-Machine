@@ -5,15 +5,6 @@
 
 choco install BoxStarter
 
-## System Configuration
-Enable-MicrosoftUpdate
-Set-ExplorerOptions -showFileExtensions
-
-# This really only matters on server OS's
-Update-ExecutionPolicy
-Disable-InternetExplorerESC
-Enable-RemoteDesktop
-
 ## .NET Frameworks -- Some should already be installed
 choco install DotNet3.5
 choco install DotNet4.5.1
@@ -30,14 +21,14 @@ choco install adobereader
 choco install greenshot
 choco install grepwin
 choco install javaruntime
-
 choco install libreoffice
 
-## This might not be useful for non-desktop machines?
-choco install f.lux
+## System Configuration
+Enable-MicrosoftUpdate
+Set-ExplorerOptions -showFileExtensions
+Update-ExecutionPolicy
+Enable-RemoteDesktop
 
-# Do we want btsync on all of the machines?
-# choco install btsync
+Disable-InternetExplorerESC # Server OS only
 
-## Run all available Windows Updates
 Install-WindowsUpdate -AcceptEula
