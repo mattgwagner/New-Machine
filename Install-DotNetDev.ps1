@@ -4,7 +4,7 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 ## Development Tools for .NET
 
-choco install VisualStudioCommunity2013
+choco install VisualStudioCommunity2013 -packageParameters "/Features:WebTools"
 
 choco install webpi
 choco install webpicmd
