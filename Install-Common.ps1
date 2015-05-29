@@ -20,7 +20,7 @@ choco install notepadplusplus.install
 choco install adobereader
 choco install greenshot
 choco install grepwin
-choco install javaruntime
+# choco install javaruntime ## Should this be included in the base install?
 choco install libreoffice
 
 ## System Configuration
