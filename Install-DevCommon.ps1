@@ -8,6 +8,8 @@ choco install baretail
 choco install smtp4dev
 choco install f.lux
 
+choco install rdcman
+
 # Do we want btsync on all of the machines?
 # choco install btsync
 
