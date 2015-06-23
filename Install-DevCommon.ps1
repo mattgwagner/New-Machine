@@ -10,9 +10,6 @@ choco install f.lux
 
 choco install rdcman
 
-# Do we want btsync on all of the machines?
-# choco install btsync
-
 ## choco install redis-64
 ## choco install redis-desktop-manager
 

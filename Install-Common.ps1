@@ -20,8 +20,12 @@ choco install notepadplusplus.install
 choco install adobereader
 choco install greenshot
 choco install grepwin
-# choco install javaruntime ## Should this be included in the base install?
+
 choco install libreoffice
+
+# choco install javaruntime ## Should this be included in the base install?
+
+# choco install btsync ## Do we want btsync on all of the machines?
 
 ## System Configuration
 Enable-MicrosoftUpdate
