@@ -6,9 +6,16 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 choco install baretail
 choco install smtp4dev
-choco install f.lux
+
+# I don't install f.lux on developer machines, maybe on the host
+
+#choco install f.lux
 
 choco install rdcman
+
+# Console emulator, tabbed PowerShell ftw
+
+choco install conemu
 
 ## choco install redis-64
 ## choco install redis-desktop-manager
