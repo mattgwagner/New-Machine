@@ -5,11 +5,6 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 ## Common Developer Tools
 
 choco install baretail
-choco install smtp4dev
-
-# I don't install f.lux on developer machines, maybe on the host
-
-#choco install f.lux
 
 choco install rdcman
 
@@ -32,13 +27,5 @@ choco install conemu
 
 ## choco install nginx
 
-## choco install sqlite
-
 ## choco install mysql
 ## choco install postgresql
-
-## choco install grails
-## choco install scala
-
-## choco install mongodb
-## choco install mongovue
