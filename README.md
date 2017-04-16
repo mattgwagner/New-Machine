@@ -5,6 +5,10 @@ This repo contains several small PowerShell scripts that utilize Chocolatey and 
 
 They may or may not be useful for external consumption.
 
+Copy this into a console prompt to invoke installation via BoxStarter
+
+START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/mattgwagner/New-Machine/master/Install-Common.ps1
+
 See Also
 ===========
 
