@@ -52,9 +52,13 @@ choco install poshgit
 
 ## Development Tools for .NET
 
-choco install visualstudio2017professional visualstudio2017-workload-netweb visualstudio2017-workload-azure visualstudio2017-workload-netcoretools -y
+choco install visualstudio2017professional 
+choco install visualstudio2017-workload-netweb 
+choco install visualstudio2017-workload-azure 
+choco install visualstudio2017-workload-netcoretools
 
-choco install mssqlserver2014express-defaultinstance mssqlservermanagementstudio2014express -y
+choco install mssqlserver2014express-defaultinstance 
+choco install mssqlservermanagementstudio2014express
 
 ## System Configuration
 Enable-MicrosoftUpdate
