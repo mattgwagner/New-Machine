@@ -1,10 +1,6 @@
 ## This configuration file uses BoxStarter to configure the system
 ## and Chocolatey to install necessary packages
 
-## TODO Ensure chocolatey is installed if we're running this script directly
-
-choco install BoxStarter
-
 ## .NET Frameworks -- Some should already be installed
 choco install DotNet3.5
 choco install DotNet4.5.1
@@ -20,12 +16,6 @@ choco install notepadplusplus.install
 choco install adobereader
 choco install greenshot
 choco install grepwin
-
-choco install libreoffice
-
-# choco install javaruntime ## Should this be included in the base install?
-
-# choco install btsync ## Do we want btsync on all of the machines?
 
 ## System Configuration
 Enable-MicrosoftUpdate
