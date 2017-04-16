@@ -11,6 +11,5 @@ choco install webpicmd
 
 choco install IIS-WebServerRole -source windowsfeatures
 choco install IIS-ASPNET45 -source windowsfeatures
-choco install IIS-WebSockets -source windowsfeatures
 
 choco install SQLManagementStudio -source webpi
