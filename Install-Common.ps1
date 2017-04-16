@@ -12,12 +12,7 @@ choco install GoogleChrome
 choco install Firefox
 
 ## Common System Tools
-choco install ccleaner
-choco install 7zip.install
-choco install notepadplusplus.install
-choco install adobereader
-choco install greenshot
-choco install grepwin
+choco install ccleaner 7zip.install notepadplusplus.install grepwin
 
 ## Common Developer Tools
 
