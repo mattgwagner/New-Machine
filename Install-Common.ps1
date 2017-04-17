@@ -1,6 +1,8 @@
 ## This configuration file uses BoxStarter to configure the system
 ## and Chocolatey to install necessary packages
 
+choco feature enable -n allowGlobalConfirmation
+
 choco install boxstarter
 
 ## .NET Frameworks -- Some should already be installed
