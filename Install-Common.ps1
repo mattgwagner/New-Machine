@@ -5,21 +5,16 @@ choco feature enable -n allowGlobalConfirmation
 
 choco install boxstarter
 
-## .NET Frameworks -- Some should already be installed
-choco install DotNet3.5
-choco install DotNet4.5.1
-
 ## Web Browsers
 choco install GoogleChrome
 choco install Firefox
 
 ## Common System Tools
-choco install ccleaner 7zip.install notepadplusplus.install grepwin
-
-## Common Developer Tools
-
+choco install ccleaner 
+choco install 7zip.install 
+choco install notepadplusplus.install
+choco install grepwin
 choco install baretail
-
 choco install rdcman
 
 # Console emulator, tabbed PowerShell ftw
