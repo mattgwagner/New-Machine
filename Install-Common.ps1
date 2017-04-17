@@ -24,12 +24,6 @@ choco install conemu
 ## choco install redis-64
 ## choco install redis-desktop-manager
 
-## choco install virtualbox
-## choco install vagrant
-
-## choco install freeSSHD
-## choco install Tunnelier
-
 ## choco install jenkins
 
 ## choco install rabbitmq
