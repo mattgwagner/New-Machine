@@ -7,7 +7,6 @@ function global:Import($Module)
 	Import-Module (Join-Path $ScriptPath $Module) -DisableNameChecking
 }
 
-Import Git
 Import Redis
 
 ## function to launch enterprise email in IE
