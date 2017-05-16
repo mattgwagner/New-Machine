@@ -3,7 +3,7 @@
 
 choco feature enable --name=allowGlobalConfirmation
 
-choco install boxstarter
+#choco install boxstarter
 
 ## System Configuration
 
