@@ -67,3 +67,5 @@ choco install redis-desktop-manager
 ## OCD Settings
 
 Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
+
+&"$env:windir\system32\tzutil.exe" /s "Eastern Standard Time"
