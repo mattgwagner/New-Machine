@@ -63,3 +63,7 @@ choco install mssqlservermanagementstudio2014express
 
 choco install redis-64
 choco install redis-desktop-manager
+
+## OCD Settings
+
+Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
