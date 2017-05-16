@@ -26,21 +26,7 @@ choco install Firefox
 choco install ccleaner 
 choco install 7zip.install 
 choco install notepadplusplus.install
-choco install baretail
 choco install rdcman
-
-# Console emulator, tabbed PowerShell ftw
-
-choco install conemu
-
-## choco install jenkins
-
-## choco install rabbitmq
-
-## choco install nginx
-
-## choco install mysql
-## choco install postgresql
 
 ## Development Tools - Git
 
@@ -61,8 +47,19 @@ choco install mssqlservermanagementstudio2014express
 
 ## Development Tools - General
 
+choco install conemu
+
+choco install baretail
+
 choco install redis-64
 choco install redis-desktop-manager
+
+## choco install rabbitmq
+
+## choco install nginx
+
+## choco install mysql
+## choco install postgresql
 
 ## OCD Settings
 
