@@ -5,6 +5,17 @@ choco feature enable -n allowGlobalConfirmation
 
 choco install boxstarter
 
+## System Configuration
+
+Enable-MicrosoftUpdate
+Set-ExplorerOptions -showFileExtensions
+Update-ExecutionPolicy
+Enable-RemoteDesktop
+
+Disable-InternetExplorerESC # Server OS only
+
+Install-WindowsUpdate -AcceptEula
+
 ## Web Browsers
 choco install GoogleChrome
 choco install Firefox
@@ -50,13 +61,3 @@ choco install visualstudio2017-workload-netcoretools
 
 choco install mssqlserver2014express-defaultinstance 
 choco install mssqlservermanagementstudio2014express
-
-## System Configuration
-Enable-MicrosoftUpdate
-Set-ExplorerOptions -showFileExtensions
-Update-ExecutionPolicy
-Enable-RemoteDesktop
-
-Disable-InternetExplorerESC # Server OS only
-
-Install-WindowsUpdate -AcceptEula
