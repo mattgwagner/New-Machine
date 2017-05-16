@@ -1,7 +1,7 @@
 ## This configuration file uses BoxStarter to configure the system
 ## and Chocolatey to install necessary packages
 
-choco feature enable -n allowGlobalConfirmation
+choco feature enable --name=allowGlobalConfirmation
 
 choco install boxstarter
 
