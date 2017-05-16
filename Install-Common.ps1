@@ -24,7 +24,6 @@ choco install Firefox
 choco install ccleaner 
 choco install 7zip.install 
 choco install notepadplusplus.install
-choco install grepwin
 choco install baretail
 choco install rdcman
 
@@ -47,12 +46,9 @@ choco install conemu
 ## Development Tools - Git
 
 choco install git.install
-
 choco install TortoiseGit
 
-choco install poshgit
-
-## Development Tools for .NET
+## Development Tools - .NET
 
 choco install visualstudio2017professional 
 choco install visualstudio2017-workload-netweb 
