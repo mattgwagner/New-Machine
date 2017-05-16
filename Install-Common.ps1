@@ -7,13 +7,13 @@ choco install boxstarter
 
 ## System Configuration
 
-Enable-MicrosoftUpdate
 Set-ExplorerOptions -showFileExtensions
 Update-ExecutionPolicy
 Enable-RemoteDesktop
 
 Disable-InternetExplorerESC # Server OS only
 
+Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
 
 ## Web Browsers
