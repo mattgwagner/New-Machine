@@ -110,3 +110,5 @@ UpgradeLog*.XML
 .vagrant
 packer_cache
 *.iso
+*.box
+*.vdi
