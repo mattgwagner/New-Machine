@@ -28,8 +28,8 @@ powercfg /hibernate off
 Write-Host 'Setting the power plan to high performance...'
 powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 
-Write-Host "Cleaning SxS..."
-Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+#Write-Host "Cleaning SxS..."
+#Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
 
 # remove temporary files.
 'C:\tmp','C:\Windows\Temp',$env:TEMP | ForEach-Object {
