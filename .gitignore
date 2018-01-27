@@ -109,3 +109,4 @@ UpgradeLog*.XML
 
 .vagrant
 packer_cache
+*.iso
