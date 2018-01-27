@@ -38,10 +38,11 @@ choco install TortoiseGit
 
 choco install visualstudiocode
 
-# choco install visualstudio2017professional 
-# choco install visualstudio2017-workload-netweb 
-# choco install visualstudio2017-workload-azure 
-# choco install visualstudio2017-workload-netcoretools
+choco install visualstudio2017professional 
+# choco install visualstudio2017buildtools
+choco install visualstudio2017-workload-netweb 
+choco install visualstudio2017-workload-azure 
+choco install visualstudio2017-workload-netcoretools
 
 # choco install mssqlserver2014express-defaultinstance 
 # choco install mssqlservermanagementstudio2014express
