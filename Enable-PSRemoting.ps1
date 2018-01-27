@@ -27,8 +27,3 @@ if (!(New-Object System.Security.Principal.WindowsPrincipal(
 # configure WinRM.
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
-
-## dump the WinRM configuration.
-#winrm enumerate winrm/config/listener
-#winrm get winrm/config
-#winrm id
