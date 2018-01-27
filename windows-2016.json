@@ -1,6 +1,6 @@
 {
   "variables": {
-    "headless": "false",
+    "headless": "true",
     "disk_size": "61440",
     "iso_url": "./en_windows_server_2016_x64_dvd_9718492.iso",
     "iso_checksum": "F185197AF68FAE4F0E06510A4579FC511BA27616",
@@ -59,11 +59,11 @@
     {
       "type": "powershell",
       "script": "Install-Common.ps1"
-    }
+    },
     {
       "type": "powershell",
-      "script": "provision.ps1"
-    },
+      "script": "Run-Cleanup.ps1"
+    }
   ],
   "post-processors": [
     {
