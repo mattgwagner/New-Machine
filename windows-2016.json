@@ -1,5 +1,6 @@
 {
   "variables": {
+    "headless": "false",
     "disk_size": "61440",
     "iso_url": "./en_windows_server_2016_x64_dvd_9718492.iso",
     "iso_checksum": "F185197AF68FAE4F0E06510A4579FC511BA27616",
@@ -11,7 +12,7 @@
       "type": "virtualbox-iso",
       "guest_os_type": "Windows2016_64",
       "guest_additions_mode": "attach",
-      "headless": true,
+      "headless": "{{user `headless`}}",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "2048"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"],
