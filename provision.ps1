@@ -3,12 +3,6 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 trap {
-    #Write-Host
-    #Write-Host 'whoami from autounattend:'
-    #Get-Content C:\whoami-autounattend.txt | ForEach-Object { Write-Host "whoami from autounattend: $_" }
-    #Write-Host 'whoami from current WinRM session:'
-    #whoami /all >C:\whoami-winrm.txt
-    #Get-Content C:\whoami-winrm.txt | ForEach-Object { Write-Host "whoami from winrm: $_" }
     Write-Host
     Write-Host "ERROR: $_"
     Write-Host (($_.ScriptStackTrace -split '\r?\n') -replace '^(.*)$','ERROR: $1')
@@ -37,21 +31,6 @@ if ((Get-WmiObject Win32_ComputerSystemProduct Vendor).Vendor -eq 'QEMU') {
     Invoke-WebRequest $qemuAgentSetupUrl -OutFile $qemuAgentSetup
     Write-Host 'Installing the qemu-kvm Guest Agent...'
     Start-Process $qemuAgentSetup /qn -Wait
-
-    # install spice-vdagent.
-    $spiceAgentZipUrl = 'https://www.spice-space.org/download/windows/vdagent/vdagent-win-0.9.0/vdagent-win-0.9.0-x64.zip'
-    $spiceAgentZip = "$env:TEMP\vdagent-win-0.9.0-x64.zip"
-    $spiceAgentDestination = "C:\Program Files\spice-vdagent"
-    Write-Host "Downloading the spice-vdagent from $spiceAgentZipUrl..."
-    Invoke-WebRequest $spiceAgentZipUrl -OutFile $spiceAgentZip
-    Write-Host 'Installing the spice-vdagent...'
-    Add-Type -A System.IO.Compression.FileSystem
-    [IO.Compression.ZipFile]::ExtractToDirectory($spiceAgentZip, $spiceAgentDestination)
-    Move-Item "$spiceAgentDestination\vdagent-win-*\*" $spiceAgentDestination
-    Get-ChildItem "$spiceAgentDestination\vdagent-win-*" -Recurse | Remove-Item -Force -Recurse
-    Remove-Item -Force "$spiceAgentDestination\vdagent-win-*"
-    Start-Process "$spiceAgentDestination\vdservice.exe" install -Wait # NB the logs are inside C:\Windows\Temp
-    Start-Service vdservice
 } else {
     Write-Host 'Importing the Oracle (for VirtualBox) certificate as a Trusted Publisher...'
     E:\cert\VBoxCertUtil.exe add-trusted-publisher E:\cert\vbox-sha1.cer
@@ -108,24 +87,6 @@ Invoke-WebRequest `
     ([IO.File]::ReadAllText("$openSshHome\etc\sshd_config") `
         -replace '#?StrictModes yes','StrictModes no'))
 Restart-Service opensshd
-
-Write-Host 'Setting the vagrant account properties...'
-# see the ADS_USER_FLAG_ENUM enumeration at https://msdn.microsoft.com/en-us/library/aa772300(v=vs.85).aspx
-$AdsScript              = 0x00001
-$AdsAccountDisable      = 0x00002
-$AdsNormalAccount       = 0x00200
-$AdsDontExpirePassword  = 0x10000
-$account = [ADSI]'WinNT://./vagrant'
-$account.Userflags = $AdsNormalAccount -bor $AdsDontExpirePassword
-$account.SetInfo()
-
-Write-Host 'Setting the Administrator account properties...'
-$account = [ADSI]'WinNT://./Administrator'
-$account.Userflags = $AdsNormalAccount -bor $AdsDontExpirePassword -bor $AdsAccountDisable
-$account.SetInfo()
-
-Write-Host 'Disabling auto logon...'
-Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoAdminLogon -Value 0
 
 Write-Host 'Disabling hibernation...'
 powercfg /hibernate off
