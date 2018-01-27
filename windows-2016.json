@@ -35,7 +35,7 @@
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
         "autounattend.xml",
-        "Enable-PSRemoting.cmd"
+        "Enable-PSRemoting.ps1"
       ]
     }
   ],
@@ -43,6 +43,14 @@
     {
       "type": "powershell",
       "script": "provision.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "Install-Chocolatey.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "Install-Common.ps1"
     }
   ],
   "post-processors": [
