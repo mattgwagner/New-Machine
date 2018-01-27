@@ -61,9 +61,3 @@ choco install visualstudiocode
 
 ## choco install mysql
 ## choco install postgresql
-
-## OCD Settings
-
-Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
-
-&"$env:windir\system32\tzutil.exe" /s "Eastern Standard Time"

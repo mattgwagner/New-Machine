@@ -46,10 +46,6 @@
     },
     {
       "type": "powershell",
-      "script": "provision.ps1"
-    },
-    {
-      "type": "powershell",
       "script": "Install-OpenSsh.ps1"
     },
     {
@@ -64,6 +60,10 @@
       "type": "powershell",
       "script": "Install-Common.ps1"
     }
+    {
+      "type": "powershell",
+      "script": "provision.ps1"
+    },
   ],
   "post-processors": [
     {
