@@ -42,6 +42,10 @@
   "provisioners": [
     {
       "type": "powershell",
+      "script": "Install-VirtualBoxGuestAdditions.ps1"
+    },
+    {
+      "type": "powershell",
       "script": "provision.ps1"
     },
     {

@@ -3,13 +3,15 @@
 
 choco feature enable --name=allowGlobalConfirmation
 
-# choco install boxstarter
+choco install boxstarter
 
 ## System Configuration
 
 # Set-ExplorerOptions -showFileExtensions
 # Update-ExecutionPolicy
-# Enable-RemoteDesktop
+
+Enable-RemoteDesktop
+Set-NetFirewallRule -Name RemoteDesktop-UserMode-In-TCP -Enabled True
 
 # Disable-InternetExplorerESC # Server OS only
 
