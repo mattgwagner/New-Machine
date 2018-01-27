@@ -6,7 +6,6 @@ choco feature enable --name=allowGlobalConfirmation
 ## System Configuration
 
 # Set-ExplorerOptions -showFileExtensions
-# Update-ExecutionPolicy
 
 Enable-RemoteDesktop
 Set-NetFirewallRule -Name RemoteDesktop-UserMode-In-TCP -Enabled True
@@ -19,8 +18,8 @@ Disable-InternetExplorerESC # Server OS only
 
 ## Web Browsers
 
-# choco install GoogleChrome
-# choco install Firefox
+choco install GoogleChrome
+choco install Firefox
 
 ## Common System Tools
 
