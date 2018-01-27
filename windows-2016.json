@@ -50,6 +50,10 @@
     },
     {
       "type": "powershell",
+      "script": "Install-OpenSsh.ps1"
+    },
+    {
+      "type": "powershell",
       "script": "Install-Chocolatey.ps1"
     },
     {

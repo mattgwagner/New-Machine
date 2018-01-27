@@ -3,8 +3,6 @@
 
 choco feature enable --name=allowGlobalConfirmation
 
-choco install boxstarter
-
 ## System Configuration
 
 # Set-ExplorerOptions -showFileExtensions
