@@ -36,7 +36,7 @@ choco install TortoiseGit
 
 ## Development Tools - .NET
 
-# choco install visualstudiocode
+choco install visualstudiocode
 
 # choco install visualstudio2017professional 
 # choco install visualstudio2017-workload-netweb 
