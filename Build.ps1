@@ -1,6 +1,6 @@
 $here = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-& "Install-Chocolatey.ps1"
+& ".\Install-Chocolatey.ps1"
 
 if(!(Test-Path $env:ProgramFiles\Oracle\VirtualBox)) { cinst virtualbox -y }
 
