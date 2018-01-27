@@ -13,9 +13,10 @@ choco install boxstarter
 Enable-RemoteDesktop
 Set-NetFirewallRule -Name RemoteDesktop-UserMode-In-TCP -Enabled True
 
-# Disable-InternetExplorerESC # Server OS only
+Disable-InternetExplorerESC # Server OS only
 
 # Enable-MicrosoftUpdate
+# Disable-MicrosoftUpdate
 # Install-WindowsUpdate -AcceptEula
 
 ## Web Browsers

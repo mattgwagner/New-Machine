@@ -54,6 +54,10 @@
     },
     {
       "type": "powershell",
+      "script": "Install-Boxstarter.ps1"
+    },
+    {
+      "type": "powershell",
       "script": "Install-Common.ps1"
     }
   ],
