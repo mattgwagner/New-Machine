@@ -35,7 +35,8 @@
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
         "autounattend.xml",
-        "Enable-PSRemoting.ps1"
+        "Enable-PSRemoting.ps1",
+        "Install-Common.ps1"
       ]
     }
   ],
@@ -55,10 +56,6 @@
     {
       "type": "powershell",
       "script": "Install-Boxstarter.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "Install-Common.ps1"
     },
     {
       "type": "powershell",
