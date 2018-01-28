@@ -53,7 +53,7 @@ choco install visualstudio2017-workload-netweb
 choco install visualstudio2017-workload-azure 
 choco install visualstudio2017-workload-netcoretools
 
-choco install mssqlserver2014express-defaultinstance 
+choco install mssql2014express-defaultinstance
 choco install mssqlservermanagementstudio2014express
 
 ## Development Tools - General
