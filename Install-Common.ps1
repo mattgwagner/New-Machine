@@ -12,7 +12,7 @@ Set-NetFirewallRule -Name RemoteDesktop-UserMode-In-TCP -Enabled True
 
 Disable-InternetExplorerESC # Server OS only
 
-# Enable-MicrosoftUpdate
+Enable-MicrosoftUpdate
 # Disable-MicrosoftUpdate
 # Install-WindowsUpdate -AcceptEula
 
@@ -44,7 +44,7 @@ choco install visualstudio2017-workload-netweb
 choco install visualstudio2017-workload-azure 
 choco install visualstudio2017-workload-netcoretools
 
-# choco install mssqlserver2014express-defaultinstance 
+choco install mssqlserver2014express-defaultinstance 
 # choco install mssqlservermanagementstudio2014express
 
 ## Development Tools - General
