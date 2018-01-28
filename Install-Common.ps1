@@ -44,7 +44,7 @@ choco install TortoiseGit
 
 ## Development Tools - .NET
 
-# choco install visualstudio2017buildtools
+# choco install microsoft-build-tools
 
 choco install visualstudiocode
 
