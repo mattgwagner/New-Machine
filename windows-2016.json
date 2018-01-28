@@ -36,6 +36,7 @@
       "floppy_files": [
         "autounattend.xml",
         "Enable-PSRemoting.ps1",
+        "Install-OpenSsh.ps1",
         "win-updates.ps1",
         "microsoft-updates.bat"
       ]
@@ -45,10 +46,6 @@
     {
       "type": "powershell",
       "script": "Install-VirtualBoxGuestAdditions.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "Install-OpenSsh.ps1"
     },
     {
       "type": "powershell",
