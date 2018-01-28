@@ -37,7 +37,8 @@
         "autounattend.xml",
         "Enable-PSRemoting.ps1",
         "Install-Chocolatey.ps1",
-        "Install-Boxstarter.ps1"
+        "Install-Boxstarter.ps1",
+        "Install-Common.ps1"
       ]
     }
   ],
