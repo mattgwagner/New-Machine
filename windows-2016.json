@@ -35,7 +35,9 @@
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
         "autounattend.xml",
-        "Enable-PSRemoting.ps1"
+        "Enable-PSRemoting.ps1",
+        "Install-Chocolatey.ps1",
+        "Install-Boxstarter.ps1"
       ]
     }
   ],
@@ -47,14 +49,6 @@
     {
       "type": "powershell",
       "script": "Install-OpenSsh.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "Install-Chocolatey.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "Install-Boxstarter.ps1"
     },
     {
       "type": "powershell",
