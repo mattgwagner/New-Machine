@@ -1,20 +1,28 @@
 ## This configuration file uses BoxStarter to configure the system
 ## and Chocolatey to install necessary packages
 
+Write-Output "Starting Common Configuration and Installs"
+
 choco feature enable --name=allowGlobalConfirmation
 
 ## System Configuration
 
 # Set-ExplorerOptions -showFileExtensions
 
+Write-Output "Enabling Remote Desktop"
+
 Enable-RemoteDesktop
 Set-NetFirewallRule -Name RemoteDesktop-UserMode-In-TCP -Enabled True
 
 Disable-InternetExplorerESC # Server OS only
 
+Write-Output "Enabling and Running Windows Update"
+
 Enable-MicrosoftUpdate
 # Disable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
+
+Write-Output "Beginning Chocolatey installs"
 
 ## Web Browsers
 
