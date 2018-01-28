@@ -52,10 +52,6 @@
     },
     {
       "type": "powershell",
-      "script": "Install-Common.ps1"
-    },
-    {
-      "type": "powershell",
       "script": "Run-Cleanup.ps1"
     }
   ],
