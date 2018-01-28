@@ -20,7 +20,7 @@ Write-Output "Enabling and Running Windows Update"
 
 Enable-MicrosoftUpdate
 # Disable-MicrosoftUpdate
-Install-WindowsUpdate -AcceptEula
+# Install-WindowsUpdate -AcceptEula
 
 Write-Output "Beginning Chocolatey installs"
 
@@ -44,16 +44,17 @@ choco install TortoiseGit
 
 ## Development Tools - .NET
 
+# choco install visualstudio2017buildtools
+
 choco install visualstudiocode
 
 choco install visualstudio2017professional 
-# choco install visualstudio2017buildtools
 choco install visualstudio2017-workload-netweb 
 choco install visualstudio2017-workload-azure 
 choco install visualstudio2017-workload-netcoretools
 
 choco install mssqlserver2014express-defaultinstance 
-# choco install mssqlservermanagementstudio2014express
+choco install mssqlservermanagementstudio2014express
 
 ## Development Tools - General
 
