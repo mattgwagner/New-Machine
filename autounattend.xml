@@ -125,14 +125,6 @@
                     <Order>4</Order>
                     <Description>Disable password expiration for vagrant user</Description>
                 </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Order>5</Order>
-                    <CommandLine>PowerShell -File a:\Install-Chocolatey.ps1</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Order>6</Order>
-                    <CommandLine>PowerShell -File a:\Install-Boxstarter.ps1</CommandLine>
-                </SynchronousCommand>
             </FirstLogonCommands>
         </component>
     </settings>
