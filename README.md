@@ -20,13 +20,9 @@ vagrant init {name}
 
 vagrant up
 
-vagrant ssh
+vagrant ssh (from Linux/OSX)
 
-OR
-
-vagrant powershell
-
-OR 
+vagrant powershell (from Windows)
 
 vagrant RDP -- Doesn't seem to work on OS-X reliability, use Remote Desktop client and point it to localhost with the allocated port.
 
