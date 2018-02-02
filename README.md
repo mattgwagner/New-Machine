@@ -15,3 +15,20 @@ See Also
 http://chocolatey.org
 
 http://boxstarter.org
+
+# Vagrant Info
+
+For now, I'm focusing my efforts on VirtualBox as the hypervisor of choice. Probably would work with Hyper-V, too, but I'd need to adapt the box creation piece via Packer.
+
+Depending on OS, follow instructions at vagrantup.com for installing + VirtualBox.
+
+Windows via chocolatey: 
+
+choco install virtualbox
+choco install vagrant
+
+vagrant box add {url} --name {name}
+
+vagrant init {name}
+
+vagrant up
