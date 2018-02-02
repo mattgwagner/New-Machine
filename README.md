@@ -32,3 +32,13 @@ vagrant box add {url} --name {name}
 vagrant init {name}
 
 vagrant up
+
+vagrant ssh
+
+OR
+
+vagrant powershell
+
+OR 
+
+vagrant RDP -- Doesn't seem to work on OS-X reliability, use Remote Desktop client and point it to localhost with the allocated port.
