@@ -32,13 +32,15 @@
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
       "winrm_timeout": "2h",
-      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "shutdown_command": "a:/Sysprep.bat",
       "floppy_files": [
         "autounattend.xml",
         "Enable-PSRemoting.ps1",
         "Install-OpenSsh.ps1",
         "win-updates.ps1",
-        "microsoft-updates.bat"
+        "microsoft-updates.bat",
+        "Sysprep.bat",
+        "sysprep.xml"
       ]
     }
   ],
