@@ -9,13 +9,6 @@ Copy this into a console prompt to invoke installation via BoxStarter
 
 START http://boxstarter.org/package/url?https://raw.githubusercontent.com/mattgwagner/New-Machine/master/Install-Common.ps1
 
-See Also
-===========
-
-http://chocolatey.org
-
-http://boxstarter.org
-
 # Vagrant Info
 
 For now, I'm focusing my efforts on VirtualBox as the hypervisor of choice. Probably would work with Hyper-V, too, but I'd need to adapt the box creation piece via Packer.
@@ -42,3 +35,10 @@ vagrant powershell
 OR 
 
 vagrant RDP -- Doesn't seem to work on OS-X reliability, use Remote Desktop client and point it to localhost with the allocated port.
+
+# See Also
+
+https://chocolatey.org
+https://www.packer.io
+https://www.virtualbox.org
+https://boxstarter.org
