@@ -31,7 +31,8 @@
       "communicator": "winrm",
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
-      "winrm_timeout": "2h",
+      "winrm_timeout": "12h",
+      "shutdown_timeout": "1h",
       "shutdown_command": "a:/Sysprep.bat",
       "floppy_files": [
         "autounattend.xml",
