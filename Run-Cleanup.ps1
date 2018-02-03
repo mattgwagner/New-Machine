@@ -31,7 +31,12 @@ powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 #Write-Host "Cleaning SxS..."
 #Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
 
-# remove temporary files.
+Write-Host 'Removing temporary files'
 'C:\tmp','C:\Windows\Temp',$env:TEMP | ForEach-Object {
     Get-ChildItem $_ -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
 }
+
+Write-Host "Optimizing Drive"
+Optimize-Volume -DriveLetter C
+
+Write-Host 'Cleanup complete!'
