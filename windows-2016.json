@@ -33,15 +33,13 @@
       "winrm_password": "vagrant",
       "winrm_timeout": "12h",
       "shutdown_timeout": "1h",
-      "shutdown_command": "a:/Sysprep.bat",
+      "shutdown_command": "C:/Windows/packer/PackerShutdown.bat",
       "floppy_files": [
         "autounattend.xml",
         "Enable-PSRemoting.ps1",
         "Install-OpenSsh.ps1",
         "win-updates.ps1",
-        "microsoft-updates.bat",
-        "Sysprep.bat",
-        "sysprep.xml"
+        "microsoft-updates.bat"
       ]
     }
   ],
