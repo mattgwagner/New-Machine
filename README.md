@@ -12,6 +12,7 @@ Depending on OS, follow instructions at vagrantup.com for installing + VirtualBo
 Windows via chocolatey: 
 
 choco install virtualbox
+
 choco install vagrant
 
 vagrant box add {url} --name {name}
@@ -24,7 +25,7 @@ vagrant ssh (from Linux/OSX)
 
 vagrant powershell (from Windows)
 
-vagrant RDP -- Doesn't seem to work on OS-X reliability, use Remote Desktop client and point it to localhost with the allocated port.
+vagrant RDP -- Doesn't seem to work on OS-X reliably, use Remote Desktop client and point it to localhost with the allocated port.
 
 # See Also
 
