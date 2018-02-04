@@ -32,7 +32,8 @@ powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 #Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
 
 Write-Host 'Removing temporary files'
-'C:\tmp','C:\Windows\Temp',$env:TEMP | ForEach-Object {
+#'C:\tmp','C:\Windows\Temp',$env:TEMP | ForEach-Object {
+'C:\Windows\Temp',$env:TEMP | ForEach-Object {
     Get-ChildItem $_ -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
 }
 

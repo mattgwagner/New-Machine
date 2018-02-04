@@ -71,6 +71,10 @@
     {
       "type": "powershell",
       "script": "Run-Cleanup.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "Save-Shutdown-Command.ps1"
     }
   ],
   "post-processors": [
