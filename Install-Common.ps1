@@ -75,3 +75,8 @@ choco install baretail
 
 ## choco install mysql
 ## choco install postgresql
+
+## Development Tools - Mongo
+
+choco install mongodb
+choco install studio3t
