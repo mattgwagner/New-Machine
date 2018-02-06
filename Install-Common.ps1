@@ -56,11 +56,15 @@ choco install visualstudio2017-workload-netcoretools
 choco install sql-server-express
 choco install sql-server-management-studio
 
+## Development Tools - Node.JS
+
+choco install node
+
 ## Development Tools - General
 
-# choco install conemu
+choco install baretail
 
-# choco install baretail
+# choco install conemu
 
 # choco install redis-64
 # choco install redis-desktop-manager
