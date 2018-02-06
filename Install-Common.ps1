@@ -79,4 +79,4 @@ choco install baretail
 ## Development Tools - Mongo
 
 choco install mongodb
-choco install studio3t
+choco install robo3t.install
