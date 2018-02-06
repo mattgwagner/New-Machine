@@ -14,7 +14,7 @@
       "guest_additions_mode": "attach",
       "headless": "{{user `headless`}}",
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "2048"],
+        ["modifyvm", "{{.Name}}", "--memory", "4096"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"],
         ["modifyvm", "{{.Name}}", "--vram", "64"],
         ["modifyvm", "{{.Name}}", "--audio", "none"],
@@ -33,7 +33,7 @@
       "winrm_password": "vagrant",
       "winrm_timeout": "12h",
       "shutdown_timeout": "1h",
-      "shutdown_command": "C:/Windows/packer/PackerShutdown.bat",
+      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
         "autounattend.xml",
         "Enable-PSRemoting.ps1",
@@ -69,10 +69,6 @@
     {
       "type": "powershell",
       "script": "Run-Cleanup.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "Save-Shutdown-Command.ps1"
     }
   ],
   "post-processors": [
