@@ -48,7 +48,7 @@ choco install TortoiseGit
 
 choco install visualstudiocode
 
-choco install visualstudio2017professional 
+choco install visualstudio2017enterprise 
 choco install visualstudio2017-workload-netweb 
 choco install visualstudio2017-workload-azure 
 choco install visualstudio2017-workload-netcoretools
