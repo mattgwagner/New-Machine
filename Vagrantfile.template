@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
   config.winrm.username = "vagrant"
   config.winrm.password = "vagrant"
 
+  # For now, defaulting RDP to 4000 since Windows didn't auto_correct 3389 on my first attempt
   config.vm.network :forwarded_port, guest: 4000, host: 3389, id: "rdp", auto_correct: true
 
   config.vm.provider :virtualbox do |v, override|
@@ -13,7 +14,6 @@ Vagrant.configure("2") do |config|
       v.gui = false
       v.memory = 4096
       v.cpus = 2
-      v.customize ["modifyvm", :id, "--vram", 128]
       v.customize ["modifyvm", :id, "--clipboard", "disabled"]
       v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
   end
