@@ -56,6 +56,11 @@ choco install visualstudio2017-workload-netcoretools
 choco install sql-server-express
 choco install sql-server-management-studio
 
+## Work Environment Specific?
+
+# choco install vcredist2012
+# Set SQL Alias?
+
 ## Development Tools - Node.JS
 
 choco install node
