@@ -41,14 +41,14 @@
                     <InstallFrom>
                         <MetaData wcm:action="add">
                             <Key>/IMAGE/NAME</Key>
-                            <Value>Windows Server 2016 SERVERSTANDARD</Value>
+                            <Value>Windows Server 2016 SERVERDATACENTER</Value>
                         </MetaData>
                     </InstallFrom>
                 </OSImage>
             </ImageInstall>
             <UserData>
                 <ProductKey>
-                    <Key>PGQ4C-YN676-6GDVD-VGD8J-JFHXR</Key>
+                    <Key>M76MC-JGNP4-KCWJF-3RT3X-WT2HR</Key>
                     <WillShowUI>OnError</WillShowUI>
                 </ProductKey>
                 <AcceptEula>true</AcceptEula>
