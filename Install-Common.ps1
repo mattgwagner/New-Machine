@@ -40,6 +40,7 @@ choco install notepadplusplus.install
 ## Development Tools - Git
 
 choco install git.install
+choco install poshgit
 choco install TortoiseGit
 
 ## Development Tools - .NET
@@ -57,11 +58,6 @@ choco install visualstudio2017-workload-netcoretools
 choco install sql-server-express
 choco install sql-server-management-studio
 
-## Work Environment Specific?
-
-# choco install vcredist2012
-# Set SQL Alias?
-
 ## Development Tools - Node.JS
 
 choco install node
@@ -69,7 +65,6 @@ choco install node
 ## Development Tools - General
 
 choco install postman
-
 choco install baretail
 
 # choco install conemu
