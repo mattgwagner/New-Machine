@@ -68,6 +68,8 @@ choco install node
 
 ## Development Tools - General
 
+choco install postman
+
 choco install baretail
 
 # choco install conemu
