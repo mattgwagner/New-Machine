@@ -42,6 +42,7 @@ choco install notepadplusplus.install
 choco install git.install
 choco install poshgit
 choco install TortoiseGit
+# choco install github-desktop
 
 ## Development Tools - .NET
 
