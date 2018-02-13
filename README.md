@@ -19,6 +19,8 @@ vagrant box add {url} --name {name}
 
 vagrant init {name}
 
+The folder that you run initialize from, or that contains the vagrantfile that you use, will be imported into the Virtual Machine and available at c:\vagrant. Do note that I've noticed issues running IIS or Visual Studio from code in this folder.
+
 vagrant up
 
 vagrant ssh (from Linux/OSX)
