@@ -60,6 +60,10 @@
       "script": "Install-Boxstarter.ps1"
     },
     {
+      "type": "powershell",
+      "script": "Disable-RealTimeMonitoring.ps1"
+    },
+    {
       "type": "windows-restart"
     },
     {
