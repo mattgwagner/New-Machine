@@ -3,6 +3,14 @@ New-Machine
 
 This repo contains several small PowerShell scripts that utilize Chocolatey and BoxStarter to setup new machines to my preferences. I've found golden images to go out of date extremely quickly, to the point of making it pointless. These scripts help grab the latest versions of many of my daily use applications, so that I can hit the ground running on new machines.
 
+# Building an Image
+
+You'll need the Windows Server 2016 ISO from MSDN in this directory, currently named "en_windows_server_2016_x64_dvd_9718492.iso" with SHA1 checksum "F185197AF68FAE4F0E06510A4579FC511BA27616".
+
+Then, you can build the image via (or using build.ps1 if you're on Windows):
+
+packer build windows-2016.json
+
 # Vagrant Info
 
 For now, I'm focusing my efforts on VirtualBox as the hypervisor of choice. Probably would work with Hyper-V, too, but I'd need to adapt the box creation piece via Packer.
