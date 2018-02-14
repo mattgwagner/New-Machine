@@ -66,8 +66,9 @@ choco install node
 ## Development Tools - General
 
 choco install postman
-choco install rsync
 choco install baretail
+
+choco install cygwin
 
 # choco install conemu
 
