@@ -17,7 +17,7 @@ For now, I'm focusing my efforts on VirtualBox as the hypervisor of choice. Prob
 
 Depending on OS, follow instructions at vagrantup.com for installing + VirtualBox.
 
-Windows via chocolatey: 
+Windows via Chocolatey: 
 
 choco install virtualbox
 
@@ -31,8 +31,6 @@ The folder that you run initialize from, or that contains the vagrantfile that y
 
 vagrant up
 
-vagrant ssh (from Linux/OSX)
-
 vagrant powershell (from Windows)
 
 vagrant RDP -- Doesn't seem to work on OS-X reliably, use Remote Desktop client and point it to localhost with the allocated port.
@@ -42,6 +40,9 @@ You can also open your Remote Desktop client of choice and point it to localhost
 # See Also
 
 https://chocolatey.org
+
 https://www.packer.io
+
 https://www.virtualbox.org
+
 https://boxstarter.org
