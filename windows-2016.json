@@ -49,30 +49,27 @@
       "script": "Install-VirtualBoxGuestAdditions.ps1"
     },
     {
+      "type": "windows-restart"
+    },
+    {
       "type": "powershell",
-      "script": "Disable-RealTimeMonitoring.ps1"
+      "scripts": [
+        "Disable-RealTimeMonitoring.ps1",
+        "Install-Chocolatey.ps1",
+        "Install-Boxstarter.ps1"
+      ]
     },
     {
       "type": "windows-restart"
     },
     {
       "type": "powershell",
-      "script": "Install-Chocolatey.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "Install-Boxstarter.ps1"
-    },
-    {
-      "type": "windows-restart"
-    },
-    {
-      "type": "powershell",
-      "script": "Install-Common.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "Run-Cleanup.ps1"
+      "scripts": [
+        "Install-Common.ps1",
+        "Install-GitTools.ps1",
+        "Install-CSharpTools.ps1",
+        "Run-Cleanup.ps1"
+      ]
     }
   ],
   "post-processors": [
