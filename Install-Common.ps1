@@ -37,10 +37,6 @@ choco install notepadplusplus.install
 # choco install rdcman
 # choco install adobereader
 
-## Development Tools - Node.JS
-
-choco install node
-
 ## Development Tools - General
 
 choco install postman
@@ -59,8 +55,3 @@ choco install cygwin
 
 ## choco install mysql
 ## choco install postgresql
-
-## Development Tools - Mongo
-
-choco install mongodb
-choco install robo3t.install
