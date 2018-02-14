@@ -29,6 +29,8 @@ vagrant powershell (from Windows)
 
 vagrant RDP -- Doesn't seem to work on OS-X reliably, use Remote Desktop client and point it to localhost with the allocated port.
 
+You can also open your Remote Desktop client of choice and point it to localhost:4000 (we remapped the RDP port to avoid conflicts with Windows hosts).
+
 # See Also
 
 https://chocolatey.org
