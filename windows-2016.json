@@ -37,7 +37,6 @@
       "floppy_files": [
         "autounattend.xml",
         "Enable-PSRemoting.ps1",
-        "Install-OpenSsh.ps1",
         "win-updates.ps1",
         "microsoft-updates.bat"
       ]
@@ -65,6 +64,7 @@
     {
       "type": "powershell",
       "scripts": [
+        "Install-OpenSsh.ps1",
         "Install-Common.ps1",
         "Install-GitTools.ps1",
         "Install-CSharpTools.ps1",
