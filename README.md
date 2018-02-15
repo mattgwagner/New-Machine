@@ -29,6 +29,16 @@ vagrant init {name}
 
 The folder that you run initialize from, or that contains the vagrantfile that you use, will be imported into the Virtual Machine and available at c:\vagrant. Do note that I've noticed issues running IIS or Visual Studio from code in this folder.
 
+You can modify the Vagrantfile generated during `vagrant init` to modify VM settings, such as the amount of RAM allocated (defaults to 4gigs) or more CPUs:
+
+```
+  config.vm.provider :virtualbox do |v, override|
+      v.gui = false
+      v.memory = 8192
+      v.cpus = 2
+  end
+```
+
 vagrant up
 
 vagrant powershell (from Windows)
