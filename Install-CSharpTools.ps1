@@ -5,7 +5,7 @@ Write-Output "Starting C# Installs"
 
 ## Development Tools - .NET
 
-# choco install microsoft-build-tools
+choco install microsoft-build-tools
 
 choco install visualstudiocode
 
