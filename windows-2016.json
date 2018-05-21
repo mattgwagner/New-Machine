@@ -2,8 +2,8 @@
   "variables": {
     "headless": "true",
     "disk_size": "204800",
-    "iso_url": "./en_windows_server_2016_x64_dvd_9718492.iso",
-    "iso_checksum": "F185197AF68FAE4F0E06510A4579FC511BA27616",
+    "iso_url": "./en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso",
+    "iso_checksum": "7ADC82E00F1367B43897BB969A75BBF96D46F588",
     "iso_checksum_type": "sha1"
   },
   "builders": [
