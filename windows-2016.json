@@ -14,7 +14,7 @@
       "guest_additions_mode": "attach",
       "headless": "{{user `headless`}}",
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "4096"],
+        ["modifyvm", "{{.Name}}", "--memory", "8192"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"],
         ["modifyvm", "{{.Name}}", "--vram", "64"],
         ["modifyvm", "{{.Name}}", "--audio", "none"],
