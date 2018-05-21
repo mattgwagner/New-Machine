@@ -15,7 +15,7 @@ choco install visualstudio2017-workload-netweb
 choco install visualstudio2017-workload-azure 
 choco install visualstudio2017-workload-netcoretools
 
-choco install dotnet4.7.1
+choco install dotnet4.7.2
 
 choco install sql-server-express
 choco install sql-server-management-studio
