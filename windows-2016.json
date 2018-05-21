@@ -8,7 +8,7 @@
   },
   "builders": [
     {
-      "name": "windows-2016-amd64-virtualbox",
+      "name": "windows-2016-feb2018",
       "type": "virtualbox-iso",
       "guest_os_type": "Windows2016_64",
       "guest_additions_mode": "attach",
