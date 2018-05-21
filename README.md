@@ -5,7 +5,7 @@ This repo contains several small PowerShell scripts that utilize Chocolatey and 
 
 # Building an Image
 
-You'll need the Windows Server 2016 ISO from MSDN in this directory, currently named "en_windows_server_2016_x64_dvd_9718492.iso" with SHA1 checksum "F185197AF68FAE4F0E06510A4579FC511BA27616".
+You'll need the Windows Server 2016 (Updated Feb 2018) ISO from MSDN in this directory, currently named "en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso".
 
 Then, you can build the image via (or using build.ps1 if you're on Windows):
 
