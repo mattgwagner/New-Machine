@@ -64,7 +64,6 @@
     {
       "type": "powershell",
       "scripts": [
-        "Install-OpenSsh.ps1",
         "Install-Common.ps1",
         "Install-GitTools.ps1",
         "Install-CSharpTools.ps1",
