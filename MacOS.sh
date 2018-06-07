@@ -1,5 +1,7 @@
 # Install Homebrew via shell script
 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 brew tap homebrew/cask
 
 brew cask install google-chrome
