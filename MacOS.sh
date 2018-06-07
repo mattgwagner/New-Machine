@@ -8,11 +8,13 @@ brew cask install virtualbox
 
 brew cask install vagrant
 
+# brew cask install packer
+
 brew cask install resilio-sync
 
 brew cask install microsoft-teams
 
-brew cask isntall visual-studio-code
+brew cask install visual-studio-code
 
 brew cask install google-backup-and-sync
 
