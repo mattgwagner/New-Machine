@@ -1,0 +1,23 @@
+# Install Homebrew via shell script
+
+brew tap homebrew/cask
+
+brew cask install google-chrome
+
+brew cask install virtualbox
+
+brew cask install vagrant
+
+brew cask install resilio-sync
+
+brew cask install microsoft-teams
+
+brew cask isntall visual-studio-code
+
+brew cask install google-backup-and-sync
+
+brew cask install onedrive
+
+brew cask install hermes
+
+# Install Microsoft Remote Desktop via AppStore?
