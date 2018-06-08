@@ -6,4 +6,4 @@
 choco install git.install
 choco install poshgit
 choco install TortoiseGit
-# choco install github-desktop
+choco install github-desktop
