@@ -34,7 +34,7 @@ choco install Firefox
 choco install ccleaner 
 choco install 7zip.install 
 choco install notepadplusplus.install
-# choco install rdcman
+choco install rdcman
 # choco install adobereader
 
 ## Development Tools - General
