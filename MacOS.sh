@@ -10,7 +10,7 @@ brew cask install virtualbox
 
 brew cask install vagrant
 
-# brew cask install packer
+brew install packer
 
 brew cask install resilio-sync
 
