@@ -24,6 +24,8 @@ brew cask install microsoft-teams
 
 # brew cask install microsoft-office
 
+brew cask install visua-studio
+
 brew cask install visual-studio-code
 
 brew cask install google-backup-and-sync
