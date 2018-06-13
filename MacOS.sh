@@ -2,6 +2,12 @@
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+sudo chown -R `whoami`:admin /usr/local/bin
+
+sudo chown -R `whoami`:admin /usr/local/share
+
+brew install node
+
 brew tap homebrew/cask
 
 brew cask install google-chrome
