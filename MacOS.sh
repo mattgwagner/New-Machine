@@ -24,6 +24,8 @@ brew cask install microsoft-teams
 
 # brew cask install microsoft-office
 
+# brew cask install adobe-acrobat-reader
+
 brew cask install visua-studio
 
 brew cask install visual-studio-code
