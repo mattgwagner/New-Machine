@@ -34,8 +34,6 @@ brew cask install github
 
 brew cask install google-backup-and-sync
 
-brew cask install onedrive
-
 brew cask install hermes
 
 brew cask install flux
