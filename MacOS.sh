@@ -30,6 +30,8 @@ brew cask install visual-studio
 
 brew cask install visual-studio-code
 
+brew cask install github
+
 brew cask install google-backup-and-sync
 
 brew cask install onedrive
