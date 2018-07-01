@@ -15,6 +15,10 @@ choco install visualstudio2017-workload-netweb
 choco install visualstudio2017-workload-azure 
 choco install visualstudio2017-workload-netcoretools
 
+## This might belong under the node tools, should chekc to see if the visualstudio2017community package is installed
+
+choco install visualstudio2017-workload-node
+
 choco install dotnet4.7.2
 
 choco install sql-server-express
