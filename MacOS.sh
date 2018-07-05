@@ -38,9 +38,6 @@ brew cask install hermes
 
 brew cask install flux
 
-# Trying this out for capturing and annotating screenshots
-brew cask install dropshare
-
 # Install Microsoft Remote Desktop via AppStore?
 
 # Require password as soon as screensaver or sleep mode starts
