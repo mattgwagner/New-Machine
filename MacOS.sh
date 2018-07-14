@@ -22,9 +22,9 @@ brew cask install resilio-sync
 
 brew cask install microsoft-teams
 
-# brew cask install microsoft-office
+brew cask install microsoft-office
 
-# brew cask install adobe-acrobat-reader
+brew cask install adobe-acrobat-reader
 
 brew cask install visual-studio
 
