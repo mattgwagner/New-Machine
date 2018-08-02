@@ -31,6 +31,7 @@ choco install Firefox
 
 ## Common System Tools
 
+choco install bleachbit
 choco install 7zip.install 
 choco install notepadplusplus.install
 choco install rdcman
