@@ -3,7 +3,7 @@
 
 ## Development Tools - Node.JS
 
-choco install node
+choco install nodejs
 
 ## Development Tools - Mongo
 
