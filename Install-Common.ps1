@@ -31,10 +31,10 @@ choco install Firefox
 
 ## Common System Tools
 
-choco install bleachbit
 choco install 7zip.install 
 choco install notepadplusplus.install
 choco install rdcman
+
 # choco install adobereader
 
 ## Development Tools - General
@@ -42,7 +42,7 @@ choco install rdcman
 choco install postman
 choco install baretail
 
-choco install cygwin
+# choco install cygwin
 
 # choco install conemu
 
