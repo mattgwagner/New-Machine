@@ -112,3 +112,4 @@ packer_cache
 *.iso
 *.box
 *.vdi
+.DS_Store
