@@ -44,7 +44,7 @@ choco install baretail
 
 # choco install cygwin
 
-# choco install conemu
+choco install conemu
 
 # choco install redis-64
 # choco install redis-desktop-manager
