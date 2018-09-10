@@ -5,6 +5,7 @@
 
 choco install nodejs
 choco install yarn
+choco install nvm
 
 ## Development Tools - Mongo
 
