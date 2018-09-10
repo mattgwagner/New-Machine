@@ -9,13 +9,13 @@ choco install microsoft-build-tools
 
 choco install visualstudiocode
 
-choco install visualstudio2017community ## visualstudio2017enterprise 
+choco install visualstudio2017enterprise ## visualstudio2017community
 choco install visualstudio2017-workload-webbuildtools
 choco install visualstudio2017-workload-netweb 
 choco install visualstudio2017-workload-azure 
 choco install visualstudio2017-workload-netcoretools
 
-## This might belong under the node tools, should chekc to see if the visualstudio2017community package is installed
+## This might belong under the node tools, should check to see if the visualstudio2017community package is installed
 
 choco install visualstudio2017-workload-node
 
