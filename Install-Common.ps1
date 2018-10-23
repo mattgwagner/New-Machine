@@ -35,6 +35,8 @@ choco install 7zip.install
 choco install notepadplusplus.install
 choco install rdcman
 
+# choco install google-backup-and-sync
+
 # choco install adobereader
 
 ## Development Tools - General
