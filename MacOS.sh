@@ -20,8 +20,6 @@ brew cask install vagrant
 
 brew install packer
 
-brew cask install resilio-sync
-
 brew cask install microsoft-teams
 
 brew cask install microsoft-office
