@@ -10,6 +10,8 @@ brew install node
 
 brew tap homebrew/cask
 
+brew cask install keepingyouawake
+
 brew cask install google-chrome
 
 brew cask install virtualbox
