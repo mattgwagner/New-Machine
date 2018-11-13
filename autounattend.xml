@@ -78,7 +78,7 @@
                 <NetworkLocation>Home</NetworkLocation>
                 <ProtectYourPC>1</ProtectYourPC>
             </OOBE>
-            <TimeZone>UTC</TimeZone>
+            <TimeZone>Eastern Standard Time</TimeZone>
             <UserAccounts>
                 <AdministratorPassword>
                     <Value>vagrant</Value>
