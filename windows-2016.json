@@ -68,7 +68,6 @@
         "Install-GitTools.ps1",
         "Install-SqlServer.ps1",
         "Install-CSharpTools.ps1",
-        "Add-SqlServerAlias.ps1",
         "Install-NodeTools.ps1",
         "Run-Cleanup.ps1"
       ]
