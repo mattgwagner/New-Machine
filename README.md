@@ -5,9 +5,9 @@ This repo contains several small PowerShell scripts that utilize Chocolatey and 
 
 # Building an Image
 
-You'll need the Windows Server 2016 (Updated Feb 2018) ISO from MSDN in this directory, currently named "en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso".
+The Packer JSON file references a copy of the Windows Server 2016 (Feb-2018 update) ISO, currently named "en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso", and will download it at the start of the process.
 
-Then, you can build the image via (or using build.ps1 if you're on Windows):
+You can build the image via (or using build.ps1 if you're on Windows):
 
 packer build windows-2016.json
 
