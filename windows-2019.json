@@ -8,7 +8,7 @@
   },
   "builders": [
     {
-      "name": "windows-2016-feb2018",
+      "name": "windows-2019",
       "type": "virtualbox-iso",
       "guest_os_type": "Windows2016_64",
       "guest_additions_mode": "attach",
