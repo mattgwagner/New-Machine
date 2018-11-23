@@ -2,9 +2,9 @@
   "variables": {
     "headless": "true",
     "disk_size": "204800",
-    "iso_url": "http://iso.tas2.rocks/en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso",
-    "iso_checksum": "7ADC82E00F1367B43897BB969A75BBF96D46F588",
-    "iso_checksum_type": "sha1"
+    "iso_url": "https://software-download.microsoft.com/download/pr/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO",
+    "iso_checksum": "1ce702a578a3cb1ac3d14873980838590f06d5b7101c5daaccbac9d73f1fb50f",
+    "iso_checksum_type": "sha256"
   },
   "builders": [
     {
