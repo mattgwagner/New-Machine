@@ -4,8 +4,6 @@ Vagrant.configure("2") do |config|
   config.vm.communicator = "winrm"
   config.winrm.username = "vagrant"
   config.winrm.password = "vagrant"
-  
-  config.vm.synced_folder = "~/", "/vagrant"
 
   # For now, defaulting RDP to 4000 since Windows didn't auto_correct 3389 on my first attempt
   config.vm.network :forwarded_port, guest: 3389, host: 4000, id: "rdp", auto_correct: true
