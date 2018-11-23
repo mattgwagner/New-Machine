@@ -2,9 +2,9 @@
   "variables": {
     "headless": "true",
     "disk_size": "204800",
-    "iso_url": "http://iso.tas2.rocks/en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso",
-    "iso_checksum": "7ADC82E00F1367B43897BB969A75BBF96D46F588",
-    "iso_checksum_type": "sha1"
+    "iso_url": "https://software-download.microsoft.com/download/pr/17763.1.180914-1434.rs5_release_SERVER_EVAL_x64FRE_en-us.iso",
+    "iso_checksum": "dbb0ffbab5d114ce7370784c4e24740191fefdb3349917c77a53ff953dd10f72",
+    "iso_checksum_type": "sha256"
   },
   "builders": [
     {
@@ -35,7 +35,7 @@
       "shutdown_timeout": "1h",
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
-        "Windows-2016/autounattend.xml",
+        "Windows-2019/autounattend.xml",
         "Enable-PSRemoting.ps1",
         "win-updates.ps1",
         "microsoft-updates.bat"
