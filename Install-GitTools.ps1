@@ -1,6 +1,6 @@
 ## Development Tools - Git
 
-choco install git.install
+choco install git --package-parameters= "/GitAndUnixToolsOnPath /WindowsTerminal /NoShellIntegration"
 choco install TortoiseGit
 choco install github-desktop
 
