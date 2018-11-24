@@ -45,6 +45,10 @@
   "provisioners": [
     {
       "type": "powershell",
+      "inline": "Uninstall-WindowsFeature Windows-Defender"
+    },
+    {
+      "type": "powershell",
       "script": "Install-VirtualBoxGuestAdditions.ps1"
     },
     {
