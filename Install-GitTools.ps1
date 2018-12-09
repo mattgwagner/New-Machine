@@ -4,4 +4,5 @@ choco install git --package-parameters= "/GitAndUnixToolsOnPath /WindowsTerminal
 choco install TortoiseGit
 choco install github-desktop
 
-# Install-Module posh-git -Scope CurrentUser -Force -Confirm
+Install-PackageProvider -Name NuGet -Force -Confirm
+Install-Module posh-git -Scope CurrentUser -Force -Confirm
