@@ -36,6 +36,8 @@ brew cask install google-backup-and-sync
 
 brew cask install hermes
 
+brew cask install spectacle
+
 brew cask install flux
 
 # Install Microsoft Remote Desktop via AppStore?
