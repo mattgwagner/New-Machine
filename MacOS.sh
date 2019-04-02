@@ -40,6 +40,8 @@ brew cask install spectacle
 
 brew cask install flux
 
+brew cask install kap
+
 # Install Microsoft Remote Desktop via AppStore?
 
 # Require password as soon as screensaver or sleep mode starts
