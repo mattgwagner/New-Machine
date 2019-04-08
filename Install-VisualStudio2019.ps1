@@ -12,6 +12,8 @@ choco install visualstudio2019-workload-netweb
 choco install visualstudio2019-workload-azure 
 choco install visualstudio2019-workload-netcoretools
 
+choco install dotnetcore-sdk
+
 ## This might belong under the node tools, should check to see if the visualstudio2019community package is installed
 
 choco install visualstudio2019-workload-node
