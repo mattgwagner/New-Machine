@@ -7,8 +7,6 @@ Write-Output "Starting C# Installs"
 
 choco install microsoft-build-tools
 
-choco install visualstudiocode
-
 choco install visualstudio2017community ## visualstudio2017enterprise
 choco install visualstudio2017-workload-webbuildtools
 choco install visualstudio2017-workload-netweb 
