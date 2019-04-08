@@ -9,7 +9,7 @@ if(!(Get-Command packer -ErrorAction SilentlyContinue)) { cinst packer -y }
 
 $Timer = [Diagnostics.Stopwatch]::StartNew()
 
-packer build windows-2016.json
+packer build windows-2019.json
 
 $Timer.Stop()
 
