@@ -13,5 +13,3 @@ choco install conemu
 ## choco install rabbitmq
 
 ## choco install nginx
-
-## choco install postgresql
