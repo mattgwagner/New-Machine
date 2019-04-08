@@ -55,5 +55,4 @@ choco install conemu
 
 ## choco install nginx
 
-## choco install mysql
 ## choco install postgresql
