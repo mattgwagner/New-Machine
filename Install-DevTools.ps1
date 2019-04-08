@@ -3,7 +3,7 @@
 choco install postman
 choco install baretail
 
-chocol install vscode
+choco install vscode
 
 choco install conemu
 
