@@ -44,7 +44,7 @@ choco install rdcman
 choco install postman
 choco install baretail
 
-# choco install cygwin
+chocol install vscode
 
 choco install conemu
 
