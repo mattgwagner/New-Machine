@@ -7,14 +7,13 @@ Write-Output "Starting C# Installs"
 
 choco install microsoft-build-tools
 
-choco install visualstudio2017community ## visualstudio2017enterprise
-choco install visualstudio2017-workload-webbuildtools
-choco install visualstudio2017-workload-netweb 
-choco install visualstudio2017-workload-azure 
-choco install visualstudio2017-workload-netcoretools
+choco install visualstudio2019community ## visualstudio2019enterprise
+choco install visualstudio2019-workload-netweb 
+choco install visualstudio2019-workload-azure 
+choco install visualstudio2019-workload-netcoretools
 
-## This might belong under the node tools, should check to see if the visualstudio2017community package is installed
+## This might belong under the node tools, should check to see if the visualstudio2019community package is installed
 
-choco install visualstudio2017-workload-node
+choco install visualstudio2019-workload-node
 
 # choco install dotnet4.7.2
