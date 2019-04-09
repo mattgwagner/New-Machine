@@ -5,6 +5,8 @@ Vagrant.configure("2") do |config|
   config.winrm.password = "vagrant"
 
   config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
+  
+  config.vm.synced_folder "~/", "/vagrant", automount: true
 
   config.vm.provider :virtualbox do |v, override|
       v.linked_clone = false
