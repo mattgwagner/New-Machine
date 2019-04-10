@@ -1,6 +1,6 @@
 choco install android-sdk
 
-choco install androidstudio /AddToDesktop
+choco install androidstudio
 
 ## This is also installed via Install-NodeTools.ps1
 
