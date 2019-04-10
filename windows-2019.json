@@ -65,6 +65,11 @@
       "type": "windows-restart"
     },
     {
+      "type": "file",
+      "source": "Install-*.ps1",
+      "destination": "c:/users/vagrant/desktop"
+    },
+    {
       "type": "powershell",
       "scripts": [
         "Install-Common.ps1",
