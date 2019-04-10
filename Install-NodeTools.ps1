@@ -4,8 +4,10 @@
 ## Development Tools - Node.JS & Yarn
 
 choco install nvm
-# choco install nodejs
+
 choco install yarn
+
+nvm install latest
 
 ## Development Tools - Mongo
 
