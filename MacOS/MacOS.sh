@@ -6,41 +6,9 @@ sudo chown -R `whoami`:admin /usr/local/bin
 
 sudo chown -R `whoami`:admin /usr/local/share
 
-brew install node
+# Assumes the Brewfile is on the same path
 
-brew tap homebrew/cask
-
-brew cask install keepingyouawake
-
-brew cask install google-chrome
-
-brew cask install virtualbox
-
-brew cask install vagrant
-
-brew install packer
-
-brew cask install microsoft-teams
-
-brew cask install microsoft-office
-
-brew cask install adobe-acrobat-reader
-
-brew cask install visual-studio
-
-brew cask install visual-studio-code
-
-brew cask install github
-
-brew cask install google-backup-and-sync
-
-brew cask install hermes
-
-brew cask install spectacle
-
-brew cask install flux
-
-brew cask install kap
+brew bundle 
 
 # Install Microsoft Remote Desktop via AppStore?
 
