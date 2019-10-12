@@ -18,6 +18,12 @@ Disable-InternetExplorerESC # Turns off Internet Explorer Enhanced Security Conf
 
 Disable-BingSearch # Disables the Bing Internet Search when searching from the search field in the taskbar or Start Menu
 
+Write-Host "Hiding Taskbar Search box / button..."
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Type DWord -Value 0
+
+Write-Host "Hiding Task View button..."
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 0
+
 Write-Output "Enabling and Running Windows Update"
 
 Enable-MicrosoftUpdate
