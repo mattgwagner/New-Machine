@@ -14,7 +14,9 @@ Write-Output "Enabling Remote Desktop"
 Enable-RemoteDesktop
 Set-NetFirewallRule -Name RemoteDesktop-UserMode-In-TCP -Enabled True
 
-Disable-InternetExplorerESC # Server OS only
+Disable-InternetExplorerESC # Turns off Internet Explorer Enhanced Security Configuration that is on by default on Server OS versions.
+
+Disable-BingSearch # Disables the Bing Internet Search when searching from the search field in the taskbar or Start Menu
 
 Write-Output "Enabling and Running Windows Update"
 
