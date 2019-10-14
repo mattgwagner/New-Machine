@@ -45,4 +45,4 @@ choco install rdcman
 
 # choco install google-backup-and-sync
 
-# choco install adobereader
+choco install adobereader
