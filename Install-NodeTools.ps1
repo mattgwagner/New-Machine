@@ -9,6 +9,8 @@ choco install yarn
 
 nvm install latest
 
+# choco install visualstudio2019-workload-node
+
 ## Development Tools - Mongo
 
 choco install mongodb
