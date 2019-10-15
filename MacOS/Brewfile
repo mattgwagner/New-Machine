@@ -24,10 +24,6 @@ cask "microsoft-office"
 
 cask "microsoft-teams"
 
-cask "onedrive"
-
-cask "resilio-sync"
-
 cask "spectacle"
 
 cask "vagrant"
