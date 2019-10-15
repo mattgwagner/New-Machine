@@ -37,3 +37,5 @@ cask "virtualbox"
 cask "google-chrome"
 
 cask "visual-studio-code"
+
+brew "docker"
