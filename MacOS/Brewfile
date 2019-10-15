@@ -36,8 +36,8 @@ cask "visual-studio-code"
 
 brew "docker"
 
-cask "docker"
-
 brew "docker-machine"
 
+brew "docker-compose"
 
+cask "docker"
