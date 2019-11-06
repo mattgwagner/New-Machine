@@ -7,6 +7,8 @@ choco install vscode
 
 choco install conemu
 
+choco install sqlitebrowser
+
 # choco install redis-64
 # choco install redis-desktop-manager
 
