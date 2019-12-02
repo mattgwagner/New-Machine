@@ -3,7 +3,7 @@
     "headless": "true",
     "disk_size": "204800",
     "iso_url": "en_windows_10_business_editions_version_1909_x64_dvd_ada535d0.iso",
-    "iso_checksum": "D1BC933371620EF953160552A9A38803ED1E21738C30C08A63B725DEF1A67217",
+    "iso_checksum": "798a68a8860c02d379a50d244dba6cefb32a90e966b3caa380c52b23e00f5e7f",
     "iso_checksum_type": "sha256"
   },
   "builders": [
