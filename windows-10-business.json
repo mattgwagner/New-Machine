@@ -8,7 +8,7 @@
   },
   "builders": [
     {
-      "name": "windows-10-build1909",
+      "name": "windows-10-build0",
       "type": "virtualbox-iso",
       "guest_os_type": "Windows2016_64",
       "guest_additions_mode": "attach",
