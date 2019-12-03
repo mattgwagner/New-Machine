@@ -153,5 +153,5 @@
             <DisableAntiSpyware>true</DisableAntiSpyware>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim:d:/imaging/windows_10_base/install.wim#Windows 10 Professional" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim:c:/wsiminst/sources/install.wim#Win10 Pro X64" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
