@@ -2,13 +2,13 @@
   "variables": {
     "headless": "true",
     "disk_size": "204800",
-    "iso_url": "en_windows_10_business_editions_version_1909_x64_dvd_ada535d0.iso",
-    "iso_checksum": "798a68a8860c02d379a50d244dba6cefb32a90e966b3caa380c52b23e00f5e7f",
+    "iso_url": "en_windows_10_enterprise_ltsc_2019_x64_dvd_5795bb03.iso",
+    "iso_checksum": "b570ddfdc4672f4629a95316563df923bd834aec657de5d4ca7c7ef9b58df2b1",
     "iso_checksum_type": "sha256"
   },
   "builders": [
     {
-      "name": "windows-10-pro",
+      "name": "windows-10-enterprise",
       "type": "virtualbox-iso",
       "guest_os_type": "Windows2016_64",
       "guest_additions_mode": "attach",
