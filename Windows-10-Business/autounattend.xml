@@ -34,16 +34,18 @@
             </DiskConfiguration>
             <ImageInstall>
                 <OSImage>
+                    <InstallFrom>
+                        <MetaData wcm:action="add">
+                            <Key>/IMAGE/NAME</Key>
+                            <Value>Windows 10 Enterprise</Value>
+                        </MetaData>
+                    </InstallFrom>
                     <InstallTo>
                         <DiskID>0</DiskID>
                         <PartitionID>1</PartitionID>
                     </InstallTo>
-                    <InstallFrom>
-                        <MetaData wcm:action="add">
-                            <Key>/IMAGE/NAME</Key>
-                            <Value>Windows 10 Pro</Value>
-                        </MetaData>
-                    </InstallFrom>
+                    <InstallToAvailablePartition>false</InstallToAvailablePartition>
+                    <WillShowUI>OnError</WillShowUI>
                 </OSImage>
             </ImageInstall>
             <UserData>
@@ -67,18 +69,17 @@
             <UserLocale>en-US</UserLocale>
         </component>
     </settings>
+        <settings pass="offlineServicing">
+        <component name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" 
+            xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <EnableLUA>false</EnableLUA>
+        </component>
+    </settings>
     <settings pass="oobeSystem">
-        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <OOBE>
-                <HideEULAPage>true</HideEULAPage>
-                <HideLocalAccountScreen>true</HideLocalAccountScreen>
-                <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
-                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
-                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
-                <NetworkLocation>Home</NetworkLocation>
-                <ProtectYourPC>1</ProtectYourPC>
-            </OOBE>
-            <TimeZone>Eastern Standard Time</TimeZone>
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" 
+            xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <UserAccounts>
                 <AdministratorPassword>
                     <Value>vagrant</Value>
@@ -90,20 +91,28 @@
                             <Value>vagrant</Value>
                             <PlainText>true</PlainText>
                         </Password>
-                        <Description>Vagrant</Description>
-                        <DisplayName>Vagrant</DisplayName>
-                        <Group>Administrators</Group>
                         <Name>vagrant</Name>
+                        <DisplayName>vagrant</DisplayName>
+                        <Description>Vagrant User</Description>
+                        <Group>administrators</Group>
                     </LocalAccount>
                 </LocalAccounts>
             </UserAccounts>
+            <OOBE>
+                <HideEULAPage>true</HideEULAPage>
+                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <ProtectYourPC>3</ProtectYourPC>
+                <HideLocalAccountScreen>true</HideLocalAccountScreen>
+                <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+            </OOBE>
             <AutoLogon>
                 <Password>
                     <Value>vagrant</Value>
                     <PlainText>true</PlainText>
                 </Password>
-                <Enabled>true</Enabled>
                 <Username>vagrant</Username>
+                <Enabled>true</Enabled>
             </AutoLogon>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
@@ -144,4 +153,5 @@
             <DisableAntiSpyware>true</DisableAntiSpyware>
         </component>
     </settings>
+    <cpi:offlineImage cpi:source="wim:d:/imaging/windows_10_base/install.wim#Windows 10 Professional" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
