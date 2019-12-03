@@ -8,7 +8,7 @@
   },
   "builders": [
     {
-      "name": "windows-10-build0",
+      "name": "windows-10-pro",
       "type": "virtualbox-iso",
       "guest_os_type": "Windows2016_64",
       "guest_additions_mode": "attach",
@@ -18,10 +18,10 @@
         ["modifyvm", "{{.Name}}", "--cpus", "2"],
         ["modifyvm", "{{.Name}}", "--vram", "64"],
         ["modifyvm", "{{.Name}}", "--audio", "none"],
-        ["modifyvm", "{{.Name}}", "--nictype1", "82540EM"],
-        ["modifyvm", "{{.Name}}", "--nictype2", "82540EM"],
-        ["modifyvm", "{{.Name}}", "--nictype3", "82540EM"],
-        ["modifyvm", "{{.Name}}", "--nictype4", "82540EM"]
+        ["modifyvm", "{{.Name}}", "--nictype1", "82545EM"],
+        ["modifyvm", "{{.Name}}", "--nictype2", "82545EM"],
+        ["modifyvm", "{{.Name}}", "--nictype3", "82545EM"],
+        ["modifyvm", "{{.Name}}", "--nictype4", "82545EM"]
       ],
       "disk_size": "{{user `disk_size`}}",
       "hard_drive_interface": "sata",
@@ -35,7 +35,7 @@
       "shutdown_timeout": "1h",
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
-        "Windows-10-Business/autounattend.xml",
+        "Windows-2019/autounattend.xml",
         "Enable-PSRemoting.ps1",
         "win-updates.ps1",
         "microsoft-updates.bat"
@@ -43,6 +43,10 @@
     }
   ],
   "provisioners": [
+    {
+      "type": "powershell",
+      "inline": "Uninstall-WindowsFeature Windows-Defender"
+    },
     {
       "type": "powershell",
       "script": "Install-VirtualBoxGuestAdditions.ps1"
@@ -63,13 +67,22 @@
     {
       "type": "powershell",
       "scripts": [
+        "Install-PowerShellProfile.ps1",
         "Install-Common.ps1",
         "Install-DevTools.ps1",
         "Install-GitTools.ps1",
         "Install-SqlServer.ps1",
-        "Install-VisualStudio2017.ps1",
-        "Install-NodeTools.ps1",
-        "Run-Cleanup.ps1"
+        "Install-VisualStudio2019.ps1",
+        "Install-NodeTools.ps1"
+      ]
+    },
+    {
+      "type": "windows-restart"
+    },
+    {
+      "type": "powershell",
+      "scripts": [     
+        "Finalize-VM.ps1"
       ]
     }
   ],

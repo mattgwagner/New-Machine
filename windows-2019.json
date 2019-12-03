@@ -82,7 +82,7 @@
     {
       "type": "powershell",
       "scripts": [     
-        "Run-Cleanup.ps1"
+        "Finalize-VM.ps1"
       ]
     }
   ],
