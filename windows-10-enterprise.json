@@ -35,7 +35,7 @@
       "shutdown_timeout": "1h",
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
-        "Windows-2019/autounattend.xml",
+        "Windows-10-Enterprise/autounattend.xml",
         "Enable-PSRemoting.ps1",
         "win-updates.ps1",
         "microsoft-updates.bat"
