@@ -35,3 +35,5 @@ cask "google-chrome"
 cask "visual-studio-code"
 
 cask "iterm2"
+
+cask "postman"
