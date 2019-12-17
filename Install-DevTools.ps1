@@ -1,5 +1,7 @@
 ## Development Tools - General
 
+choco install powershell-core
+
 choco install postman
 choco install baretail
 
@@ -8,10 +10,3 @@ choco install vscode
 choco install conemu
 
 choco install sqlitebrowser
-
-# choco install redis-64
-# choco install redis-desktop-manager
-
-## choco install rabbitmq
-
-## choco install nginx
