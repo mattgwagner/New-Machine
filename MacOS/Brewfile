@@ -4,8 +4,6 @@ tap "homebrew/core"
 
 brew "git"
 
-brew "packer"
-
 cask "adobe-acrobat-reader"
 
 cask "android-studio"
@@ -23,10 +21,6 @@ cask "microsoft-office"
 cask "microsoft-teams"
 
 cask "spectacle"
-
-cask "vagrant"
-
-cask "virtualbox"
 
 cask "google-chrome"
 
