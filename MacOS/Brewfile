@@ -6,8 +6,6 @@ brew "git"
 
 brew "packer"
 
-brew "node"
-
 cask "adobe-acrobat-reader"
 
 cask "android-studio"
@@ -32,12 +30,4 @@ cask "virtualbox"
 
 cask "google-chrome"
 
-cask "visual-studio-code"
-
 cask "iterm2"
-
-cask "postman"
-
-cask "powershell"
-
-cask "azure-data-studio"
