@@ -37,3 +37,5 @@ cask "visual-studio-code"
 cask "iterm2"
 
 cask "postman"
+
+cask "powershell"
