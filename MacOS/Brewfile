@@ -39,3 +39,5 @@ cask "iterm2"
 cask "postman"
 
 cask "powershell"
+
+cask "azure-data-studio"
