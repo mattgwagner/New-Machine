@@ -7,3 +7,7 @@ brew cask install postman
 brew cask install azure-data-studio
 
 brew install node
+
+brew cask install vagrant
+
+brew cask install virtualbox
