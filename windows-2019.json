@@ -37,8 +37,7 @@
       "floppy_files": [
         "Windows-2019/autounattend.xml",
         "Enable-PSRemoting.ps1",
-        "win-updates.ps1",
-        "microsoft-updates.bat"
+        "Install-WindowsUpdates.ps1"
       ]
     }
   ],
