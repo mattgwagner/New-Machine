@@ -40,8 +40,9 @@ choco install Firefox
 ## Common System Tools
 
 choco install 7zip.install 
-choco install notepadplusplus.install
-choco install rdcman
+choco install vscode
+
+# choco install rdcman
 
 # choco install google-backup-and-sync
 
