@@ -1,0 +1,15 @@
+###
+### Offer up the db migration tools as an executable container
+###
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+
+COPY ./db ./db
+
+COPY ./src/GulfWinds.Model ./src/Model
+
+WORKDIR /db
+
+RUN dotnet restore
+
+ENTRYPOINT ["dotnet", "run", "--Environment", "Local", "--Seed", "true"]
