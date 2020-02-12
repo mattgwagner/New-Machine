@@ -1,0 +1,29 @@
+version: "3"
+
+networks:
+    default:
+      driver: bridge
+
+services:
+    db:
+        image: "mcr.microsoft.com/mssql/server"
+        environment:
+            SA_PASSWORD: "SuperSecurePw!"
+            ACCEPT_EULA: "Y"
+        ports:
+            - "1433:1433"
+        networks:
+            default:
+                aliases:
+                - sql.local
+
+    migrator:
+        build:
+            context: .
+            dockerfile: './db/Dockerfile'
+        image: db-migrator
+        depends_on: 
+            - "db"
+        environment: 
+            ConnectionStrings__AzureIntegrationDb: "Data Source=sql.local;Initial Catalog=Integration;User=sa;Password=SuperSecurePw!;"
+            ConnectionStrings__AzureCmsDb: "Data Source=sql.local;Initial Catalog=CMS;User=sa;Password=SuperSecurePw!;"        
