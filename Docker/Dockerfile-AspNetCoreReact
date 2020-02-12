@@ -1,0 +1,66 @@
+###
+### Add Node, NPM, and Yarn to the Container
+###
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+
+# update the repository sources list and install dependencies
+
+RUN apt-get update \
+    && apt-get install -y curl \
+    && apt-get -y autoclean
+
+# nvm environment variables
+
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 4.4.7
+
+# install nvm https://github.com/creationix/nvm#install-script
+
+RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
+
+# install node and npm
+
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+# add node and npm to path so the commands are available
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+# confirm installation
+
+RUN node -v
+RUN npm -v
+
+# Install the Dotnet Core Debugger
+
+RUN apt update && \
+    apt install unzip && \
+    curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l /vsdbg
+
+# Copy over the files to build
+
+COPY ./db ./db
+
+COPY ./src ./src
+
+WORKDIR /src/Web
+
+# Restore the NuGet packages and build the app
+
+RUN dotnet restore
+
+RUN dotnet build -c Debug -o /out
+
+WORKDIR /out
+
+# Expose the Website on Port 80
+
+ENV ASPNETCORE_URLS="http://*:80"
+EXPOSE 80/tcp
+
+ENTRYPOINT ["dotnet", "Web.dll"]
