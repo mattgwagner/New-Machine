@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 
 COPY ./db ./db
 
-COPY ./src/GulfWinds.Model ./src/Model
+COPY ./src/Model ./src/Model
 
 WORKDIR /db
 
