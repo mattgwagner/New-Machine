@@ -1,13 +1,15 @@
 # Reference https://www.thomasmaurer.ch/2018/07/create-a-usb-drive-for-windows-server-2019-installation/
 
+$Here = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+
 # Define Path to the Windows Server 2019 ISO
-$ISOFile = "C:\Temp\WindowsServer2019.iso"
+$ISOFile = (Join-Path $Here "en_windows_server_version_1903_updated_jan_2020_x64_dvd_8ec19b09.iso")
  
 # Get the USB Drive you want to use, copy the friendly name
-Get-Disk | Where BusType -eq "USB"
+$USBDrive = Get-Disk | Where-Object BusType -eq "USB"
  
 # Get the right USB Drive (You will need to change the FriendlyName)
-$USBDrive = Get-Disk | Where FriendlyName -eq "Kingston DT Workspace"
+# $USBDrive = Get-Disk | Where-Object BusType -eq "USB"
  
 # Replace the Friendly Name to clean the USB Drive (THIS WILL REMOVE EVERYTHING)
 $USBDrive | Clear-Disk -RemoveData -Confirm:$true -PassThru
