@@ -6,8 +6,6 @@ brew "git"
 
 cask "adobe-acrobat-reader"
 
-cask "android-studio"
-
 cask "flux"
 
 cask "google-backup-and-sync"
