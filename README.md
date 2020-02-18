@@ -3,6 +3,10 @@ New-Machine
 
 This repo contains several small PowerShell scripts that utilize Chocolatey and BoxStarter to setup new machines to my preferences. I've found golden images to go out of date extremely quickly, to the point of making it pointless. These scripts help grab the latest versions of many of my daily use applications, so that I can hit the ground running on new machines.
 
+# Creating a Bootable USB
+
+Use Rufus -- I had a PowerShell script but it failed a few times. Use the tools!
+
 # Building an Image
 
 The Packer JSON file references a copy of the Windows Server 2016 (Feb-2018 update) ISO, currently named "en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso", and will download it at the start of the process.
