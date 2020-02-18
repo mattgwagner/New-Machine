@@ -3,7 +3,7 @@
 $Here = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
 # Define Path to the Windows Server 2019 ISO
-$ISOFile = (Join-Path $Here "en_windows_server_version_1903_updated_jan_2020_x64_dvd_8ec19b09.iso")
+$ISOFile = (Join-Path $Here "en_windows_server_2019_updated_jan_2020_x64_dvd_9069e1c0.iso")
  
 # Get the USB Drive you want to use, copy the friendly name
 $USBDrive = Get-Disk | Where-Object BusType -eq "USB"
