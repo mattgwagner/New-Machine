@@ -14,14 +14,54 @@
       "guest_additions_mode": "attach",
       "headless": "{{user `headless`}}",
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "8192"],
-        ["modifyvm", "{{.Name}}", "--cpus", "2"],
-        ["modifyvm", "{{.Name}}", "--vram", "64"],
-        ["modifyvm", "{{.Name}}", "--audio", "none"],
-        ["modifyvm", "{{.Name}}", "--nictype1", "82545EM"],
-        ["modifyvm", "{{.Name}}", "--nictype2", "82545EM"],
-        ["modifyvm", "{{.Name}}", "--nictype3", "82545EM"],
-        ["modifyvm", "{{.Name}}", "--nictype4", "82545EM"]
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "8192"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "2"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--vram",
+          "64"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--audio",
+          "none"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--nictype1",
+          "82545EM"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--nictype2",
+          "82545EM"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--nictype3",
+          "82545EM"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--nictype4",
+          "82545EM"
+        ]
       ],
       "disk_size": "{{user `disk_size`}}",
       "hard_drive_interface": "sata",
@@ -80,7 +120,7 @@
     },
     {
       "type": "powershell",
-      "scripts": [     
+      "scripts": [
         "Finalize-VM.ps1"
       ]
     }
