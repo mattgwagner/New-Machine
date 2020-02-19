@@ -1,0 +1,14 @@
+version: "3"
+
+networks:
+    default:
+        driver: "bridge"
+
+services:
+    logs:
+        image: datalust/seq:latest
+        environment:
+            ACCEPT_EULA: "Y"
+        ports:
+            - "5341:5341"
+            - "8080:80"
