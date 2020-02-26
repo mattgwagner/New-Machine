@@ -9,11 +9,11 @@ Use Rufus -- I had a PowerShell script but it failed a few times. Use the tools!
 
 # Building an Image
 
-The Packer JSON file references a copy of the Windows Server 2016 (Feb-2018 update) ISO, currently named "en_windows_server_2016_updated_feb_2018_x64_dvd_11636692.iso", and will download it at the start of the process.
+The `Windows-2019.json` Packer file references a copy of the Windows Server 2019 ISO. I grabbed it off of MSDN and put it into the same folder -- ideally, it would download this from a public source before building.
 
-You can build the image via (or using build.ps1 if you're on Windows):
+You can build the image via:
 
-packer build windows-2016.json
+packer build windows-2019.json
 
 # Vagrant Info
 
@@ -33,7 +33,7 @@ vagrant init {name}
 
 The folder that you run initialize from, or that contains the vagrantfile that you use, will be imported into the Virtual Machine and available at c:\vagrant. Do note that I've noticed issues running IIS or Visual Studio from code in this folder.
 
-You can modify the Vagrantfile generated during `vagrant init` to modify VM settings, such as the amount of RAM allocated (defaults to 4gigs) or more CPUs:
+You can modify the Vagrantfile generated during `vagrant init` to modify VM settings, such as the amount of RAM allocated (defaults to 8gigs) or more CPUs:
 
 ```
   config.vm.provider :virtualbox do |v, override|
