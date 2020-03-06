@@ -5,3 +5,5 @@ choco install sql-server-express -ia "/IACCEPTSQLSERVERLICENSETERMS /Q /ACTION=i
 choco install sql-server-management-studio
 
 choco install azure-data-studio
+
+Install-Module -Name SqlServer -Confirm
