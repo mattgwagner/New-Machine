@@ -16,4 +16,4 @@ choco install visualstudio2019-workload-netcrossplat
 
 choco install dotnetcore-sdk
 
-choco install netfx-4.7-devpack
+choco install netfx-4.8-devpack
