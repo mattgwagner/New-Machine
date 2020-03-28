@@ -23,7 +23,7 @@
       "winrm_timeout": "12h",
       "shutdown_timeout": "1h",
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "floppy_images": [
+      "floppy_files": [
         "Windows-2019/autounattend.xml",
         "Enable-PSRemoting.ps1",
         "Install-WindowsUpdates.ps1"
