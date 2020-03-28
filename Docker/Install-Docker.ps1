@@ -4,4 +4,4 @@
 
 # Docker Desktop include the CLI and compose
 
-choco install docker-desktop
+choco install docker-desktop docker-compose
