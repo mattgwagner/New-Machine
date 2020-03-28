@@ -134,7 +134,6 @@
         "Install-Common.ps1",
         "Install-DevTools.ps1",
         "Install-GitTools.ps1",
-        "SQL-Server/Install-SqlServer.ps1",
         "Install-VisualStudio2019.ps1",
         "Install-NodeTools.ps1"
       ]
