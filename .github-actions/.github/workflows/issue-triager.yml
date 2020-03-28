@@ -1,0 +1,40 @@
+# Adapted from: https://github.com/microsoft/azure-pipelines-tasks/blob/master/.github/workflows/blank.yml
+# This action labels and assigns newly opened issues
+
+name: Issue triager
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  label:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      
+    - uses: damccorm/tag-ur-it@master
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        configuration-path: "./triage-rules.yml"
+
+    - if: failure()
+      uses: actions/github-script@0.4.0
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.issues.addLabels({
+            issue_number: context.issue,
+            owner: context.owner,
+            repo: context.repo,
+            labels: ['needs triage']
+          })
+
+    - name: Set Node.js 10.x
+      uses: actions/setup-node@master
+      with:
+        version: 10.x
+
+    # Need to explicitly install @octokit/rest separately or else it will mess with our typings.
+    - run: npm install && npm install @octokit/rest
