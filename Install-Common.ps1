@@ -27,8 +27,6 @@ Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer
 Write-Output "Enabling and Running Windows Update"
 
 Enable-MicrosoftUpdate
-# Disable-MicrosoftUpdate
-# Install-WindowsUpdate -AcceptEula
 
 Write-Output "Beginning Chocolatey installs"
 
