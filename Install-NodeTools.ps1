@@ -6,4 +6,4 @@ choco install yarn
 
 nvm install latest
 
-# choco install visualstudio2019-workload-node
+choco install visualstudio2019-workload-node
