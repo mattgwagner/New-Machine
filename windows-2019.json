@@ -18,7 +18,7 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "disk_size": "{{user `disk_size`}}",
       "generation": 1,
-      "memory": 4096,
+      "memory": 8192,
       "headless": true,
       "communicator": "winrm",
       "winrm_username": "{{user `username`}}",
