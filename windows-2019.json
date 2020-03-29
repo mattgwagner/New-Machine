@@ -19,6 +19,7 @@
       "disk_size": "{{user `disk_size`}}",
       "generation": 1,
       "memory": 4096,
+      "headless": true,
       "communicator": "winrm",
       "winrm_username": "{{user `username`}}",
       "winrm_password": "{{user `password`}}",
