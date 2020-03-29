@@ -160,7 +160,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "{{.BuildName}}_{{.Provider}}.box",
+      "output": "{{.BuildName}}.box",
       "vagrantfile_template": "Vagrantfile.template"
     }
   ]
