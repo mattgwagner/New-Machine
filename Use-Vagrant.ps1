@@ -1,4 +1,4 @@
-$Box = "windows-2019"
+$Box = "packer_hyperv-iso_hyperv"
 
 vagrant box add $Box .\$Box.box
 
