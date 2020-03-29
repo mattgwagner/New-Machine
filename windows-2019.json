@@ -129,13 +129,17 @@
       "scripts": [
         "Install-Chocolatey.ps1",
         "Install-Boxstarter.ps1",
-        "Install-Common.ps1",        
-        "./.github-actions/images/win/scripts/Installers/Install-PowershellCore.ps1",
+        "Install-Common.ps1",
         "Install-PowerShellProfile.ps1",        
         "Install-DevTools.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-Git.ps1",
         "Install-GitTools.ps1",
-        "Install-VisualStudio2019.ps1",
+        "Install-VisualStudio2019.ps1"]
+    },
+    {
+      "type": "powershell",
+      "scripts": [ 
+        "./.github-actions/images/win/scripts/Installers/Install-PowershellCore.ps1",
+        "./.github-actions/images/win/scripts/Installers/Install-Git.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-DotnetSDK.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1",
