@@ -99,7 +99,8 @@
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
         "Windows-2019/autounattend.xml",
-        "Enable-PSRemoting.ps1"
+        "Enable-PSRemoting.ps1",
+        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
       ]
     }
   ],
@@ -152,7 +153,6 @@
     {
       "type": "powershell",
       "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1",
         "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
       ]
     }
