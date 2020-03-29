@@ -139,7 +139,7 @@
         "./.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
         "Install-VisualStudio2019.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1",
+        "./.github-actions/images/win/scripts/Install-WindowsUpdates.ps1"
       ]
     },
     {
