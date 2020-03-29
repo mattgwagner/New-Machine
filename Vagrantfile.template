@@ -27,8 +27,7 @@ Vagrant.configure("2") do |config|
     v.cpus = 4
     v.maxmemory = 8092
     v.enable_virtualization_extensions = true
-    v.auto_start_action = StartIfRunning
-    v.auto_stop_action = Save
-
+    v.auto_start_action = 'StartIfRunning'
+    v.auto_stop_action = 'Save'
   end
 end
