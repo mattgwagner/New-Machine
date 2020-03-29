@@ -99,8 +99,7 @@
       "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
       "floppy_files": [
         "Windows-2019/autounattend.xml",
-        "Enable-PSRemoting.ps1",
-        "Install-WindowsUpdates.ps1"
+        "Enable-PSRemoting.ps1"
       ]
     }
   ],
@@ -122,7 +121,8 @@
       "only": ["virtualbox-iso"]
     },
     {
-      "type": "windows-restart"
+      "type": "windows-restart",
+      "restart_timeout": "10m"
     },
     {
       "type": "powershell",
@@ -138,11 +138,13 @@
         "./.github-actions/images/win/scripts/Installers/Install-DotnetSDK.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
         "Install-VisualStudio2019.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1"
+        "./.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1",
+        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1",
       ]
     },
     {
-      "type": "windows-restart"
+      "type": "windows-restart",
+      "restart_timeout": "10m"
     },
     {
       "type": "powershell",
