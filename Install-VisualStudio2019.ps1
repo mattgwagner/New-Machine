@@ -13,7 +13,3 @@ choco install visualstudio2019-workload-azure
 choco install visualstudio2019-workload-netcoretools
 choco install visualstudio2019-workload-node
 choco install visualstudio2019-workload-netcrossplat
-
-choco install dotnetcore-sdk
-
-choco install netfx-4.8-devpack

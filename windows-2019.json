@@ -106,6 +106,11 @@
   ],
   "provisioners": [
     {
+      "type": "file",
+      "source": "./.github-actions/images/win/scripts/ImageHelpers",
+      "destination": "C:\\Program Files\\WindowsPowerShell\\Modules\\"
+    },
+    {
       "type": "powershell",
       "inline": "Uninstall-WindowsFeature Windows-Defender"
     },
@@ -133,8 +138,12 @@
         "Install-PowerShellProfile.ps1",
         "Install-Common.ps1",
         "Install-DevTools.ps1",
+        "./.github-actions/win/scripts/Installers/Install-Git.ps1",
         "Install-GitTools.ps1",
-        "Install-VisualStudio2019.ps1"
+        "./.github-actions/win/scripts/Installers/Install-DotnetSdk.ps1",
+        "./.github-actions/win/scripts/Installers/Install-NET48.ps1",
+        "Install-VisualStudio2019.ps1",
+        "./.github-actions/win/scripts/Installers/Install-NodeLts.ps1"
       ]
     },
     {
