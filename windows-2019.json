@@ -142,8 +142,7 @@
         "./.github-actions/images/win/scripts/Installers/Install-PowershellCore.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-Git.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
+        "./.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1"        
       ]
     },
     {
@@ -153,6 +152,7 @@
     {
       "type": "powershell",
       "scripts": [
+        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1",
         "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
       ]
     }
@@ -160,7 +160,6 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "{{.BuildName}}.box",
       "vagrantfile_template": "Vagrantfile.template"
     }
   ]
