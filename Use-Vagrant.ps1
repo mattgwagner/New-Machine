@@ -1,4 +1,4 @@
-$Box = "windows-2019-hyperv"
+$Box = "windows-2019"
 
 vagrant box add $Box .\$Box.box
 
