@@ -153,7 +153,7 @@
     {
       "type": "powershell",
       "scripts": [
-        "Finalize-VM.ps1"
+        "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
       ]
     }
   ],
