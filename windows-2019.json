@@ -112,7 +112,9 @@
     },
     {
       "type": "powershell",
-      "inline": "Uninstall-WindowsFeature Windows-Defender"
+      "scripts": [
+        "./.github-actions/images/win/scripts/Installers/Configure-Antivirus.ps1"
+      ]
     },
     {
       "type": "powershell",
