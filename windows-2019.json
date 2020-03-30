@@ -135,12 +135,17 @@
         "Install-DevTools.ps1",
         "Install-GitTools.ps1",
         "Install-VisualStudio2019.ps1",
-        "./SQL-Server/Install-SqlServer.ps1"
+        "./SQL-Server/Install-SqlServer.ps1"        
       ]
+    },
+    {
+        "type": "windows-restart",
+        "restart_timeout": "10m"
     },
     {
       "type": "powershell",
       "scripts": [
+        "./.github-actions/images/win/scripts/Installers/Install-ContainersFeature.ps1",
         "./.github-actions/images/win/scripts/Installers/Install-Docker.ps1"
       ],
       "only": ["hyperv-iso"]
