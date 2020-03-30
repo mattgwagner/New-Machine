@@ -9,7 +9,7 @@ Get-Service -Name ssh-agent | Set-Service -StartupType Manual
 
 Write-Output "Installing PoshGit"
 
-Install-Module posh-git -Scope CurrentUser -Force -AllowClobber
+choco install poshgit
 
 RefreshEnv
 
