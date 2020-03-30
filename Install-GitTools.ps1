@@ -7,7 +7,9 @@ mkdir "$($env:USERPROFILE)\.ssh" # Create .ssh folder for keys
 
 # Get-Service -Name ssh-agent | Set-Service -StartupType Manual
 
-PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
+Write-Output "Installing PoshGit"
+
+Install-Module posh-git -Scope CurrentUser -Force
 
 RefreshEnv
 
