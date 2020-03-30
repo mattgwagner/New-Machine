@@ -47,3 +47,5 @@ choco install vscode
 choco install adobereader
 
 choco install greenshot
+
+choco install f.lux
