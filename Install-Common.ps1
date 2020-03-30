@@ -45,3 +45,5 @@ choco install vscode
 # choco install google-backup-and-sync
 
 choco install adobereader
+
+choco install greenshot
