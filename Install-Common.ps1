@@ -38,7 +38,6 @@ choco install Firefox
 ## Common System Tools
 
 choco install 7zip.install 
-choco install vscode
 
 # choco install rdcman
 
