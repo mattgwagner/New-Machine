@@ -132,7 +132,7 @@
           "Install-Module -Name PowerShellGet -Force",
           "Set-PSRepository -InstallationPolicy Trusted -Name PSGallery"
       ]
-  },
+   },
     {
       "type": "powershell",
       "timeout": "5m",
