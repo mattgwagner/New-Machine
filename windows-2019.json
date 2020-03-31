@@ -127,6 +127,12 @@
     },
     {
       "type": "powershell",
+      "inline": [
+          "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
+      ]
+  },
+    {
+      "type": "powershell",
       "timeout": "5m",
       "scripts": [
         "./.github-actions/images/win/scripts/Installers/Install-ContainersFeature.ps1"
