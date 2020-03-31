@@ -122,7 +122,20 @@
       "only": ["virtualbox-iso"]
     },
     {
-      "type": "windows-restart"
+      "type": "windows-restart",
+      "only": ["virtualbox-iso"]
+    },
+    {
+      "type": "powershell",
+      "scripts": [
+        "./.github-actions/images/win/scripts/Installers/Install-ContainersFeature.ps1",
+        "./.github-actions/images/win/scripts/Installers/Install-Docker.ps1"
+      ],
+      "only": ["hyperv-iso"]
+    },
+    {
+      "type": "windows-restart",
+      "only": ["hyperv-iso"]
     },
     {
       "type": "powershell",
@@ -140,18 +153,6 @@
     },
     {
         "type": "windows-restart"
-    },
-    {
-      "type": "powershell",
-      "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Install-ContainersFeature.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-Docker.ps1"
-      ],
-      "only": ["hyperv-iso"]
-    },
-    {
-      "type": "windows-restart",
-      "only": ["hyperv-iso"]
     },
     {
       "type": "powershell",
