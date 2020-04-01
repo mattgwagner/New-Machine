@@ -1,62 +1,46 @@
-New-Machine
-===========
+# GitHub Actions Virtual Environments
+This repository contains the source used to create the [virtual environments](https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners) for GitHub Actions hosted runners. To file bug reports, or request that tools be added/updated, please [open an issue using the appropriate template](https://github.com/actions/virtual-environments/issues/new/choose). To build a VM machine from this repo's source, see the [instructions](./help/CreateImageAndAzureResources.md).
 
-This repo contains several small PowerShell scripts that utilize Chocolatey and BoxStarter to setup new machines to my preferences. I've found golden images to go out of date extremely quickly, to the point of making it pointless. These scripts help grab the latest versions of many of my daily use applications, so that I can hit the ground running on new machines.
+For general questions about using the virtual environments or writing your Actions workflow, please open requests in the [GitHub Actions Community Forum](https://github.community/t5/GitHub-Actions/bd-p/actions).
 
-# Creating a Bootable USB
+## Available Environments
+| Environment | YAML Label | Included Software | Latest Release & Rollout Progress |
+| --------------------|---------------------|--------------------|---------------------|
+| Ubuntu 18.04 | `ubuntu-latest` or `ubuntu-18.04` | [ubuntu-18.04] | [![](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=ubuntu18&badge=1)](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=ubuntu18&redirect=1)
+| Ubuntu 16.04 | `ubuntu-16.04` | [ubuntu-16.04] | [![](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=ubuntu16&badge=1)](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=ubuntu16&redirect=1) |
+| macOS 10.15 | `macos-latest` or `macos-10.15` | [macOS-10.15] | *Coming soon* |
+| Windows Server 2019 | `windows-latest` or `windows-2019` | [windows-2019] | [![](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=windows-2019&badge=1)](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=windows-2019&redirect=1)
+| Windows Server 2016 | `windows-2016` | [windows-2016] | [![](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=windows-2016&badge=1)](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=windows-2016&redirect=1)
 
-Use Rufus -- I had a PowerShell script but it failed a few times. Use the tools!
+***Looking for other Linux distributions?*** We do not plan to offer other Linux distributions. We recommend using Docker if you'd like to build using other distributions with the hosted virtual environments. Alternatively, you can leverage [self-hosted runners] and fully customize your environment to your needs.
 
-# Building an Image
+***Where is the macOS source?*** We are in the process of preparing our macOS source to live in this repo so we can take contributions from the community. Until then, we appreciate your patience and ask you continue to make tool requests by filing issues.
 
-The `Windows-2019.json` Packer file references a copy of the Windows Server 2019 ISO. I grabbed it off of MSDN and put it into the same folder -- ideally, it would download this from a public source before building.
+## Software Guidelines
+In general, these are the guidelines we consider when deciding what to pre-install:
 
-You can build the image via:
+- Tools and ecosystems that are broadly popular and widely-used will be given priority.
+- Recent versions of tools will be given priority over older versions.
+- Tools and versions that are deprecated or have reached end-of-life will not be added.
+- Tools and versions will typically be removed 6 months after they are deprecated or have reached end-of-life.
+- If a tool can be installed during the build, we will evaluate how much time is saved
+ and how much space is used by having the tool pre-installed.
 
-packer build windows-2019.json
+## Updates to virtual environments
+*Cadence*
 
-# Vagrant Info
+We typically deploy weekly updates to the software on the virtual environments.
+For some tools, we always install the latest at the time of the deployment; for others,
+we pin the tool to specific version(s).
 
-For now, I'm focusing my efforts on VirtualBox as the hypervisor of choice. Probably would work with Hyper-V, too, but I'd need to adapt the box creation piece via Packer.
+*Following Along / Change Notifications*
 
-Depending on OS, follow instructions at vagrantup.com for installing + VirtualBox.
+* **High Impact Changes** (ex. breaking changes, new or deprecated environments) will be posted to the GitHub Changelog on our [blog](https://github.blog/changelog/) and on [twitter](https://twitter.com/GHchangelog).
+* **Regular Weekly Rhythm** can be followed by watching [Releases](https://github.com/actions/virtual-environments/releases) to see when we generate candidate environments or deploy new ones. You can also track upcoming changes on the [virtual environment project](https://github.com/actions/virtual-environments/projects/1) to see which issues are under development.
 
-Windows via Chocolatey: 
-
-choco install virtualbox
-
-choco install vagrant
-
-vagrant box add {url} --name {name}
-
-vagrant init {name}
-
-The folder that you run initialize from, or that contains the vagrantfile that you use, will be imported into the Virtual Machine and available at c:\vagrant. Do note that I've noticed issues running IIS or Visual Studio from code in this folder.
-
-You can modify the Vagrantfile generated during `vagrant init` to modify VM settings, such as the amount of RAM allocated (defaults to 8gigs) or more CPUs:
-
-```
-  config.vm.provider :virtualbox do |v, override|
-      v.gui = false
-      v.memory = 8192
-      v.cpus = 2
-  end
-```
-
-vagrant up
-
-vagrant powershell (from Windows)
-
-vagrant RDP -- Doesn't seem to work on OS-X reliably, use Remote Desktop client and point it to localhost with the allocated port.
-
-You can also open your Remote Desktop client of choice and point it to localhost:4000 (we remapped the RDP port to avoid conflicts with Windows hosts).
-
-# See Also
-
-https://chocolatey.org
-
-https://www.packer.io
-
-https://www.virtualbox.org
-
-https://boxstarter.org
+[ubuntu-18.04]: https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md
+[ubuntu-16.04]: https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1604-README.md
+[Windows-2019]: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md
+[windows-2016]: https://github.com/actions/virtual-environments/blob/master/images/win/Windows2016-Readme.md
+[macOS-10.15]: https://github.com/actions/virtual-environments/blob/master/images/macos/macos-10.15-Readme.md
+[self-hosted runners]: https://help.github.com/en/actions/hosting-your-own-runners
