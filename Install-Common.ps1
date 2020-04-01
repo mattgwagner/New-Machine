@@ -38,13 +38,11 @@ choco install Firefox
 ## Common System Tools
 
 choco install 7zip.install 
-
-# choco install rdcman
-
-# choco install google-backup-and-sync
-
 choco install adobereader
 
-choco install greenshot
+## These are more common bare-metal / desktop usage installations
 
-choco install f.lux
+# choco install f.lux
+# choco install rdcman
+# choco install google-backup-and-sync
+# choco install greenshot
