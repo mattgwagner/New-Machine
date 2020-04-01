@@ -1,6 +1,11 @@
 Vagrant.configure("2") do |config|
+  
+  config.vm.memory = 8092
+  config.vm.cpus = 4
+  
   config.vm.guest = :windows
   config.vm.communicator = "winrm"
+  
   config.winrm.username = "vagrant"
   config.winrm.password = "vagrant"
 
@@ -11,9 +16,6 @@ Vagrant.configure("2") do |config|
   
   config.vm.linked_clone = true
   
-  config.vm.memory = 8092
-  config.vm.cpus = 4
-
   config.vm.provider :virtualbox do |v, override|
       v.gui = false
       v.customize ["modifyvm", :id, "--nictype1", "82545EM"]
