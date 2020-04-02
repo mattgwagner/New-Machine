@@ -165,6 +165,7 @@
         "Install-VsCode.ps1",   
         "Install-DevTools.ps1",
         "Install-GitTools.ps1",
+        "Install-DotnetCore.ps1",
         "Install-VisualStudio2019.ps1",
         "./SQL-Server/Install-SqlServer.ps1"        
       ]

@@ -13,9 +13,3 @@ choco install visualstudio2019-workload-azure
 choco install visualstudio2019-workload-netcoretools
 choco install visualstudio2019-workload-node
 choco install visualstudio2019-workload-netcrossplat
-
-choco install dotnetcore-sdk
-
-refreshenv
-
-dotnet tool install --global dotnet-ef
