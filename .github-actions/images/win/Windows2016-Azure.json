@@ -18,6 +18,7 @@
         "run_scan_antivirus": "false",
 
         "root_folder": "C:",
+        "toolset_json_path": "{{env `TEMP`}}\\toolset.json",
         "image_folder": "C:\\image",
         "commit_file": "C:\\image\\commit.txt",
         "imagedata_file": "C:\\imagedata.json",
@@ -177,10 +178,6 @@
         },
         {
             "type": "powershell",
-            "inline": ["choco install vcredist140 -y"]
-        },
-        {
-            "type": "powershell",
             "valid_exit_codes": [
                 0,
                 3010
@@ -302,6 +299,12 @@
         {
             "type": "powershell",
             "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-AliyunCli.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-7zip.ps1"
             ]
         },
@@ -317,6 +320,11 @@
             "destination": "{{user `root_folder`}}/toolcache.json"
         },
         {
+            "type": "file",
+            "source": "{{template_dir}}/toolset-2016.json",
+            "destination": "{{user `toolset_json_path`}}"
+        },
+        {
             "type": "powershell",
             "environment_vars":[
                 "GITHUB_FEED_TOKEN={{ user `github_feed_token` }}",
@@ -324,6 +332,24 @@
             ],
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Download-ToolCache.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "environment_vars":[
+                "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
+            ],
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-PyPy.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "environment_vars":[
+                "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
+            ],
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-Toolset.ps1"
             ]
         },
         {
@@ -342,6 +368,12 @@
             "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-Git.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-GitHub-CLI.ps1"
             ]
         },
         {
@@ -425,6 +457,12 @@
         {
             "type": "powershell",
             "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-VSWhere.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-WinAppDriver.ps1"
             ]
         },
@@ -455,6 +493,12 @@
         {
             "type": "powershell",
             "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-AWS-SAM.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-DACFx.ps1"
             ]
         },
@@ -468,14 +512,6 @@
             "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-MysqlCli.ps1"
-            ]
-        },
-        {
-            "type": "powershell",
-            "elevated_user": "SYSTEM",
-            "elevated_password": "",
-            "scripts":[
-                "{{ template_dir }}/scripts/Installers/Install-SQLExpress.ps1"
             ]
         },
         {
@@ -508,14 +544,34 @@
         },
         {
             "type": "powershell",
+            "elevated_user": "SYSTEM",
+            "elevated_password": "",
             "scripts":[
-                "{{ template_dir }}/scripts/Installers/Install-MinGW.ps1"
+                "{{ template_dir }}/scripts/Installers/Install-Msys2.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-Mingw64.ps1"
             ]
         },
         {
             "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-TypeScript.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-Haskell.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-Stack.ps1"
             ]
         },
         {
@@ -624,7 +680,19 @@
         {
             "type": "powershell",
             "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-AWS-SAM.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
                 "{{ template_dir }}/scripts/Installers/Validate-AzureDevOpsCli.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-Msys2.ps1"
             ]
         },
         {
@@ -634,6 +702,15 @@
             ],
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Validate-ToolCache.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "environment_vars":[
+                "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
+            ],
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-Toolset.ps1"
             ]
         },
         {
@@ -652,6 +729,12 @@
             "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Validate-Git.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-GitHub-CLI.ps1"
             ]
         },
         {
@@ -742,7 +825,7 @@
         {
             "type": "powershell",
             "scripts":[
-                "{{ template_dir }}/scripts/Installers/Validate-SQLExpress.ps1"
+                "{{ template_dir }}/scripts/Installers/Validate-AliyunCli.ps1"
             ]
         },
         {
@@ -784,13 +867,25 @@
         {
             "type": "powershell",
             "scripts":[
-                "{{ template_dir }}/scripts/Installers/Validate-MinGW.ps1"
+                "{{ template_dir }}/scripts/Installers/Validate-Mingw64.ps1"
             ]
         },
         {
             "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Validate-TypeScript.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-Haskell.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-Stack.ps1"
             ]
         },
         {
@@ -868,6 +963,12 @@
         {
             "type": "powershell",
             "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-VSWhere.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
                 "{{ template_dir }}/scripts/Installers/Validate-KubernetesCli.ps1"
             ]
         },
@@ -875,6 +976,12 @@
             "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Validate-Kind.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Validate-DiskSpace.ps1"
             ]
         },
         {
@@ -906,6 +1013,12 @@
             "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Configure-Antivirus.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Disable-JITDebugger.ps1"
             ]
         },
         {

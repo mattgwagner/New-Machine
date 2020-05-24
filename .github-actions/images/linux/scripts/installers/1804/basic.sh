@@ -97,6 +97,9 @@ apt-get install -y --no-install-recommends dbus
 echo "Install xvfb"
 apt-get install -y --no-install-recommends xvfb
 
+echo "Install libgbm-dev"
+apt-get install -y --no-install-recommends libgbm-dev
+
 echo "Install libgtk"
 apt-get install -y --no-install-recommends libgtk-3-0
 
@@ -127,6 +130,12 @@ apt-get install -y --no-install-recommends curl
 echo "Install parallel"
 apt-get install -y --no-install-recommends parallel
 
+echo "Install gnupg2"
+apt-get install -y --no-install-recommends gnupg2
+
+echo "Install lib32z1"
+apt-get install -y --no-install-recommends lib32z1
+
 # Run tests to determine that the software installed as expected
 echo "Testing to make sure that script performed as expected, and basic scenarios work"
 for cmd in curl file ftp jq netcat ssh parallel rsync shellcheck sudo telnet time unzip wget zip; do
@@ -135,6 +144,13 @@ for cmd in curl file ftp jq netcat ssh parallel rsync shellcheck sudo telnet tim
         exit 1
     fi
 done
+
+# Workaround for systemd-resolve, since sometimes stub resolver does not work properly. Details: https://github.com/actions/virtual-environments/issues/798
+echo "Create resolv.conf link."
+if [[ -f /run/systemd/resolve/resolv.conf ]]; then
+    echo "Create resolv.conf link."
+    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+fi
 
 # Document what was added to the image
 echo "Lastly, documenting what we added to the metadata file"
@@ -147,6 +163,7 @@ DocumentInstalledItemIndent "iproute2"
 DocumentInstalledItemIndent "iputils-ping"
 DocumentInstalledItemIndent "jq"
 DocumentInstalledItemIndent "libcurl3"
+DocumentInstalledItemIndent "libgbm-dev"
 DocumentInstalledItemIndent "libicu55"
 DocumentInstalledItemIndent "libunwind8"
 DocumentInstalledItemIndent "locales"
@@ -164,3 +181,5 @@ DocumentInstalledItemIndent "upx"
 DocumentInstalledItemIndent "wget"
 DocumentInstalledItemIndent "zip"
 DocumentInstalledItemIndent "zstd"
+DocumentInstalledItemIndent "gnupg2"
+DocumentInstalledItemIndent "lib32z1"
