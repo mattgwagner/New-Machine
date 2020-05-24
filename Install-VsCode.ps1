@@ -13,9 +13,7 @@ $Extensions = @(
 
 choco install vscode
 
-RefreshEnv
-
 foreach($Extension in $Extensions)
 {
-    code --install-extension $Extension
+    & "C:\Program Files\Microsoft VS Code\code.exe" --install-extension $Extension
 }
