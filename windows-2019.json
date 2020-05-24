@@ -147,6 +147,13 @@
     {
       "type": "powershell",
       "scripts": [
+        "Install-Chocolatey.ps1",
+        "Install-Boxstarter.ps1"
+      ]
+    },
+    {
+      "type": "powershell",
+      "scripts": [
         "./.github-actions/images/win/scripts/Installers/Install-Docker.ps1"
       ],
       "only": ["hyperv-iso"]
@@ -158,8 +165,6 @@
     {
       "type": "powershell",
       "scripts": [
-        "Install-Chocolatey.ps1",
-        "Install-Boxstarter.ps1",
         "Install-Common.ps1",
         "Install-PowerShellProfile.ps1",     
         "Install-VsCode.ps1",   
