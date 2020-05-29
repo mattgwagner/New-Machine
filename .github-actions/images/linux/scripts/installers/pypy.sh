@@ -6,9 +6,7 @@
 
 # Source the helpers for use with the script
 source $HELPER_SCRIPTS/document.sh
-
-# Fail out if any setups fail
-set -e
+source $HELPER_SCRIPTS/install.sh
 
 # This function installs PyPy using the specified arguments:
 #   $1=PACKAGE_URL
@@ -19,7 +17,7 @@ function InstallPyPy
     PACKAGE_TAR_NAME=$(echo $PACKAGE_URL | awk -F/ '{print $NF}')
     echo "Downloading tar archive '$PACKAGE_TAR_NAME' - '$PACKAGE_URL'"
     PACKAGE_TAR_TEMP_PATH="/tmp/$PACKAGE_TAR_NAME"
-    wget -q -O $PACKAGE_TAR_TEMP_PATH $PACKAGE_URL
+    download_with_retries $PACKAGE_URL "/tmp" $PACKAGE_TAR_NAME
 
     echo "Expand '$PACKAGE_TAR_NAME' to the /tmp folder"
     tar xf $PACKAGE_TAR_TEMP_PATH -C /tmp
@@ -72,16 +70,16 @@ function InstallPyPy
     rm -f $PACKAGE_TAR_TEMP_PATH
 }
 
-function getPyPyVersions
-{
-    uri="https://downloads.python.org/pypy/"
-    wget -q -O - $uri | gunzip -c | grep 'linux64' | awk -v uri="$uri" -F'>|<' '{print uri$5}'
-}
-
 # Installation PyPy
-pypyVersions=$(getPyPyVersions)
+uri="https://downloads.python.org/pypy/"
+download_with_retries $uri "/tmp" "pypyUrls.html"
+pypyVersions="$(cat /tmp/pypyUrls.html | grep 'linux64' | awk -v uri="$uri" -F'>|<' '{print uri$5}')"
+
 toolsetJson="$INSTALLER_SCRIPT_FOLDER/toolset.json"
 toolsetVersions=$(cat $toolsetJson | jq -r '.toolcache[] | select(.name | contains("PyPy")) | .versions[]')
+
+# Fail out if any setups fail
+set -e
 
 for toolsetVersion in $toolsetVersions; do
     latestMajorPyPyVersion=$(echo "${pypyVersions}" | grep -E "pypy${toolsetVersion}-v[0-9]+\.[0-9]+\.[0-9]+-" | head -1)
