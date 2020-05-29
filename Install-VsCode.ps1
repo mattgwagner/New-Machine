@@ -15,5 +15,7 @@ choco install vscode
 
 foreach($Extension in $Extensions)
 {
+    Write-Output "Installing VSCode Extension $Extension"
+
     & "C:\Program Files\Microsoft VS Code\code.exe" --install-extension $Extension
 }
