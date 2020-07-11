@@ -7,6 +7,7 @@
 # Source the helpers for use with the script
 source $HELPER_SCRIPTS/etc-environment.sh
 source $HELPER_SCRIPTS/document.sh
+source $HELPER_SCRIPTS/os.sh
 
 set -e
 
@@ -50,20 +51,20 @@ for version in $php_versions; do
         php$version-ldap \
         php$version-mbstring \
         php$version-mysql \
-        php$version-odbc \
-        php$version-opcache \
+        php$version-odbc \
+        php$version-opcache \
         php$version-pgsql \
-        php$version-phpdbg \
-        php$version-pspell \
-        php$version-readline \
-        php$version-snmp \
-        php$version-soap \
+        php$version-phpdbg \
+        php$version-pspell \
+        php$version-readline \
+        php$version-snmp \
+        php$version-soap \
         php$version-sqlite3 \
-        php$version-sybase \
-        php$version-tidy \
-        php$version-xml \
-        php$version-xmlrpc \
-        php$version-xsl \
+        php$version-sybase \
+        php$version-tidy \
+        php$version-xml \
+        php$version-xmlrpc \
+        php$version-xsl \
         php$version-zip
 
     if [[ $version == "5.6" || $version == "7.0" || $version == "7.1" ]]; then
@@ -131,7 +132,19 @@ echo "Lastly, documenting what we added to the metadata file"
 
 for version in $php_versions; do
     DocumentInstalledItem "PHP $version ($(php$version --version | head -n 1))"
-done;
+done
+
+# ubuntu 20.04 libzip-dev is libzip5 based and is not compatible libzip-dev of ppa:ondrej/php
+# see https://github.com/actions/virtual-environments/issues/1084
+if isUbuntu20 ; then
+  rm /etc/apt/sources.list.d/ondrej-ubuntu-php-focal.list
+  apt-get update
+  AddBlockquote "To use ppa:ondrej/php APT repository On Ubuntu 20.04 it is necessary to add it to the APT sources"
+  StartCode
+  WriteItem apt-add-repository ppa:ondrej/php -y
+  WriteItem apt-get update
+  EndCode
+fi
 
 DocumentInstalledItem "Composer  ($(composer --version))"
 DocumentInstalledItem "PHPUnit ($(phpunit --version))"

@@ -18,17 +18,12 @@ else
     exit 1
 }
 
-$RustPath = Split-Path (Get-Command -Name 'rustc').Path
-$RustcVersion -Match "\d+\.\d+\.\d+" | Out-Null
-$Version = $Matches[0]
+if (-Not (Get-Command -Name 'cargo-audit')){
+    Write-Host "cargo audit is not on the path"
+    exit 1
+}
 
-# Adding description of the software to Markdown
-$SoftwareName = "Rust (64-bit)"
-$Description = @"
-#### $Version
-_Environment:_
-* _Location:_ $RustPath
-* PATH: contains the location of rustc.exe
-"@
-
-Add-SoftwareDetailsToMarkdown -SoftwareName $SoftwareName -DescriptionMarkdown $Description
+if (-Not (Get-Command -Name 'cargo-outdated')){
+    Write-Host "cargo outdated is not on the path"
+    exit 1
+}
