@@ -3,8 +3,8 @@ param()
 
 . $PSScriptRoot\PathHelpers.ps1
 . $PSScriptRoot\InstallHelpers.ps1
-. $PSScriptRoot\MarkdownHelpers.ps1
 . $PSScriptRoot\ChocoHelpers.ps1
+. $PSScriptRoot\TestsHelpers.ps1
 
 Export-ModuleMember -Function @(
     'Test-MachinePath'
@@ -17,9 +17,8 @@ Export-ModuleMember -Function @(
     'Install-VisualStudio'
     'Get-ToolcachePackages'
     'Get-ToolsetContent'
+    'Get-ToolsetToolFullPath'
     'Get-ToolsByName'
-    'Add-ContentToMarkdown'
-    'Add-SoftwareDetailsToMarkdown'
     'Stop-SvcWithErrHandling'
     'Set-SvcWithErrHandling'
     'Start-DownloadWithRetry'
@@ -30,4 +29,7 @@ Export-ModuleMember -Function @(
     'Test-IsWin16'
     'Choco-Install'
     'Extract-7Zip'
+    'Get-CommandResult'
+    'Get-EnvironmentVariable'
+    'Invoke-PesterTests'
 )
