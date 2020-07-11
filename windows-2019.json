@@ -173,7 +173,8 @@
         "Install-DotnetCore.ps1",
         "Install-VisualStudio2019.ps1",
         "./SQL-Server/Install-SqlServer.ps1"        
-      ]
+      ],
+      "valid_exit_codes": [ 0, 3010 ]
     },
     {
         "type": "windows-restart"
