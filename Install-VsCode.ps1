@@ -17,5 +17,5 @@ foreach($Extension in $Extensions)
 {
     Write-Output "Installing VSCode Extension $Extension"
 
-    & "C:\Program Files\Microsoft VS Code\code.exe" --install-extension $Extension
+    & "C:\Program Files\Microsoft VS Code\bin\code.cmd" --install-extension $Extension
 }
