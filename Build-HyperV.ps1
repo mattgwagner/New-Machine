@@ -1,3 +1,7 @@
+param(
+    $File = 'windows-2019.json'
+)
+
 $here = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
 & "$here\Install-Chocolatey.ps1"
@@ -7,7 +11,7 @@ if(!(Get-Command packer -ErrorAction SilentlyContinue)) { cinst packer -y }
 
 $Timer = [Diagnostics.Stopwatch]::StartNew()
 
-packer build --only=hyperv-iso windows-2019.json 
+packer build --only=hyperv-iso $File
 
 $Timer.Stop()
 
