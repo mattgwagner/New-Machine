@@ -7,11 +7,11 @@ Vagrant.configure("2") do |config|
       vm.auto_start_action = 'StartIfRunning'
       vm.auto_stop_action = 'Save'
       vm.maxmemory = 32896
-      vm.memory = 8096
+      vm.memory = 8192
     end
   end
 
-  config.vm.define "certipay" do |prov|
+  config.vm.define "rld-2" do |prov|
     prov.vm.box = "Windows-2019-20200331"
 
     prov.vm.provider "hyperv" do |vm, override|
