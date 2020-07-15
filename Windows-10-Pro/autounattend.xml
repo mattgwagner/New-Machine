@@ -40,8 +40,8 @@
                     </InstallTo>
                     <InstallFrom>
                         <MetaData wcm:action="add">
-                            <Key>/IMAGE/INDEX</Key>
-                            <Value>1</Value>
+                            <Key>/IMAGE/NAME</Key>
+                            <Value>Windows 10 Pro</Value>
                         </MetaData>
                     </InstallFrom>
                 </OSImage>
