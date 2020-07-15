@@ -1,0 +1,59 @@
+{
+  "variables": {
+    "headless": "true",
+    "disk_size": "204800",
+    "iso_url": "en_windows_10_consumer_editions_version_2004_x64_dvd_8d28c5d7.iso",
+    "iso_checksum": "24E59806398203BFDCD17520F30D94CCF53917FF24C3584AA1E748920038A9C4",
+    "iso_checksum_type": "sha256"
+  },
+  "builders": [
+    {
+      "type": "hyperv-iso",
+      "cpus": 4,
+      "iso_url": "{{user `iso_url`}}",
+      "enable_virtualization_extensions": true,
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "disk_size": "{{user `disk_size`}}",
+      "generation": 1,
+      "memory": 8192,
+      "headless": true,
+      "communicator": "winrm",
+      "winrm_username": "{{user `username`}}",
+      "winrm_password": "{{user `password`}}",
+      "winrm_timeout": "12h",
+      "shutdown_timeout": "1h",
+      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "floppy_files": [
+        "Windows-10-Pro/autounattend.xml",
+        "Enable-PSRemoting.ps1"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "scripts": [
+        "Install-Chocolatey.ps1",
+        "Install-Boxstarter.ps1",
+        "Install-Common.ps1"
+      ]
+    },
+    {
+      "type": "windows-restart"
+    },
+    {
+      "type": "powershell",
+      "scripts": [     
+        "Finalize-VM.ps1"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "{{.BuildName}}.box",
+      "vagrantfile_template": "Vagrantfile.template"
+    }
+  ]
+}
