@@ -4,7 +4,9 @@
     "disk_size": "204800",
     "iso_url": "en_windows_10_consumer_editions_version_2004_x64_dvd_8d28c5d7.iso",
     "iso_checksum": "24E59806398203BFDCD17520F30D94CCF53917FF24C3584AA1E748920038A9C4",
-    "iso_checksum_type": "sha256"
+    "iso_checksum_type": "sha256",
+    "username": "vagrant",
+    "password": "vagrant"
   },
   "builders": [
     {
@@ -45,7 +47,7 @@
     {
       "type": "powershell",
       "scripts": [     
-        "Finalize-VM.ps1"
+        "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
       ]
     }
   ],
