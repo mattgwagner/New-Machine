@@ -18,6 +18,12 @@ function Get-BazeliskVersion {
     return "Bazelisk $bazeliskVersion"
 }
 
+function Get-RVersion {
+    ($(cmd /c "Rscript --version 2>&1")  | Out-String) -match  "R scripting front-end version (?<version>\d+\.\d+\.\d+)" | Out-Null
+    $rVersion = $Matches.Version
+    return "R $rVersion"
+}
+
 function Get-CMakeVersion {
     ($(cmake -version) | Out-String) -match  "cmake version (?<version>\d+\.\d+\.\d+)" | Out-Null
     $cmakeVersion = $Matches.Version
@@ -214,4 +220,8 @@ function Get-GoogleCloudSDKVersion {
 
 function Get-NewmanVersion {
     return "Newman $(newman --version)"
+}
+
+function Get-GHVersion {
+    return "GitHub CLI $(gh --version)"
 }

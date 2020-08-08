@@ -3,8 +3,8 @@
 ##  Desc:  Install GitHub CLI
 ################################################################################
 
-Import-Module -Name ImageHelpers -Force
-
 Choco-Install -PackageName gh
 
 Add-MachinePathItem "C:\Program Files (x86)\GitHub CLI"
+
+Invoke-PesterTests -TestFile "CLI.Tools" -TestName "GitHub CLI"

@@ -6,7 +6,6 @@
 
 # Source the helpers for use with the script
 source $HELPER_SCRIPTS/document.sh
-source $HELPER_SCRIPTS/apt.sh
 source $HELPER_SCRIPTS/os.sh
 
 set -e
@@ -39,7 +38,9 @@ common_packages="dnsutils
                  gnupg2
                  lib32z1
                  texinfo
-                 libsqlite3-dev"
+                 libsqlite3-dev
+                 libc++-dev
+                 libc++abi-dev"
 
 cmd_packages="curl
               file
@@ -61,7 +62,9 @@ cmd_packages="curl
               flex
               patchelf
               bzip2
-              sqlite3"
+              sqlite3
+              brotli
+              yamllint"
 
 if isUbuntu20 ; then
     echo "Install python2"
@@ -82,8 +85,6 @@ apt-get install -y --no-install-recommends $libcurelVer
 # install additional packages only for Ubuntu16.04
 if isUbuntu16; then
     common_packages="$common_packages
-            libc++-dev
-            libc++abi-dev
             libicu55"
 fi
 

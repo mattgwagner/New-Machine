@@ -63,68 +63,6 @@ function Install-Binary
     }
 }
 
-Function Install-VisualStudio
-{
-    <#
-    .SYNOPSIS
-        A helper function to install Visual Studio.
-
-    .DESCRIPTION
-        Prepare system environment, and install Visual Studio bootstrapper with selected workloads.
-
-    .PARAMETER BootstrapperUrl
-        The URL from which the bootstrapper will be downloaded. Required parameter.
-
-    .PARAMETER WorkLoads
-        The string that contain workloads that will be passed to the installer.
-    #>
-
-    Param
-    (
-        [Parameter(Mandatory)]
-        [String] $BootstrapperUrl,
-        [String] $WorkLoads
-    )
-
-    Write-Host "Downloading Bootstrapper ..."
-    $BootstrapperName = [IO.Path]::GetFileName($BootstrapperUrl)
-    $bootstrapperFilePath = Start-DownloadWithRetry -Url $BootstrapperUrl -Name $BootstrapperName
-
-    try
-    {
-        Write-Host "Enable short name support on Windows needed for Xamarin Android AOT, defaults appear to have been changed in Azure VMs"
-        $shortNameEnableProcess = Start-Process -FilePath fsutil.exe -ArgumentList ('8dot3name', 'set', '0') -Wait -PassThru
-
-        $shortNameEnableExitCode = $shortNameEnableProcess.ExitCode
-        if ($shortNameEnableExitCode -ne 0)
-        {
-            Write-Host "Enabling short name support on Windows failed. This needs to be enabled prior to VS 2017 install for Xamarin Andriod AOT to work."
-            exit $shortNameEnableExitCode
-        }
-
-        Write-Host "Starting Install ..."
-        $bootstrapperArgumentList = ('/c', $bootstrapperFilePath, $WorkLoads, '--quiet', '--norestart', '--wait', '--nocache' )
-        $process = Start-Process -FilePath cmd.exe -ArgumentList $bootstrapperArgumentList -Wait -PassThru
-
-        $exitCode = $process.ExitCode
-        if ($exitCode -eq 0 -or $exitCode -eq 3010)
-        {
-            Write-Host "Installation successful"
-            return $exitCode
-        }
-        else
-        {
-            Write-Host "Non zero exit code returned by the installation process : $exitCode"
-            exit $exitCode
-        }
-    }
-    catch
-    {
-        Write-Host "Failed to install Visual Studio; $($_.Exception.Message)"
-        exit -1
-    }
-}
-
 function Stop-SvcWithErrHandling
 {
     <#
@@ -360,6 +298,12 @@ function Get-ToolsetContent
     ConvertFrom-Json -InputObject $toolsetJson
 }
 
+function Get-ToolcacheToolDirectory {
+    Param ([string] $ToolName)
+    $toolcacheRootPath = Resolve-Path $env:AGENT_TOOLSDIRECTORY
+    return Join-Path $toolcacheRootPath $ToolName
+}
+
 function Get-ToolsetToolFullPath
 {
     <#
@@ -385,33 +329,25 @@ function Get-ToolsetToolFullPath
         [string] $Arch = "x64"
     )
 
-    $ToolPath = Join-Path $env:AGENT_TOOLSDIRECTORY $Name
+    $toolPath = Get-ToolcacheToolDirectory -ToolName $Name
 
     # Add wildcard if missing
     if ($Version.Split(".").Length -lt 3) {
         $Version += ".*"
     }
 
-    # Check if version folder exists
-    $expectedVersionPath = Join-Path $ToolPath $Version
-    if (-not (Test-Path $expectedVersionPath)) {
-        Write-Host "Expected ${Name} ${Version} folder is not found!"
-        exit 1
-    }
+    $versionPath = Join-Path $toolPath $Version
 
     # Take latest installed version in case if toolset version contains wildcards
-    $foundVersion = Get-Item $expectedVersionPath `
+    $foundVersion = Get-Item $versionPath `
                     | Sort-Object -Property {[version]$_.name} -Descending `
                     | Select-Object -First 1
 
-    # Check for required architecture folder
-    $foundVersionArchPath = Join-Path $foundVersion $Arch
-    if (-not (Test-Path $foundVersionArchPath)) {
-        Write-Host "Expected ${Name}(${Arch}) $($foundVersion.name) architecture folder is not found!"
-        exit 1
+    if (-not $foundVersion) {
+        return $null
     }
 
-    return $foundVersionArchPath
+    return Join-Path $foundVersion $Arch
 }
 
 function Get-ToolsByName
@@ -463,5 +399,22 @@ function Extract-7Zip {
     {
         Write-Host "There is an error during expanding '$Path' to '$DestinationPath' directory"
         exit 1
+    }
+}
+
+function Install-AndroidSDKPackages {
+    Param
+    (
+        [Parameter(Mandatory=$true)]
+        [string]$AndroidSDKManagerPath,
+        [Parameter(Mandatory=$true)]
+        [string]$AndroidSDKRootPath,
+        [Parameter(Mandatory=$true)]
+        [string[]]$AndroidPackages,
+        [string] $PrefixPackageName
+    )
+
+    foreach ($package in $AndroidPackages) {
+        & $AndroidSDKManagerPath --sdk_root=$AndroidSDKRootPath "$PrefixPackageName$package"
     }
 }
