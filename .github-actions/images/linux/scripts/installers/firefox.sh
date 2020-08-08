@@ -6,7 +6,6 @@
 
 # Source the helpers for use with the script
 source $HELPER_SCRIPTS/document.sh
-source $HELPER_SCRIPTS/apt.sh
 
 # Install Firefox
 apt-get install -y firefox
@@ -29,7 +28,7 @@ HOME=/root
 DocumentInstalledItem "Firefox ($(firefox --version))"
 
 # Download and unpack latest release of geckodriver
-URL=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r '.assets[].browser_download_url | select(contains("linux64.tar.gz"))')
+URL=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r '.assets[].browser_download_url | select(test("linux64.tar.gz$"))')
 echo "Downloading geckodriver $URL"
 wget "$URL" -O geckodriver.tar.gz
 tar -xzf geckodriver.tar.gz

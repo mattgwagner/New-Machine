@@ -1,6 +1,3 @@
-# Install MarkdownPS module for software report generation
-Install-Module MarkdownPS -Force -Scope AllUsers
-
 Import-Module MarkdownPS
 Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Android.psm1") -DisableNameChecking
 Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Browsers.psm1") -DisableNameChecking
@@ -13,6 +10,13 @@ Import-Module (Join-Path $PSScriptRoot "SoftwareReport.VisualStudio.psm1") -Disa
 
 $markdown = ""
 
+if ($env:ANNOUNCEMENTS) {
+    $markdown += $env:ANNOUNCEMENTS
+    $markdown += New-MDNewLine
+    $markdown += "***"
+    $markdown += New-MDNewLine
+}
+
 $OSName = Get-OSName
 $markdown += New-MDHeader "$OSName" -Level 1
 
@@ -22,24 +26,25 @@ $markdown += New-MDList -Style Unordered -Lines @(
     "Image Version: $env:ImageVersion"
 )
 
-$markdown += New-MDHeader "Enabled windows optional features" -Level 2
-$markdown += New-MDList -Style Unordered -Lines @(
-    "Windows Subsystem for Linux"
-)
+if (Test-IsWin19)
+{
+    $markdown += New-MDHeader "Enabled windows optional features" -Level 2
+    $markdown += New-MDList -Style Unordered -Lines @(
+        "Windows Subsystem for Linux"
+    )
+}
 
 $markdown += New-MDHeader "Installed Software" -Level 2
 $markdown += New-MDHeader "Language and Runtime" -Level 3
 
 $markdown += New-MDList -Lines (Get-JavaVersionsList -DefaultVersion "1.8.0") -Style Unordered -NoNewLine
 $markdown += New-MDList -Style Unordered -Lines @(
-    (Get-RustVersion),
     (Get-PythonVersion),
     (Get-RubyVersion),
     (Get-GoVersion),
     (Get-PHPVersion),
     (Get-JuliaVersion),
     (Get-PerlVersion),
-    (Get-PowershellCoreVersion),
     (Get-NodeVersion)
 )
 
@@ -68,13 +73,16 @@ $markdown += New-MDList -Style Unordered -Lines @(
 $markdown += New-MDHeader "Tools" -Level 3
 $markdown += New-MDList -Style Unordered -Lines @(
     (Get-AzCosmosDBEmulatorVersion),
+    (Get-AzCopyVersion),
     (Get-BazelVersion),
     (Get-BazeliskVersion),
     (Get-CMakeVersion),
+    (Get-RVersion),
     (Get-DockerVersion),
     (Get-DockerComposeVersion),
     (Get-GitVersion),
     (Get-GitLFSVersion),
+    (Get-GoogleCloudSDKVersion),
     (Get-InnoSetupVersion),
     (Get-JQVersion),
     (Get-KubectlVersion),
@@ -95,13 +103,13 @@ $markdown += New-MDList -Style Unordered -Lines @(
     (Get-WinAppDriver),
     (Get-ZstdVersion),
     (Get-VSWhereVersion),
-    (Get-7zipVersion)
+    (Get-7zipVersion),
+    (Get-YAMLLintVersion)
 )
 
 $markdown += New-MDHeader "CLI Tools" -Level 3
 $markdown += New-MDList -Style Unordered -Lines @(
     (Get-AzureCLIVersion),
-    (Get-AzCopyVersion),
     (Get-AzureDevopsExtVersion),
     (Get-AWSCLIVersion),
     (Get-AWSSAMVersion),
@@ -109,10 +117,14 @@ $markdown += New-MDList -Style Unordered -Lines @(
     (Get-AlibabaCLIVersion),
     (Get-CloudFoundryVersion),
     (Get-HubVersion),
-    (Get-GoogleCloudSDKVersion)
+    (Get-GHVersion)
 )
 
-$markdown += New-MDHeader "Rust packages:" -Level 3
+$markdown += New-MDHeader "Rust Tools" -Level 3
+$markdown += New-MDList -Style Unordered -Lines @(
+    "Rust $(Get-RustVersion)"
+)
+$markdown += New-MDHeader "Packages" -Level 4
 $markdown += New-MDList -Style Unordered -Lines @(
     (Get-BindgenVersion),
     (Get-CbindgenVersion),
@@ -184,7 +196,11 @@ $markdown += "``Location $($frameworks.Path)``"
 $markdown += New-MDNewLine
 $markdown += New-MDList -Lines $frameworks.Versions -Style Unordered
 
-$markdown += New-MDHeader "Azure Powershell Modules" -Level 3
+# PowerShell Tools
+$markdown += New-MDHeader "PowerShell Tools" -Level 3
+$markdown += New-MDList -Lines (Get-PowershellCoreVersion) -Style Unordered
+
+$markdown += New-MDHeader "Azure Powershell Modules" -Level 4
 $markdown += Get-PowerShellAzureModules | New-MDTable
 $markdown += @'
 ```
@@ -193,6 +209,10 @@ and are available via 'Get-Module -ListAvailable'.
 All other versions are saved but not installed.
 ```
 '@
+$markdown += New-MDNewLine
+
+$markdown += New-MDHeader "Powershell Modules" -Level 4
+$markdown += Get-PowerShellModules | New-MDTable
 $markdown += New-MDNewLine
 
 # Android section
