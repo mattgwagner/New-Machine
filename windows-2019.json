@@ -133,21 +133,6 @@
       "type": "powershell"
     },
     {
-      "only": [
-        "hyperv-iso"
-      ],
-      "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Install-ContainersFeature.ps1"
-      ],
-      "type": "powershell"
-    },
-    {
-      "only": [
-        "hyperv-iso"
-      ],
-      "type": "windows-restart"
-    },
-    {
       "scripts": [
         "Install-Chocolatey.ps1",
         "Install-Boxstarter.ps1"
