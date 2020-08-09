@@ -1,41 +1,43 @@
 {
-  "variables": {
-    "headless": "true",
-    "disk_size": "204800",
-    "iso_url": "en_windows_server_2019_updated_july_2020_x64_dvd_94453821.iso",
-    "iso_checksum": "E2A0E8A1F3BEFD002CCEE8E043ECF06AE10D877393E938731134814A023288B8",
-    "iso_checksum_type": "sha256",
-    "username": "vagrant",
-    "password": "vagrant"
-  },
   "builders": [
     {
-      "type": "hyperv-iso",
-      "cpus": 4,
-      "iso_url": "{{user `iso_url`}}",
-      "enable_virtualization_extensions": true,
-      "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "disk_size": "{{user `disk_size`}}",
-      "generation": 1,
-      "memory": 8192,
-      "headless": true,
       "communicator": "winrm",
-      "winrm_username": "{{user `username`}}",
-      "winrm_password": "{{user `password`}}",
-      "winrm_timeout": "12h",
-      "shutdown_timeout": "1h",
-      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "cpus": 4,
+      "disk_size": "{{user `disk_size`}}",
+      "enable_virtualization_extensions": true,
       "floppy_files": [
         "Windows-2019/autounattend.xml",
         "Enable-PSRemoting.ps1"
-      ]
+      ],
+      "generation": 1,
+      "headless": true,
+      "iso_checksum": "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "memory": 8192,
+      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "shutdown_timeout": "1h",
+      "type": "hyperv-iso",
+      "winrm_password": "{{user `password`}}",
+      "winrm_timeout": "12h",
+      "winrm_username": "{{user `username`}}"
     },
     {
-      "type": "virtualbox-iso",
-      "guest_os_type": "Windows2019_64",
+      "communicator": "winrm",
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "Windows-2019/autounattend.xml",
+        "Enable-PSRemoting.ps1",
+        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
+      ],
       "guest_additions_mode": "attach",
+      "guest_os_type": "Windows2019_64",
+      "hard_drive_interface": "sata",
       "headless": "{{user `headless`}}",
+      "iso_checksum": "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "shutdown_timeout": "1h",
+      "type": "virtualbox-iso",
       "vboxmanage": [
         [
           "modifyvm",
@@ -86,67 +88,9 @@
           "82545EM"
         ]
       ],
-      "disk_size": "{{user `disk_size`}}",
-      "hard_drive_interface": "sata",
-      "iso_url": "{{user `iso_url`}}",
-      "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "communicator": "winrm",
-      "winrm_username": "{{user `username`}}",
       "winrm_password": "{{user `password`}}",
       "winrm_timeout": "12h",
-      "shutdown_timeout": "1h",
-      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "floppy_files": [
-        "Windows-2019/autounattend.xml",
-        "Enable-PSRemoting.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
-      ]
-    }
-  ],
-  "provisioners": [
-    {
-      "type": "file",
-      "source": "./.github-actions/images/win/scripts/ImageHelpers",
-      "destination": "C:\\Program Files\\WindowsPowerShell\\Modules\\"
-    },
-    {
-      "type": "powershell",
-      "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Configure-Antivirus.ps1"
-      ]
-    },
-    {
-      "type": "powershell",
-      "script": "Install-VirtualBoxGuestAdditions.ps1",
-      "only": ["virtualbox-iso"]
-    },
-    {
-      "type": "windows-restart",
-      "only": ["virtualbox-iso"]
-    },
-    {
-      "type": "powershell",
-      "inline": [
-          "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force",
-          "Install-Module -Name PowerShellGet -Force",
-          "Set-PSRepository -InstallationPolicy Trusted -Name PSGallery"
-      ]
-    },
-    {
-      "type": "powershell",
-      "scripts": [
-        "Install-Chocolatey.ps1",
-        "Install-Boxstarter.ps1"
-      ]
-    },
-    {
-      "type": "powershell",
-      "scripts": [
-        "Install-Common.ps1",
-        "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
-      ],
-      "valid_exit_codes": [ 0, 3010 ]
+      "winrm_username": "{{user `username`}}"
     }
   ],
   "post-processors": [
@@ -154,5 +98,67 @@
       "type": "vagrant",
       "vagrantfile_template": "Vagrantfile.template"
     }
-  ]
+  ],
+  "provisioners": [
+    {
+      "destination": "C:\\Program Files\\WindowsPowerShell\\Modules\\",
+      "source": "./.github-actions/images/win/scripts/ImageHelpers",
+      "type": "file"
+    },
+    {
+      "scripts": [
+        "./.github-actions/images/win/scripts/Installers/Configure-Antivirus.ps1"
+      ],
+      "type": "powershell"
+    },
+    {
+      "only": [
+        "virtualbox-iso"
+      ],
+      "script": "Install-VirtualBoxGuestAdditions.ps1",
+      "type": "powershell"
+    },
+    {
+      "only": [
+        "virtualbox-iso"
+      ],
+      "type": "windows-restart"
+    },
+    {
+      "inline": [
+        "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force",
+        "Install-Module -Name PowerShellGet -Force",
+        "Set-PSRepository -InstallationPolicy Trusted -Name PSGallery"
+      ],
+      "type": "powershell"
+    },
+    {
+      "scripts": [
+        "Install-Chocolatey.ps1",
+        "Install-Boxstarter.ps1"
+      ],
+      "type": "powershell"
+    },
+    {
+      "scripts": [
+        "Install-Common.ps1",
+        "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
+      ],
+      "type": "powershell",
+      "valid_exit_codes": [
+        0,
+        3010
+      ]
+    }
+  ],
+  "variables": {
+    "disk_size": "204800",
+    "headless": "true",
+    "iso_checksum": "E2A0E8A1F3BEFD002CCEE8E043ECF06AE10D877393E938731134814A023288B8",
+    "iso_checksum_type": "sha256",
+    "iso_url": "en_windows_server_2019_updated_july_2020_x64_dvd_94453821.iso",
+    "password": "vagrant",
+    "username": "vagrant"
+  }
 }
+
