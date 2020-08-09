@@ -106,6 +106,16 @@
       "type": "file"
     },
     {
+      "type": "file",
+      "source": "./.github-actions/images/win/scripts/SoftwareReport",
+      "destination": "c:\\image"
+    },
+    {
+        "type": "file",
+        "source": "./.github-actions/images/win/scripts/Tests",
+        "destination": "c:\\image"
+    },
+    {
       "scripts": [
         "./.github-actions/images/win/scripts/Installers/Configure-Antivirus.ps1"
       ],
