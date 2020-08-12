@@ -145,8 +145,7 @@
     {
       "scripts": [
         "{{template_dir}}/../Install-Chocolatey.ps1",
-        "{{template_dir}}/../Install-Boxstarter.ps1",
-        "{{template_dir}}/../Install-Common.ps1"
+        "{{template_dir}}/../Install-Boxstarter.ps1"
       ],
       "type": "powershell"
     },
