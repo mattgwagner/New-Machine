@@ -17,7 +17,7 @@ packer build windows-2019.json
 
 # Vagrant Info
 
-For now, I'm focusing my efforts on VirtualBox as the hypervisor of choice. Probably would work with Hyper-V, too, but I'd need to adapt the box creation piece via Packer.
+Most of my builds now target Hyper-V as my hypervisor of choice, but should generally still work with VirtualBox or another target. Check out Packer Post-Processors for modifying for other targets [https://www.packer.io/docs/post-processors]
 
 Depending on OS, follow instructions at vagrantup.com for installing + VirtualBox.
 
