@@ -40,9 +40,13 @@ choco install Firefox
 choco install 7zip.install 
 choco install adobereader
 
+choco install zoom
+
+choco install greenshot
+
+choco install google-backup-and-sync
+
 ## These are more common bare-metal / desktop usage installations
 
 # choco install f.lux
 # choco install rdcman
-# choco install google-backup-and-sync
-# choco install greenshot

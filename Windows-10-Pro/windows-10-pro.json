@@ -6,8 +6,8 @@
       "disk_size": "{{user `disk_size`}}",
       "enable_virtualization_extensions": true,
       "floppy_files": [
-        "Windows-10-Pro/autounattend.xml",
-        "Enable-PSRemoting.ps1"
+        "{{template_dir}}/autounattend.xml",
+        "{{template_dir}}/../Enable-PSRemoting.ps1"
       ],
       "generation": 1,
       "headless": true,
@@ -26,15 +26,15 @@
     {
       "output": "{{.BuildName}}.box",
       "type": "vagrant",
-      "vagrantfile_template": "Vagrantfile.template"
+      "vagrantfile_template": "{{template_dir}}/../Vagrantfile.template"
     }
   ],
   "provisioners": [
     {
       "scripts": [
-        "Install-Chocolatey.ps1",
-        "Install-Boxstarter.ps1",
-        "Install-Common.ps1"
+        "{{template_dir}}/../Install-Chocolatey.ps1",
+        "{{template_dir}}/../Install-Boxstarter.ps1",
+        "{{template_dir}}/../Install-Common.ps1"
       ],
       "type": "powershell"
     },
@@ -43,7 +43,7 @@
     },
     {
       "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
       ],
       "type": "powershell"
     }
@@ -53,7 +53,7 @@
     "headless": "true",
     "iso_checksum": "24E59806398203BFDCD17520F30D94CCF53917FF24C3584AA1E748920038A9C4",
     "iso_checksum_type": "sha256",
-    "iso_url": "en_windows_10_consumer_editions_version_2004_x64_dvd_8d28c5d7.iso",
+    "iso_url": "{{template_dir}}/en_windows_10_consumer_editions_version_2004_x64_dvd_8d28c5d7.iso",
     "password": "vagrant",
     "username": "vagrant"
   }
