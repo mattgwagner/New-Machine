@@ -6,8 +6,8 @@
       "disk_size": "{{user `disk_size`}}",
       "enable_virtualization_extensions": true,
       "floppy_files": [
-        "Windows-2019/autounattend.xml",
-        "Enable-PSRemoting.ps1"
+        "{{template_dir}}/autounattend.xml",
+        "{{template_dir}}/../Enable-PSRemoting.ps1"
       ],
       "generation": 1,
       "headless": true,
@@ -25,9 +25,9 @@
       "communicator": "winrm",
       "disk_size": "{{user `disk_size`}}",
       "floppy_files": [
-        "Windows-2019/autounattend.xml",
-        "Enable-PSRemoting.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
+        "{{template_dir}}/autounattend.xml",
+        "{{template_dir}}/../Enable-PSRemoting.ps1",
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
       ],
       "guest_additions_mode": "attach",
       "guest_os_type": "Windows2019_64",
@@ -102,22 +102,22 @@
   "provisioners": [
     {
       "destination": "C:\\Program Files\\WindowsPowerShell\\Modules\\",
-      "source": "./.github-actions/images/win/scripts/ImageHelpers",
+      "source": "{{template_dir}}/../.github-actions/images/win/scripts/ImageHelpers",
       "type": "file"
     },
     {
       "type": "file",
-      "source": "./.github-actions/images/win/scripts/SoftwareReport",
+      "source": "{{template_dir}}/../.github-actions/images/win/scripts/SoftwareReport",
       "destination": "c:\\image"
     },
     {
         "type": "file",
-        "source": "./.github-actions/images/win/scripts/Tests",
+        "source": "{{template_dir}}/../.github-actions/images/win/scripts/Tests",
         "destination": "c:\\image"
     },
     {
       "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Configure-Antivirus.ps1"
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Configure-Antivirus.ps1"
       ],
       "type": "powershell"
     },
@@ -125,7 +125,7 @@
       "only": [
         "virtualbox-iso"
       ],
-      "script": "Install-VirtualBoxGuestAdditions.ps1",
+      "script": "{{template_dir}}/../Install-VirtualBoxGuestAdditions.ps1",
       "type": "powershell"
     },
     {
@@ -144,8 +144,8 @@
     },
     {
       "scripts": [
-        "Install-Chocolatey.ps1",
-        "Install-Boxstarter.ps1"
+        "{{template_dir}}/../Install-Chocolatey.ps1",
+        "{{template_dir}}/../Install-Boxstarter.ps1"
       ],
       "type": "powershell"
     },
@@ -154,7 +154,7 @@
         "hyperv-iso"
       ],
       "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Install-Docker.ps1"
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Docker.ps1"
       ],
       "type": "powershell"
     },
@@ -166,14 +166,14 @@
     },
     {
       "scripts": [
-        "Install-Common.ps1",
-        "Install-PowerShellProfile.ps1",
-        "Install-VsCode.ps1",
-        "Install-DevTools.ps1",
-        "Install-GitTools.ps1",
-        "Install-DotnetCore.ps1",
-        "Install-VisualStudio2019.ps1",
-        "./SQL-Server/Install-SqlServer.ps1"
+        "{{template_dir}}/../Install-Common.ps1",
+        "{{template_dir}}/../Install-PowerShellProfile.ps1",
+        "{{template_dir}}/../Install-VsCode.ps1",
+        "{{template_dir}}/../Install-DevTools.ps1",
+        "{{template_dir}}/../Install-GitTools.ps1",
+        "{{template_dir}}/../Install-DotnetCore.ps1",
+        "{{template_dir}}/../Install-VisualStudio2019.ps1",
+        "{{template_dir}}/../SQL-Server/Install-SqlServer.ps1"
       ],
       "type": "powershell",
       "valid_exit_codes": [
@@ -186,10 +186,10 @@
     },
     {
       "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Install-PowershellCore.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-Git.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
-        "./.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1"
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-PowershellCore.ps1",
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Git.ps1",
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1"
       ],
       "type": "powershell"
     },
@@ -198,7 +198,7 @@
     },
     {
       "scripts": [
-        "./.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
       ],
       "type": "powershell"
     }
