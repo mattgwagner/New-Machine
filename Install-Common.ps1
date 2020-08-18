@@ -42,6 +42,8 @@ choco install adobereader
 
 choco install zoom
 
+choco install microsoft-teams.install
+
 choco install greenshot
 
 choco install google-backup-and-sync
