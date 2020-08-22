@@ -152,6 +152,15 @@
     },
     {
       "scripts": [
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
+      ],
+      "type": "powershell"
+    },
+    {
+      "type": "windows-restart"
+    },
+    {
+      "scripts": [
         "{{template_dir}}/../Install-Common.ps1",
         "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
       ],
