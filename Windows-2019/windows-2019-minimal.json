@@ -95,6 +95,7 @@
   ],
   "post-processors": [
     {
+      "name": "vagrant-image",
       "output": "{{.BuildName}}.box",
       "type": "vagrant",
       "vagrantfile_template": "Vagrantfile.template"
