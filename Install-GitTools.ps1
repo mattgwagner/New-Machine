@@ -2,6 +2,7 @@
 
 choco install TortoiseGit
 choco install github-desktop
+choco install git-credential-winstore
 
 mkdir "$($env:USERPROFILE)\.ssh" # Create .ssh folder for keys
 
