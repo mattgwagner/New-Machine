@@ -17,3 +17,5 @@ RefreshEnv
 Write-Output "Installing PoshGit to Profile"
 
 Add-PoshGitToProfile
+
+$env:GIT_SSH = "C:\WINDOWS\System32\OpenSSH\ssh.exe"
