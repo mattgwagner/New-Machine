@@ -41,6 +41,15 @@ Describe "CMake" {
     }
 }
 
+Describe "CodeQLBundle" {
+    It "CodeQLBundle" {
+        $CodeQLVersionsWildcard = Join-Path $Env:AGENT_TOOLSDIRECTORY -ChildPath "codeql" | Join-Path -ChildPath "*"
+        $CodeQLVersionPath = Get-ChildItem $CodeQLVersionsWildcard | Select-Object -First 1 -Expand FullName
+        $CodeQLPath = Join-Path $CodeQLVersionPath -ChildPath "x64" | Join-Path -ChildPath "codeql" | Join-Path -ChildPath "codeql.exe"
+        "$CodeQLPath version" | Should -ReturnZeroExitCode
+    }
+}
+
 Describe "R" {
     It "Rscript" {
         "Rscript --version" | Should -ReturnZeroExitCode
@@ -130,7 +139,7 @@ Describe "InnoSetup" {
     }
 }
 
-Describe "GoogleCouldSDK"  {
+Describe "GoogleCloudSDK"  {
     It "<ToolName>" -TestCases @(
         @{ ToolName = "bq" }
         @{ ToolName = "gcloud" }
@@ -184,6 +193,12 @@ Describe "PowerShell Core" {
 
     It "Execute 2+2 command" {
         pwsh -Command "2+2" | Should -BeExactly 4
+    }
+}
+
+Describe "Pulumi" {
+    It "pulumi" {
+       "pulumi version" | Should -ReturnZeroExitCode
     }
 }
 

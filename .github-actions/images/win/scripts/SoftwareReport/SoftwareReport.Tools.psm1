@@ -30,6 +30,14 @@ function Get-CMakeVersion {
     return "CMake $cmakeVersion"
 }
 
+function Get-CodeQLBundleVersion {
+    $CodeQLVersionsWildcard = Join-Path $Env:AGENT_TOOLSDIRECTORY -ChildPath "codeql" | Join-Path -ChildPath "*"
+    $CodeQLVersionPath = Get-ChildItem $CodeQLVersionsWildcard | Select-Object -First 1 -Expand FullName
+    $CodeQLPath = Join-Path $CodeQLVersionPath -ChildPath "x64" | Join-Path -ChildPath "codeql" | Join-Path -ChildPath "codeql.exe"
+    $CodeQLVersion = & $CodeQLPath version --quiet
+    return "CodeQL Action Bundle $CodeQLVersion"
+}
+
 function Get-DockerVersion {
     $dockerVersion = $(docker version --format "{{.Server.Version}}")
     return "Docker $dockerVersion"
@@ -105,6 +113,10 @@ function Get-OpenSSLVersion {
 
 function Get-PackerVersion {
     return "Packer $(packer --version)"
+}
+
+function Get-PulumiVersion {
+    return "Pulumi $(pulumi version)"
 }
 
 function Get-SQLPSVersion {
@@ -222,5 +234,29 @@ function Get-NewmanVersion {
 }
 
 function Get-GHVersion {
-    return "GitHub CLI $(gh --version)"
+    ($(gh --version) | Select-String -Pattern "gh version") -match "gh version (?<version>\d+\.\d+\.\d+)" | Out-Null
+    $ghVersion = $Matches.Version
+    return "GitHub CLI $ghVersion"
+}
+
+function Get-VisualCPPComponents {
+    $vcpp = Get-CimInstance -ClassName Win32_Product -Filter "Name LIKE 'Microsoft Visual C++%'"
+    $vcpp | Sort-Object Name, Version | ForEach-Object {
+        $isMatch = $_.Name -match "^(?<Name>Microsoft Visual C\+\+ \d{4})\s+(?<Arch>\w{3})\s+(?<Ext>.+)\s+-"
+        if ($isMatch) {
+            $name = '{0} {1}' -f $matches["Name"], $matches["Ext"]
+            $arch = $matches["Arch"].ToLower()
+            $version = $_.Version
+            [PSCustomObject]@{
+                Name = $name
+                Architecture = $arch
+                Version = $version
+            }
+        }
+    }
+}
+
+function Get-AZDSVersion {
+    $azdsVersion = $(azds --version) | Select-String "(\d+\.\d+\.\d+.\d+)"
+    return "Azure Dev Spaces CLI $azdsVersion"
 }

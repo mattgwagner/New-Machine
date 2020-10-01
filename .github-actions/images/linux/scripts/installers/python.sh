@@ -4,20 +4,18 @@
 ##  Desc:  Installs Python 2/3
 ################################################################################
 
+set -e
 # Source the helpers for use with the script
-source $HELPER_SCRIPTS/document.sh
 source $HELPER_SCRIPTS/os.sh
 
 # Install Python, Python 3, pip, pip3
-if isUbuntu20 ; then
-    apt-get install -y --no-install-recommends python3 python3-dev python3-pip
-
-    curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
-    python2 get-pip.py
+if isUbuntu16 || isUbuntu18; then
+    apt-get install -y --no-install-recommends python python-dev python-pip python3 python3-dev python3-pip
 fi
 
-if isUbuntu16 || isUbuntu18 ; then
-    apt-get install -y --no-install-recommends python python-dev python-pip python3 python3-dev python3-pip
+if isUbuntu20; then
+    apt-get install -y --no-install-recommends python3 python3-dev python3-pip
+    ln -s /usr/bin/pip3 /usr/bin/pip
 fi
 
 # Run tests to determine that the software installed as expected
@@ -28,10 +26,3 @@ for cmd in python pip python3 pip3; do
         exit 1
     fi
 done
-
-# Document what was added to the image
-echo "Lastly, documenting what we added to the metadata file"
-DocumentInstalledItem "Python ($(python --version 2>&1))"
-DocumentInstalledItem "pip ($(pip --version))"
-DocumentInstalledItem "Python3 ($(python3 --version))"
-DocumentInstalledItem "pip3 ($(pip3 --version))"
