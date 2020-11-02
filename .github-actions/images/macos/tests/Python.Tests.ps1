@@ -31,4 +31,14 @@ Describe "Python" {
     It "Pip 3 is available" {
         "pip3 --version" | Should -ReturnZeroExitCode
     }
+
+    It "Pipx is available" {
+        "pipx --version" | Should -ReturnZeroExitCode
+    }
+
+    It "Pip 3 and Python 3 came from the same brew formula" {
+        $pip3Path = Split-Path (readlink (which pip3))
+        $python3Path = Split-Path (readlink (which python3))
+        $pip3Path | Should -BeExactly $python3Path
+    }
 }

@@ -45,6 +45,11 @@
         },
         {
             "type": "file",
+            "source": "./provision/assets",
+            "destination": "~/image-generation/"
+        },
+        {
+            "type": "file",
             "source": "./tests",
             "destination": "~/image-generation/"
         },
@@ -128,6 +133,7 @@
             "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} {{ .Path }}",
             "pause_before": "30s",
             "scripts": [
+                "./provision/core/xcode-clt.sh",
                 "./provision/core/homebrew.sh",
                 "./provision/core/dotnet.sh",
                 "./provision/core/python.sh",
@@ -180,7 +186,8 @@
                 "./provision/core/edge.sh",
                 "./provision/core/firefox.sh",
                 "./provision/core/toolcache-high-sierra.sh",
-                "./provision/core/pypy.sh"
+                "./provision/core/pypy.sh",
+                "./provision/core/pipx-packages.sh"
             ]
         },
         {
