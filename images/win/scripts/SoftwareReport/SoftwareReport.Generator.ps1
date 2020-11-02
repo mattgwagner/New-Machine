@@ -1,5 +1,3 @@
-$ErrorActionPreference = "Stop"
-
 Import-Module MarkdownPS
 Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Android.psm1") -DisableNameChecking
 Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Browsers.psm1") -DisableNameChecking
@@ -74,7 +72,6 @@ $markdown += New-MDList -Style Unordered -Lines @(
 
 $markdown += New-MDHeader "Tools" -Level 3
 $markdown += New-MDList -Style Unordered -Lines @(
-    (Get-AzCosmosDBEmulatorVersion),
     (Get-AzCopyVersion),
     (Get-BazelVersion),
     (Get-BazeliskVersion),
@@ -91,15 +88,12 @@ $markdown += New-MDList -Style Unordered -Lines @(
     (Get-KubectlVersion),
     (Get-KindVersion),
     (Get-MinGWVersion),
-    (Get-MySQLVersion),
     (Get-MercurialVersion),
     (Get-NSISVersion),
     (Get-NewmanVersion),
     (Get-OpenSSLVersion),
     (Get-PackerVersion),
     (Get-PulumiVersion),
-    (Get-SQLPSVersion),
-    (Get-SQLServerPSVersion),
     (Get-SVNVersion),
     (Get-GHCVersion),
     (Get-CabalVersion),
@@ -148,14 +142,22 @@ $markdown += New-MDList -Style Unordered -Lines @(
     (Get-SeleniumWebDriverVersion -Driver "iexplorer")
 )
 
+$markdown += New-MDHeader "Shells" -Level 3
+$markdown += Get-ShellTarget
+$markdown += New-MDNewLine
+
 $markdown += New-MDHeader "MSYS2" -Level 3
 $markdown += Get-PacmanVersion
 $markdown += New-MDNewLine
+$markdown += New-MDHeader "Notes:" -Level 5
 $markdown += @'
 ```
 Location: C:\msys64
 
-Note: MSYS2 is pre-installed on image but not added to PATH.
+1. MSYS2 is pre-installed on image
+2. C:\msys64\mingw64\bin is added to PATH and has lower precedence than C:\Windows\System32
+3. C:\msys64\usr\bin is added to PATH and has lower precedence than C:\Windows\System32
+4. Default bash.exe shell is set to the C:\msys64\usr\bin\bash.exe
 ```
 '@
 $markdown += New-MDNewLine
@@ -166,6 +168,15 @@ $markdown += New-MDNewLine
 
 $markdown += New-MDHeader "Databases" -Level 3
 $markdown += Build-DatabasesMarkdown
+$markdown += New-MDNewLine
+
+$markdown += New-MDHeader "Database tools" -Level 3
+$markdown += New-MDList -Style Unordered -Lines @(
+    (Get-AzCosmosDBEmulatorVersion),
+    (Get-DacFxVersion),
+    (Get-SQLPSVersion),
+    (Get-MySQLVersion)
+)
 $markdown += New-MDNewLine
 
 $vs = Get-VisualStudioVersion
@@ -229,5 +240,9 @@ $markdown += New-MDNewLine
 $markdown += New-MDHeader "Android" -Level 3
 $markdown += Build-AndroidTable | New-MDTable
 $markdown += New-MDNewLine
+
+# Docker images section
+$markdown += New-MDHeader "Cached Docker images" -Level 3
+$markdown += New-MDList -Style Unordered -Lines @(Get-CachedDockerImages)
 
 $markdown | Out-File -FilePath "C:\InstalledSoftware.md"
