@@ -175,9 +175,9 @@
   "variables": {
     "disk_size": "204800",
     "headless": "true",
-    "iso_checksum": "7560B13B89EC3F5112DE75CAF69698EDDCADFC35FE8A82BE44BB5170B2B34DD7",
+    "iso_checksum": "E80947CEA3BE3E2063DB822E24C90A43402B37D1D9A6A744B891AD21FBF44ACB",
     "iso_checksum_type": "sha256",
-    "iso_url": "{{template_dir}}/en_windows_server_2019_updated_sep_2020_x64_dvd_2d6f25f2.iso",
+    "iso_url": "{{template_dir}}/en_windows_server_2019_updated_oct_2020_x64_dvd_7484fc77.iso",
     "password": "vagrant",
     "username": "vagrant"
   }
