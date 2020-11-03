@@ -40,8 +40,13 @@
                     </InstallTo>
                     <InstallFrom>
                         <MetaData wcm:action="add">
-                            <Key>/IMAGE/NAME</Key>
-                            <Value>Windows Server 2019 SERVERDATACENTER</Value>
+                            <Key>/IMAGE/INDEX</Key>
+                            <!-- dism /get-wiminfo /wimfile:d:\sources\install.wim -->
+                            <!-- 1 2019 Standard -->
+                            <!-- 2 2019 Standard Desktop Experience -->
+                            <!-- 3 2019 Datacenter -->
+                            <!-- 4 2019 Datacenter Desktop Experience -->
+                            <Value>4</Value>
                         </MetaData>
                     </InstallFrom>
                 </OSImage>
