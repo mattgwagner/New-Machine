@@ -8,12 +8,8 @@
 source $HELPER_SCRIPTS/os.sh
 
 # List of versions
-if isUbuntu20 ; then
-    versions=$(pwsh -Command '(Find-Module -Name Az).Version')
-else
-    toolset="$INSTALLER_SCRIPT_FOLDER/toolset.json"
-    versions=$(jq -r '.azureModules[] | select(.name | contains("az")) | .versions[]' $toolset)
-fi
+toolset="$INSTALLER_SCRIPT_FOLDER/toolset.json"
+versions=$(jq -r '.azureModules[] | select(.name | contains("az")) | .versions[]' $toolset)
 
 # Try to install and update PowerShellGet before the actual installation
 pwsh -Command "Install-Module -Name PowerShellGet -Force"
@@ -22,6 +18,10 @@ pwsh -Command "Update-Module -Name PowerShellGet -Force"
 # Install Azure CLI (instructions taken from https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 for version in ${versions[@]}; do
     pwsh -Command "Save-Module -Name Az -LiteralPath /usr/share/az_$version -RequiredVersion $version -Force -Verbose"
+    if isUbuntu20; then
+        rm -rf "/usr/share/az_$version/Az.Accounts"
+        pwsh -Command "Save-Module -Name Az.Accounts -LiteralPath /usr/share/az_$version -RequiredVersion 1.9.5 -Force -Verbose"
+    fi
 done
 
 # Run tests to determine that the software installed as expected
