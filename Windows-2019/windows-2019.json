@@ -208,7 +208,8 @@
     },
     {
       "scripts": [
-        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Finalize-VM.ps1"
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Finalize-VM.ps1",
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Configure-AntiVirus.ps1"
       ],
       "type": "powershell"
     }
