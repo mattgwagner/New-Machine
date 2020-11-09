@@ -49,7 +49,7 @@
                         <DiskID>0</DiskID>
                         <PartitionID>2</PartitionID>
                     </InstallTo>
-                    <<InstallFrom>
+                    <InstallFrom>
                         <MetaData wcm:action="add">
                             <Key>/IMAGE/NAME</Key>
                             <!-- dism /get-wiminfo /wimfile:d:\sources\install.wim -->
