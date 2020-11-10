@@ -136,16 +136,9 @@
       "type": "windows-restart"
     },
     {
-      "inline": [
-        "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force",
-        "Install-Module -Name PowerShellGet -Force",
-        "Set-PSRepository -InstallationPolicy Trusted -Name PSGallery"
-      ],
-      "type": "powershell"
-    },
-    {
       "scripts": [
         "{{template_dir}}/../Install-Chocolatey.ps1",
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Nuget.ps1",
         "{{template_dir}}/../Install-Boxstarter.ps1"
       ],
       "type": "powershell"
