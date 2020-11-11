@@ -4,4 +4,4 @@ choco install sql-server-express -ia "/IACCEPTSQLSERVERLICENSETERMS /Q /ACTION=i
 
 choco install sql-server-management-studio
 
-Install-Module -Name SqlServer -Force -AllowClobber
+# Install-Module -Name SqlServer -Force -AllowClobber
