@@ -8,6 +8,11 @@ function Get-OSVersion {
     return "OS Version: $OSVersion Build $OSBuild"
 }
 
+function Get-BashVersion {
+    $version = bash -c 'echo ${BASH_VERSION}'
+    return "Bash $version"
+}
+
 function Get-JavaVersionsList {
     param(
         [string] $DefaultVersion
@@ -103,7 +108,8 @@ function Get-ChocoVersion {
 function Get-VcpkgVersion {
     ($(vcpkg version) | Out-String) -match "version (?<version>\d+\.\d+\.\d+)" | Out-Null
     $vcpkgVersion = $Matches.Version
-    return "Vcpkg $vcpkgVersion"
+    $commitId = git -C "C:\vcpkg" rev-parse --short HEAD
+    return "Vcpkg $vcpkgVersion (build from master \<$commitId>)"
 }
 
 function Get-NPMVersion {
@@ -284,6 +290,11 @@ function Get-PacmanVersion {
 
 function Get-YAMLLintVersion {
     yamllint --version
+}
+
+function Get-BizTalkVersion {
+    $bizTalkReg = Get-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Microsoft\BizTalk Server\3.0"
+    return "- $($bizTalkReg.ProductName) $($bizTalkReg.ProductVersion) "
 }
 
 function Get-PipxVersion {

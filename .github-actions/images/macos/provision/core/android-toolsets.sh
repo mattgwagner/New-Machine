@@ -1,5 +1,6 @@
 #!/bin/bash -e -o pipefail
 source ~/utils/utils.sh
+source ~/utils/invoke-tests.sh
 
 function filter_components_by_version {
     minimumVersion=$1
@@ -23,6 +24,7 @@ ANDROID_PLATFORM=($(get_toolset_value '.android.platform_min_version'))
 ANDROID_BUILD_TOOL=($(get_toolset_value '.android.build_tools_min_version'))
 ANDROID_EXTRA_LIST=($(get_toolset_value '.android."extra-list"[]'))
 ANDROID_ADDON_LIST=($(get_toolset_value '.android."addon-list"[]'))
+ANDROID_ADDITIONAL_TOOLS=($(get_toolset_value '.android."additional-tools"[]'))
 
 # Get the latest command line tools from https://developer.android.com/studio/index.html
 # Release note: https://developer.android.com/studio/releases/sdk-tools.html
@@ -93,6 +95,12 @@ do
     echo y | $SDKMANAGER "add-ons;$addon_name"
 done
 
+for tool_name in "${ANDROID_ADDITIONAL_TOOLS[@]}"
+do
+    echo "Installing additional tool $tool_name ..."
+    echo y | $SDKMANAGER "$tool_name"
+done
+
 popd
 
 echo "Installing ProGuard-5..."
@@ -105,3 +113,5 @@ curl -L -o proguard5.tgz $PROGUARD_LOCATION
 tar xzf proguard5.tgz --strip 1 && rm -f proguard5.tgz
 cp ../proguard4/proguard-*.txt . # Copy the Proguard Android definitions from the previous version
 popd
+
+invoke_tests "Android"

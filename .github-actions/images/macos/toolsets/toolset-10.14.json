@@ -2,7 +2,18 @@
     "xcode": {
         "default": "11.3.1",
         "versions": [
-            "11.3.1", "11.3", "11.2.1", "11.2", "11.1", "11", "10.3", "10.2.1", "10.2", "10.1", "10", "9.4.1"
+            { "link": "11.3.1", "version": "11.3.1", "symlinks": ["11.3.1_beta"] },
+            { "link": "11.3", "version": "11.3.0", "symlinks": ["11.3_beta"] },
+            { "link": "11.2.1", "version": "11.2.1", "symlinks": ["11.2.1_beta"] },
+            { "link": "11.2", "version": "11.2.0", "symlinks": ["11.2_beta"] },
+            { "link": "11.1", "version": "11.1.0", "symlinks": ["11.1_beta"] },
+            { "link": "11", "version": "11.0.0", "symlinks": ["11_beta"] },
+            { "link": "10.3", "version": "10.3.0", "symlinks": ["10.3_beta"] },
+            { "link": "10.2.1", "version": "10.2.1", "symlinks": ["10.2.1_beta"] },
+            { "link": "10.2", "version": "10.2.0", "symlinks": ["10.2_beta"] },
+            { "link": "10.1", "version": "10.1.0", "symlinks": ["10.1_beta"] },
+            { "link": "10", "version": "10.0.0", "symlinks": ["10_beta"] },
+            { "link": "9.4.1", "version": "9.4.1" }
         ]
     },
     "xamarin": {
@@ -198,6 +209,9 @@
         ],
         "addon-list": [
             "addon-google_apis-google-24", "addon-google_apis-google-23", "addon-google_apis-google-22", "addon-google_apis-google-21"
+        ],
+        "additional-tools": [
+            "cmdline-tools;latest"
         ]
     },
     "powershellModules": [
@@ -210,6 +224,36 @@
         {"name": "MarkdownPS"},
         {"name": "Pester"}
     ],
+    "brew": {
+        "common_packages": [
+            "carthage",
+            "cmake",
+            "subversion",
+            "go",
+            "gnupg",
+            "llvm",
+            "libpq",
+            "zstd",
+            "packer",
+            "helm",
+            "aliyun-cli",
+            "bazelisk",
+            "gh",
+            "p7zip",
+            "ant",
+            "aria2",
+            "gnu-tar",
+            "xctool",
+            "bats",
+            "parallel"
+        ],
+        "cask_packages": [
+            "julia",
+            "virtualbox",
+            "vagrant",
+            "r"
+        ]
+    },
     "toolcache": [
         {
             "name": "Python",
@@ -258,6 +302,17 @@
                 "1.14.*",
                 "1.15.*"
             ]
+        },
+        {
+            "name": "Ruby",
+            "arch": "x64",
+            "versions": [
+                "2.4.*",
+                "2.5.*",
+                "2.6.*",
+                "2.7.*",
+                "3.0.*"
+            ]
         }
     ],
     "pipx": [
@@ -265,5 +320,10 @@
             "package": "yamllint",
             "cmd": "yamllint --version"
         }
-    ]
+    ],
+    "dotnet": {
+        "versions": [
+            "2.1"
+        ]
+    }
 }

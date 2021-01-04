@@ -157,6 +157,11 @@ function Get-LeiningenVersion {
     return "$(lein -v | Take-OutputPart -Part 0,1)"
 }
 
+function Get-MediainfoVersion {
+    $mediainfoVersion = (mediainfo --version | Select-Object -Index 1 | Take-OutputPart -Part 2).Replace('v', '')
+    return "MediaInfo $mediainfoVersion"
+}
+
 function Get-NewmanVersion {
     return "Newman $(newman --version)"
 }
@@ -168,6 +173,11 @@ function Get-NvmVersion {
 
 function Get-PackerVersion {
     return "Packer $(packer --version)"
+}
+
+function Get-PassVersion {
+    $passVersion = (pass version | Select-String "^=\s+v").Line.Replace('v','') | Take-OutputPart -Part 1
+    return "pass $passVersion"
 }
 
 function Get-PhantomJSVersion {
