@@ -1,13 +1,14 @@
 #!/bin/bash -e -o pipefail
 
 source ~/utils/utils.sh
+source ~/utils/invoke-tests.sh
 
 installAzulJDK() {
     local URL=$1
     local TMP_FILE=/tmp/openjdk.dmg
     local TMP_MOUNT=`/usr/bin/mktemp -d /tmp/zulu.XXXX`
     # Download dmg
-    curl "${URL}" -o "${TMP_FILE}"
+    download_with_retries $URL "/tmp" "openjdk.dmg"
     # Attach dmg
     hdiutil attach "${TMP_FILE}" -mountpoint "${TMP_MOUNT}"
     # Install pkg
@@ -35,9 +36,9 @@ JAVA_DEFAULT=$(get_toolset_value '.java.default')
 for JAVA_VERSION in "${JAVA_VERSIONS_LIST[@]}"
 do
     if [[ $JAVA_VERSION == "7" ]]; then
-        installAzulJDK "https://cdn.azul.com/zulu/bin/zulu7.42.0.13-ca-jdk7.0.282-macosx_x64.dmg"
+        installAzulJDK "https://cdn.azul.com/zulu/bin/zulu7.42.0.51-ca-jdk7.0.285-macosx_x64.dmg"
     else
-        brew cask install "adoptopenjdk${JAVA_VERSION}"
+        brew install --cask "adoptopenjdk${JAVA_VERSION}"
     fi
     createEnvironmentVariable "JAVA_HOME_${JAVA_VERSION}_X64" $JAVA_VERSION
 done
@@ -45,7 +46,9 @@ done
 createEnvironmentVariable "JAVA_HOME" $JAVA_DEFAULT
 
 echo Installing Maven...
-brew install maven
+brew_smart_install "maven"
 
 echo Installing Gradle ...
-brew install gradle
+brew_smart_install "gradle"
+
+invoke_tests "Java"

@@ -3,6 +3,7 @@
 ##  File:  pypy.sh
 ##  Desc:  Installs PyPy
 ################################################################################
+
 source ~/utils/utils.sh
 
 function InstallPyPy
@@ -12,7 +13,7 @@ function InstallPyPy
     PACKAGE_TAR_NAME=$(echo $PACKAGE_URL | awk -F/ '{print $NF}')
     echo "Downloading tar archive '$PACKAGE_TAR_NAME' - '$PACKAGE_URL'"
     PACKAGE_TAR_TEMP_PATH="/tmp/$PACKAGE_TAR_NAME"
-    wget -q -O $PACKAGE_TAR_TEMP_PATH $PACKAGE_URL
+    download_with_retries $PACKAGE_URL "/tmp" "$PACKAGE_TAR_NAME"
 
     echo "Expand '$PACKAGE_TAR_NAME' to the /tmp folder"
     tar xf $PACKAGE_TAR_TEMP_PATH -C /tmp
@@ -30,6 +31,9 @@ function InstallPyPy
 
     PACKAGE_TEMP_FOLDER="/tmp/$PACKAGE_NAME"
     PYTHON_FULL_VERSION=$("$PACKAGE_TEMP_FOLDER/bin/$PYPY_MAJOR" -c "import sys;print('{}.{}.{}'.format(sys.version_info[0],sys.version_info[1],sys.version_info[2]))")
+    PYPY_FULL_VERSION=$("$PACKAGE_TEMP_FOLDER/bin/$PYPY_MAJOR" -c "import sys;print('{}.{}.{}'.format(*sys.pypy_version_info[0:3]))")
+    echo "Put '$PYPY_FULL_VERSION' to PYPY_VERSION file"
+    echo $PYPY_FULL_VERSION > "$PACKAGE_TEMP_FOLDER/PYPY_VERSION"
 
     # PyPy folder structure
     PYPY_TOOLCACHE_PATH=$AGENT_TOOLSDIRECTORY/PyPy
@@ -49,6 +53,11 @@ function InstallPyPy
 
     echo "Create additional symlinks (Required for UsePythonVersion Azure DevOps task)"
     cd $PYPY_TOOLCACHE_VERSION_ARCH_PATH/bin
+
+    PYPY_FULL_VERSION=$(./$PYPY_MAJOR -c "import sys;print('{}.{}.{}'.format(*sys.pypy_version_info[0:3]))")
+    echo "PYPY_FULL_VERSION is $PYPY_FULL_VERSION"
+    echo $PYPY_FULL_VERSION > "PYPY_VERSION"
+
     ln -s $PYPY_MAJOR $PYTHON_MAJOR
     ln -s $PYTHON_MAJOR python
 

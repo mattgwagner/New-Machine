@@ -1,14 +1,14 @@
 #!/bin/bash -e -o pipefail
+source ~/utils/utils.sh
 
 echo Installing Rustup...
-brew install rustup-init
+brew_smart_install "rustup-init"
 
 echo Installing Rust language...
 rustup-init -y --no-modify-path --default-toolchain=stable --profile=minimal
 
 echo Initialize environment variables...
 CARGO_HOME=$HOME/.cargo
-source $CARGO_HOME/env
 
 echo Install common tools...
 rustup component add rustfmt clippy

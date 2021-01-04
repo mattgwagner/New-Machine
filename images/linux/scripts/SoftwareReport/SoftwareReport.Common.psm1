@@ -1,7 +1,6 @@
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Helpers.psm1") -DisableNameChecking
-
-function Get-OSName {
-    lsb_release -ds
+function Get-BashVersion {
+    $version = bash -c 'echo ${BASH_VERSION}'
+    return "Bash $version"
 }
 
 function Get-CPPVersions {
@@ -47,6 +46,11 @@ function Get-MonoVersion {
 function Get-NodeVersion {
     $nodeVersion = $(node --version).Substring(1)
     return "Node $nodeVersion"
+}
+
+function Get-PerlVersion {
+    $version = $(perl -e 'print substr($^V,1)')
+    return "Perl $version"
 }
 
 function Get-PythonVersion {
@@ -133,7 +137,8 @@ function Get-VcpkgVersion {
     $result = Get-CommandResult "vcpkg version"
     $result.Output -match "version (?<version>\d+\.\d+\.\d+)" | Out-Null
     $vcpkgVersion = $Matches.version
-    return "Vcpkg $vcpkgVersion"
+    $commitId = git -C "/usr/local/share/vcpkg" rev-parse --short HEAD
+    return "Vcpkg $vcpkgVersion (build from master \<$commitId>)"
 }
 
 function Get-AntVersion {
@@ -226,6 +231,21 @@ function Get-AzModuleVersions {
 
     $azModuleVersions = $azModuleVersions -join " "
     return $azModuleVersions
+}
+
+function Get-PowerShellModules {
+    $modules = (Get-ToolsetContent).powershellModules.name
+
+    $psModules = Get-Module -Name $modules -ListAvailable | Sort-Object Name | Group-Object Name
+    $psModules | ForEach-Object {
+        $moduleName = $_.Name
+        $moduleVersions = ($_.group.Version | Sort-Object -Unique) -join '<br>'
+
+        [PSCustomObject]@{
+            Module = $moduleName
+            Version = $moduleVersions
+        }
+    }
 }
 
 function Get-DotNetCoreSdkVersions {
