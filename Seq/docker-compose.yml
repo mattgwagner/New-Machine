@@ -9,3 +9,6 @@ services:
     ports:
       - 5341:5341
       - 80:80
+    volumes:
+      # Data is the name of my Azure storage mount
+      - Data:/data 
