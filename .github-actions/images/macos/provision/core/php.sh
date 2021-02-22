@@ -6,3 +6,5 @@ brew_smart_install "php"
 
 echo Installing composer
 brew_smart_install "composer"
+
+invoke_tests "PHP"

@@ -1,9 +1,3 @@
-Describe "7-Zip" {
-    It "7z" {
-        "7z" | Should -ReturnZeroExitCode
-    }
-}
-
 Describe "azcopy" {
     It "azcopy" {
         #(azcopy --version) command returns exit code 1 (see details: https://github.com/Azure/azure-storage-azcopy/releases)
@@ -181,27 +175,9 @@ Describe "Sbt" {
     }
 }
 
-Describe "Sphinx" {
-    It "sphinx" {
-        "searchd -h" | Should -ReturnZeroExitCode
-    }
-}
-
 Describe "Selenium" {
     It "Selenium Server 'selenium-server-standalone.jar' is installed" {
         "/usr/share/java/selenium-server-standalone.jar" | Should -Exist
-    }
-}
-
-Describe "SVN" {
-    It "svn" {
-        "svn --version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Swig" {
-    It "swig" {
-        "swig -version" | Should -ReturnZeroExitCode
     }
 }
 
@@ -299,21 +275,9 @@ Describe "Conda" {
     }
 }
 
-Describe "Netlify" {
-    It "netlify" {
-        "netlify --version" | Should -ReturnZeroExitCode
-    }
-}
-
 Describe "Packer" {
     It "packer" {
         "packer --version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Pollinate" {
-    It "pollinate" {
-        "sudo pollinate -r && sleep 5 && sudo grep pollinate /var/log/syslog" | Should -ReturnZeroExitCode
     }
 }
 
@@ -329,9 +293,13 @@ Describe "Phantomjs" {
     }
 }
 
-Describe "Haveged" {
-    It "haveged" {
-        "systemctl status haveged  | grep 'active (running)'" | Should -ReturnZeroExitCode
+Describe "GraalVM" -Skip:(-not (Test-IsUbuntu20)) {
+    It "graalvm" {
+        '$GRAALVM_11_ROOT/bin/java -version' | Should -ReturnZeroExitCode
+    }
+
+    It "native-image" {
+        '$GRAALVM_11_ROOT/bin/native-image --version' | Should -ReturnZeroExitCode
     }
 }
 
@@ -348,7 +316,7 @@ Describe "Containers" -Skip:(Test-IsUbuntu16) {
 }
 
 Describe "Node.js" {
-    $testCases = @("node", "grunt", "gulp", "webpack", "parcel", "yarn", "newman") | ForEach-Object { @{NodeCommand = $_} }
+    $testCases = @("node", "grunt", "gulp", "webpack", "parcel", "yarn", "newman", "netlify", "vercel", "now") | ForEach-Object { @{NodeCommand = $_} }
 
     It "<NodeCommand>" -TestCases $testCases {
         param (
@@ -356,7 +324,7 @@ Describe "Node.js" {
         )
 
         "$NodeCommand --version" | Should -ReturnZeroExitCode
-    }   
+    }
 }
 
 Describe "nvm" {
@@ -375,4 +343,27 @@ Describe "Python" {
 
         "$PythonCommand --version" | Should -ReturnZeroExitCode
     }   
+}
+
+Describe "Ruby" {
+    $testCases = @("ruby", "gem") | ForEach-Object { @{RubyCommand = $_} }
+
+    It "<RubyCommand>" -TestCases $testCases {
+        param (
+            [string] $RubyCommand
+        )
+
+        "$RubyCommand --version" | Should -ReturnZeroExitCode
+    }
+
+    $gemTestCases = (Get-ToolsetContent).rubygems | ForEach-Object {
+        @{gemName = $_.name}
+    }
+
+    if ($gemTestCases)
+    {
+        It "Gem <gemName> is installed" -TestCases $gemTestCases {
+            "gem list -i '^$gemName$'" | Should -MatchCommandOutput "true"
+        }
+    }
 }
