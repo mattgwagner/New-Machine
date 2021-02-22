@@ -1,5 +1,4 @@
 #!/bin/bash -e -o pipefail
-
 source ~/utils/utils.sh
 
 echo Installing Ruby...
@@ -41,3 +40,5 @@ for TOOLSET_VERSION in ${TOOLSET_VERSIONS[@]}; do
         touch $COMPLETE_FILE_PATH
     fi
 done
+
+invoke_tests "Ruby"

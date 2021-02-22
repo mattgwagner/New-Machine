@@ -1,5 +1,4 @@
 #!/bin/bash -e -o pipefail
-
 source ~/utils/utils.sh
 
 echo Updating RubyGems...
@@ -30,3 +29,5 @@ gem install bundler --force
 
 echo Installing fastlane tools...
 gem install fastlane
+
+invoke_tests "RubyGem"

@@ -30,7 +30,6 @@
             "platform" : "linux",
             "arch": "x64",
             "versions": [
-                "8.*",
                 "10.*",
                 "12.*",
                 "14.*"
@@ -46,7 +45,7 @@
                 "1.14.*",
                 "1.15.*"
             ],
-            "default": "1.14.*"
+            "default": "1.15.*"
         },
         {
             "name": "boost",
@@ -79,6 +78,12 @@
             ]
         }
     ],
+    "java": {
+        "default": "8",
+        "versions": [
+            "8", "11", "12"
+        ]
+    },
     "android": {
         "platform_min_version": "17",
         "build_tools_min_version": "19.1.0",
@@ -94,13 +99,14 @@
             "addon-google_apis-google-21"
         ],
         "additional_tools": [
-            "cmake;3.6.4111459",
             "cmake;3.10.2.4988404",
             "patcher;v4",
-            "ndk-bundle",
             "platform-tools",
             "cmdline-tools;latest"
-        ]
+        ],
+        "ndk": {
+            "lts": "21"
+        }
     },
     "powershellModules": [
         {"name": "MarkdownPS"},
@@ -127,11 +133,13 @@
     ],
     "apt": {
         "common_packages": [
+            "build-essential",
             "dbus",
             "dnsutils",
             "dpkg",
             "fakeroot",
             "gnupg2",
+            "imagemagick",
             "iproute2",
             "iputils-ping",
             "lib32z1",
@@ -142,6 +150,9 @@
             "libgconf-2-4",
             "libgsl-dev",
             "libgtk-3-0",
+            "libmagic-dev",
+            "libmagickcore-dev",
+            "libmagickwand-dev",
             "libsecret-1-dev",
             "libsqlite3-dev",
             "libunwind8",
@@ -149,6 +160,7 @@
             "libxss1",
             "locales",
             "openssh-client",
+            "p7zip-rar",
             "pkg-config",
             "rpm",
             "texinfo",
@@ -162,25 +174,33 @@
             "zsync"
         ],
         "cmd_packages": [
+            "binutils",
             "bison",
             "brotli",
             "bzip2",
+            "coreutils",
             "curl",
             "file",
             "flex",
             "ftp",
+            "haveged",
             "jq",
             "m4",
             "mediainfo",
             "netcat",
             "parallel",
             "pass",
+            "p7zip-full",
             "patchelf",
+            "pollinate",
             "rsync",
             "shellcheck",
             "sqlite3",
+            "sphinxsearch",
             "ssh",
+            "subversion",
             "sudo",
+            "swig",
             "telnet",
             "time",
             "unzip",
@@ -261,5 +281,6 @@
             "7.4",
             "8.0"
         ]
-    }
+    },
+    "rubygems": []
 }

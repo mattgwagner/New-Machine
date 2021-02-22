@@ -1,5 +1,3 @@
-Import-Module "$PSScriptRoot/../helpers/SoftwareReport.Helpers.psm1" -DisableNameChecking
-
 function Get-BashVersion {
     $version = bash -c 'echo ${BASH_VERSION}'
     return "Bash $version"
@@ -24,9 +22,30 @@ function Get-RVersion {
     $rVersion = Run-Command "R --version | grep 'R version'" | Take-Part -Part 2
     return "R $rVersion"
 }
+
 function Get-RustVersion {
     $rustVersion = Run-Command "rustc --version" | Take-Part -Part 1
     return "Rust $rustVersion"
+}
+
+function Get-RustfmtVersion {
+    $version = Run-Command "rustfmt --version" | Take-Part -Part 1
+    return "Rustfmt $version"
+}
+
+function Get-RustdocVersion {
+    $version = Run-Command "rustdoc --version" | Take-Part -Part 1
+    return "Rustdoc $version"
+}
+
+function Get-RustCargoVersion {
+    $version = Run-Command "cargo --version" | Take-Part -Part 1
+    return "Cargo $version"
+}
+
+function Get-RustClippyVersion {
+    $version = Run-Command "cargo clippy --version" | Take-Part -Part 1
+    return "Clippy $version"
 }
 
 function Get-Bindgen {
@@ -140,6 +159,11 @@ function Get-PHPVersion {
 function Get-NodeVersion {
     $nodeVersion = Run-Command "node --version"
     return "Node.js $nodeVersion"
+}
+
+function Get-PerlVersion {
+    $version = Run-Command "perl -e 'print substr(`$^V,1)'"
+    return "Perl $version"
 }
 
 function Get-PythonVersion {
@@ -446,4 +470,22 @@ function Get-SwiftLintVersion {
 function Get-PowershellVersion {
     $powershellVersion = Run-Command "powershell --version"
     return $powershellVersion
+}
+
+function Build-PackageManagementEnvironmentTable {
+    return @(
+        @{
+            "Name" = "CONDA"
+            "Value" = $env:CONDA
+        },
+        @{
+            "Name" = "VCPKG_INSTALLATION_ROOT"
+            "Value" = $env:VCPKG_INSTALLATION_ROOT
+        }
+    ) | ForEach-Object {
+        [PSCustomObject] @{
+            "Name" = $_.Name
+            "Value" = $_.Value
+        }
+    }
 }
