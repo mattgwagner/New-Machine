@@ -8,4 +8,4 @@ choco install sql-server-2019
 
 choco install sql-server-management-studio
 
-# Install-Module -Name SqlServer -Force -AllowClobber
+Install-Module -Name SqlServer -Force -AllowClobber
