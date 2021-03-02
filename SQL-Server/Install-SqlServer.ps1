@@ -7,5 +7,3 @@ Write-Output "Starting SQL Server Installs"
 choco install sql-server-2019
 
 choco install sql-server-management-studio
-
-Install-Module -Name SqlServer -Force -AllowClobber

@@ -1,0 +1,1 @@
+Install-Module -Name SqlServer -Force -AllowClobber
