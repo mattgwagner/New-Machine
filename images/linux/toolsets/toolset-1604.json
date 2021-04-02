@@ -48,16 +48,6 @@
             "default": "1.15.*"
         },
         {
-            "name": "boost",
-            "url" : "https://raw.githubusercontent.com/actions/boost-versions/main/versions-manifest.json",
-            "platform" : "linux",
-            "platform_version": "16.04",
-            "arch": "x64",
-            "versions": [
-                "1.72.0"
-            ]
-        },
-        {
             "name": "Ruby",
             "platform_version": "16.04",
             "arch": "x64",
@@ -119,19 +109,13 @@
     "azureModules": [
         {
             "name": "az",
+            "url" : "https://raw.githubusercontent.com/Azure/az-ps-module-versions/main/versions-manifest.json",
             "versions": [
-                "1.0.0",
-                "1.6.0",
-                "2.3.2",
-                "2.6.0",
-                "2.8.0",
+                "5.5.0"
+            ],
+            "zip_versions": [
                 "3.1.0",
-                "3.5.0",
-                "3.8.0",
-                "4.3.0",
-                "4.4.0",
-                "4.6.0",
-                "4.7.0"
+                "4.4.0"
             ]
         }
     ],
@@ -168,6 +152,7 @@
             "p7zip-rar",
             "p7zip",
             "pkg-config",
+            "python-setuptools",
             "rpm",
             "texinfo",
             "tk",
@@ -194,6 +179,7 @@
             "m4",
             "mediainfo",
             "netcat",
+            "net-tools",
             "p7zip-full",
             "parallel",
             "pass",
@@ -225,8 +211,6 @@
             "buildpack-deps:buster",
             "debian:8",
             "debian:9",
-            "jekyll/builder",
-            "mcr.microsoft.com/azure-pipelines/node8-typescript",
             "node:10",
             "node:12",
             "node:10-alpine",
@@ -247,22 +231,17 @@
     },
     "clang": {
         "versions": [
-            "6.0",
-            "8",
             "9"
         ],
         "default_version": "9"
     },
     "gcc": {
         "versions": [
-            "g++-7",
-            "g++-8",
             "g++-9"
         ]
     },
     "gfortran": {
         "versions": [
-            "gfortran-8",
             "gfortran-9"
         ]
     },
@@ -318,6 +297,10 @@
         {
             "name": "netlify-cli",
             "command": "netlify"
+        },
+        {
+            "name": "yarn",
+            "command": "yarn"
         }
     ]
 }
