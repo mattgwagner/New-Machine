@@ -40,7 +40,8 @@ choco install Firefox
 choco install 7zip.install 
 choco install adobereader
 
-choco install greenshot
+## choco install greenshot
+choco install cloudapp
 
 choco install google-backup-and-sync
 
