@@ -103,20 +103,24 @@
     "azureModules": [
         {
             "name": "az",
+            "url" : "https://raw.githubusercontent.com/Azure/az-ps-module-versions/main/versions-manifest.json",
             "versions": [
-                "3.8.0",
-                "4.8.0"
+                "5.5.0"
+            ],
+            "zip_versions": [
+                "3.1.0",
+                "4.4.0"
             ]
         }
     ],
     "apt": {
         "common_packages": [
             "build-essential",
-            "chromium-browser",
             "dbus",
             "dnsutils",
             "dpkg",
             "fakeroot",
+            "fonts-noto-color-emoji",
             "gnupg2",
             "imagemagick",
             "iproute2",
@@ -154,6 +158,7 @@
             "zsync"
         ],
         "cmd_packages": [
+            "acl",
             "binutils",
             "bison",
             "brotli",
@@ -168,6 +173,7 @@
             "m4",
             "mediainfo",
             "netcat",
+            "net-tools",
             "p7zip-full",
             "parallel",
             "pass",
@@ -198,8 +204,6 @@
             "buildpack-deps:buster",
             "debian:8",
             "debian:9",
-            "jekyll/builder",
-            "mcr.microsoft.com/azure-pipelines/node8-typescript",
             "node:10",
             "node:12",
             "node:10-alpine",
@@ -215,6 +219,10 @@
         {
             "package": "aws-sam-cli",
             "cmd": "sam"
+        },
+        {
+            "package": "ansible-base",
+            "cmd": "ansible"
         }
     ],
     "dotnet": {
@@ -230,23 +238,20 @@
     },
     "clang": {
         "versions": [
-            "8",
             "9",
-            "10"
+            "10",
+            "11"
         ],
         "default_version": "10"
     },
     "gcc": {
         "versions": [
-            "g++-7",
-            "g++-8",
             "g++-9",
             "g++-10"
         ]
     },
     "gfortran": {
         "versions": [
-            "gfortran-8",
             "gfortran-9",
             "gfortran-10"
         ]
@@ -304,6 +309,10 @@
         {
             "name": "lerna",
             "command": "lerna"
+        },
+        {
+            "name": "yarn",
+            "command": "yarn"
         }
     ]
 }
