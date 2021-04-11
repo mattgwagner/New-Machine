@@ -6,6 +6,5 @@ choco install baretail
 choco install conemu
 
 choco install sqlitebrowser
-choco install azure-data-studio
 
 choco install winmerge
