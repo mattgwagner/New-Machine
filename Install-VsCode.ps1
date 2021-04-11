@@ -8,7 +8,8 @@ $Extensions = @(
     'ms-azuretools.vscode-docker',
     'eamodio.gitlens',
     'ms-mssql.mssql',
-    'esbenp.prettier-vscode'
+    'esbenp.prettier-vscode',
+    'ms-azuretools.vscode-cosmosdb'
 )
 
 choco install vscode
