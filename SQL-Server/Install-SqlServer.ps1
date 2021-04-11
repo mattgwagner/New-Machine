@@ -7,3 +7,5 @@ Write-Output "Starting SQL Server Installs"
 choco install sql-server-2019
 
 choco install sql-server-management-studio
+
+choco install azure-data-studio
