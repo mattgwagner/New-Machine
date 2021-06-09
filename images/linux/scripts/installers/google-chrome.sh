@@ -42,6 +42,9 @@ download_with_retries $CHROME_DEB_URL "/tmp" "${CHROME_DEB_NAME}"
 apt install "/tmp/${CHROME_DEB_NAME}" -f
 echo "CHROME_BIN=/usr/bin/google-chrome" | tee -a /etc/environment
 
+# Remove Google Chrome repo
+rm -f /etc/cron.daily/google-chrome /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.save
+
 # Parse Google Chrome version
 FULL_CHROME_VERSION=$(google-chrome --product-version)
 CHROME_VERSION=${FULL_CHROME_VERSION%.*}
@@ -79,6 +82,7 @@ mkdir $CHROMIUM_DIR
 unzip -qq /tmp/${ZIP_FILE} -d $CHROMIUM_DIR
 
 ln -s $CHROMIUM_BIN /usr/bin/chromium
+ln -s $CHROMIUM_BIN /usr/bin/chromium-browser
 
 invoke_tests "Browsers" "Chrome"
 invoke_tests "Browsers" "Chromium"

@@ -72,7 +72,8 @@
         "default": "11",
         "versions": [
             "8", "11"
-        ]
+        ],
+        "maven": "3.8.1"
     },
     "android": {
         "platform_min_version": "27",
@@ -86,6 +87,7 @@
         ],
         "additional_tools": [
             "cmake;3.10.2.4988404",
+            "cmake;3.18.1",
             "patcher;v4",
             "platform-tools",
             "cmdline-tools;latest"
@@ -105,7 +107,7 @@
             "name": "az",
             "url" : "https://raw.githubusercontent.com/Azure/az-ps-module-versions/main/versions-manifest.json",
             "versions": [
-                "5.5.0"
+                "5.7.0"
             ],
             "zip_versions": [
                 "3.1.0",
@@ -154,7 +156,6 @@
             "xorriso",
             "xvfb",
             "xz-utils",
-            "zstd",
             "zsync"
         ],
         "cmd_packages": [
@@ -184,6 +185,7 @@
             "sphinxsearch",
             "sqlite3",
             "ssh",
+            "sshpass",
             "subversion",
             "sudo",
             "swig",
@@ -194,31 +196,33 @@
             "zip"
         ]
     },
+    "brew": [
+        {"name": "zstd"}
+    ],
     "docker": {
         "images": [
-            "alpine:3.7",
-            "alpine:3.8",
-            "alpine:3.9",
-            "alpine:3.10",
+            "alpine:3.11",
+            "alpine:3.12",
+            "alpine:3.13",
             "buildpack-deps:stretch",
             "buildpack-deps:buster",
-            "debian:8",
             "debian:9",
+            "debian:10",
             "node:10",
             "node:12",
+            "node:14",
             "node:10-alpine",
             "node:12-alpine",
-            "ubuntu:14.04"
+            "node:14-alpine",
+            "ubuntu:16.04",
+            "ubuntu:18.04",
+            "ubuntu:20.04"
         ]
     },
     "pipx": [
         {
             "package": "yamllint",
             "cmd": "yamllint"
-        },
-        {
-            "package": "aws-sam-cli",
-            "cmd": "sam"
         },
         {
             "package": "ansible-base",
@@ -238,11 +242,11 @@
     },
     "clang": {
         "versions": [
-            "9",
             "10",
-            "11"
+            "11",
+            "12"
         ],
-        "default_version": "10"
+        "default_version": "11"
     },
     "gcc": {
         "versions": [
