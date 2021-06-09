@@ -45,7 +45,7 @@
         {
             "name": "PyPy",
             "arch": "x86",
-            "platform" : "win32",
+            "platform" : "win64",
             "versions": [
                 "2.7",
                 "3.6",
@@ -121,7 +121,7 @@
             "name": "az",
             "url" : "https://raw.githubusercontent.com/Azure/az-ps-module-versions/main/versions-manifest.json",
             "versions": [
-                "5.5.0"
+                "5.7.0"
             ],
             "zip_versions": [
                 "1.0.0",
@@ -133,8 +133,8 @@
                 "3.8.0",
                 "4.3.0",
                 "4.4.0",
-                "4.6.0",
-                "4.7.0"
+                "4.7.0",
+                "5.5.0"
             ]
         }
     ],
@@ -164,6 +164,7 @@
         ],
         "additional_tools": [
             "cmake;3.10.2.4988404",
+            "cmake;3.18.1",
             "patcher;v4",
             "cmdline-tools;latest"
         ],
@@ -171,6 +172,79 @@
             "lts": "21",
             "latest": "22"
         }
+    },
+    "MsysPackages": {
+        "msys2": [
+            "base-devel",
+            "compression"
+        ],
+        "mingw": [
+            {
+                "arch": "mingw-w64-x86_64",
+                "runtime_packages": [
+                    {
+                        "name": "clang",
+                        "executables": [
+                            "clang",
+                            "g++",
+                            "gcc"
+                        ]
+                    },
+                    {
+                        "name": "cmake",
+                        "executables": [
+                            "cmake",
+                            "cpack",
+                            "ctest"
+                        ]
+                    },
+                    {
+                        "name": "ragel",
+                        "executables": [
+                            "ragel"
+                        ]
+                    }
+                ],
+                "additional_packages": [
+                    "clang-tools-extra",
+                    "libxml2",
+                    "llvm",
+                    "toolchain"
+                ]
+            },
+            {
+                "arch": "mingw-w64-i686",
+                "runtime_packages": [
+                    {
+                        "name": "clang",
+                        "executables": [
+                            "clang",
+                            "g++",
+                            "gcc"
+                        ]
+                    },
+                    {
+                        "name": "cmake",
+                        "executables": [
+                            "cmake",
+                            "cpack",
+                            "ctest"
+                        ]
+                    },
+                    {
+                        "name": "ragel",
+                        "executables": [
+                            "ragel"
+                        ]
+                    }
+                ],
+                "additional_packages": [
+                    "libxml2",
+                    "llvm",
+                    "toolchain"
+                ]
+            }
+        ]
     },
     "visualStudio": {
         "version" : "2017",
@@ -255,7 +329,7 @@
             "mcr.microsoft.com/windows/nanoserver:10.0.14393.953",
             "mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2016",
             "mcr.microsoft.com/dotnet/framework/runtime:4.8-windowsservercore-ltsc2016",
-            "microsoft/aspnetcore-build:1.0-2.0"
+            "mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2016"
         ]
     },
     "pipx": [

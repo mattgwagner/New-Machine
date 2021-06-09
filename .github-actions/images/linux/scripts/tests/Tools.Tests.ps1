@@ -150,6 +150,10 @@ Describe "Mono" {
         "mono --version" | Should -ReturnZeroExitCode
     }
 
+    It "msbuild" {
+        "msbuild -version" | Should -ReturnZeroExitCode
+    }
+
     It "nuget" {
         "nuget" | Should -ReturnZeroExitCode
     }
@@ -224,6 +228,14 @@ Describe "HHVM" {
 Describe "Homebrew" {
     It "homebrew" {
         "brew --version" | Should -ReturnZeroExitCode
+    }
+
+    Context "Packages" {
+        $testCases = (Get-ToolsetContent).brew | ForEach-Object { @{ ToolName = $_.name } }
+
+        It "<ToolName>" -TestCases $testCases {
+           "$ToolName --version" | Should -Not -BeNullOrEmpty
+        }
     }
 }
 
