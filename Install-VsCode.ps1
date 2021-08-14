@@ -4,6 +4,7 @@
 
 $Extensions = @(
     'ms-dotnettools.csharp',
+    'github.codespaces',
     'ms-vscode.powershell',
     'ms-azuretools.vscode-docker',
     'eamodio.gitlens',
