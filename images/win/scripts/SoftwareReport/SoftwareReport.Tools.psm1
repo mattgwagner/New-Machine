@@ -1,3 +1,9 @@
+function Get-Aria2Version {
+    (aria2c -v | Out-String) -match "(?<version>(\d+\.){1,}\d+)" | Out-Null
+    $aria2Version = $Matches.Version
+    return "aria2 $aria2Version"
+}
+
 function Get-AzCosmosDBEmulatorVersion {
     $regKey = gci HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\* | gp | ? { $_.DisplayName -eq 'Azure Cosmos DB Emulator' }
     $installDir = $regKey.InstallLocation
@@ -65,6 +71,11 @@ function Get-GitLFSVersion {
     $(git-lfs version) -match "git-lfs\/(?<version>\d+\.\d+\.\d+)" | Out-Null
     $gitLfsVersion = $Matches.Version
     return "Git LFS $gitLfsVersion"
+}
+
+function Get-GVFSVersion {
+    $gvfsVersion = (Get-Command gvfs).Version
+    return "GVFS $gvfsVersion"
 }
 
 function Get-InnoSetupVersion {
@@ -260,8 +271,7 @@ function Get-VisualCPPComponents {
 }
 
 function Get-DacFxVersion {
-    cd "C:\Program Files\Microsoft SQL Server\150\DAC\bin\"
-    $dacfxversion = (./sqlpackage.exe /version)
+    $dacfxversion = & "$env:ProgramFiles\Microsoft SQL Server\150\DAC\bin\sqlpackage.exe" /version
     return "DacFx $dacfxversion"
 }
 

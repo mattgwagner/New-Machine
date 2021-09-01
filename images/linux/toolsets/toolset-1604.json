@@ -72,8 +72,7 @@
         "default": "8",
         "versions": [
             "8", "11", "12"
-        ],
-        "maven": "3.8.1"
+        ]
     },
     "android": {
         "platform_min_version": "23",
@@ -96,9 +95,7 @@
         "additional_tools": [
             "cmake;3.10.2.4988404",
             "cmake;3.18.1",
-            "patcher;v4",
-            "platform-tools",
-            "cmdline-tools;latest"
+            "platform-tools"
         ],
         "ndk": {
             "lts": "21"
