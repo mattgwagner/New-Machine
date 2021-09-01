@@ -1,7 +1,7 @@
 function Get-PostgreSqlVersion {
     $postgreSQLVersion = psql --version | Take-OutputPart -Part 2
     $aptSourceRepo = Get-AptSourceRepository -PackageName "postgresql"
-    return "Postgre SQL $postgreSQLVersion (apt source repository: $aptSourceRepo)"
+    return "PostgreSQL $postgreSQLVersion (apt source repository: $aptSourceRepo)"
 }
 
 function Get-MongoDbVersion {
@@ -25,6 +25,11 @@ function Get-SQLCmdVersion {
     return "sqlcmd $sqlcmdVersion"
 }
 
+function Get-SqlPackageVersion {
+    $sqlPackageVersion = sqlpackage /version
+    return "SqlPackage $sqlPackageVersion"
+}
+
 function Build-MySQLSection {
     $output = ""
 
@@ -45,7 +50,8 @@ function Build-MSSQLToolsSection {
 
     $output += New-MDHeader "MS SQL Server Client Tools" -Level 4
     $output += New-MDList -Style Unordered -Lines @(
-        (Get-SQLCmdVersion)
+        (Get-SQLCmdVersion),
+        (Get-SqlPackageVersion)
     )
 
     return $output

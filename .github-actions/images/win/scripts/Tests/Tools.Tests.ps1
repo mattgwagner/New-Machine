@@ -1,17 +1,5 @@
 Import-Module (Join-Path $PSScriptRoot "..\SoftwareReport\SoftwareReport.Common.psm1") -DisableNameChecking
 
-Describe "7-Zip" {
-    It "7z" {
-        "7z" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "AzCopy" {
-    It "AzCopy" {
-        "azcopy --version" | Should -ReturnZeroExitCode
-    }
-}
-
 Describe "Azure Cosmos DB Emulator" {
     $cosmosDbEmulatorRegKey = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | Get-ItemProperty | Where-Object { $_.DisplayName -eq 'Azure Cosmos DB Emulator' }
     $installDir = $cosmosDbEmulatorRegKey.InstallLocation
@@ -35,18 +23,6 @@ Describe "Bazel" {
     }
 }
 
-Describe "Bicep" {
-    It "Bicep" {
-        "bicep --version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "CMake" {
-    It "cmake" {
-        "cmake --version" | Should -ReturnZeroExitCode
-    }
-}
-
 Describe "CodeQLBundle" {
     It "CodeQLBundle" {
         $CodeQLVersionsWildcard = Join-Path $Env:AGENT_TOOLSDIRECTORY -ChildPath "codeql" | Join-Path -ChildPath "*"
@@ -66,31 +42,18 @@ Describe "DACFx" {
     It "DACFx" {
         (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*).DisplayName -Contains "Microsoft SQL Server Data-Tier Application Framework (x64)" | Should -BeTrue
         $sqlPackagePath = 'C:\Program Files\Microsoft SQL Server\150\DAC\bin\SqlPackage.exe'
-        $sqlLocalDBPath = 'C:\Program Files\Microsoft SQL Server\130\Tools\Binn\SqlLocalDB.exe'
         "${sqlPackagePath}" | Should -Exist
+    }
+
+    It "SqlLocalDB" -Skip:(Test-IsWin22) {
+        $sqlLocalDBPath = 'C:\Program Files\Microsoft SQL Server\130\Tools\Binn\SqlLocalDB.exe'
         "${sqlLocalDBPath}" | Should -Exist
     }
 }
 
-Describe "DotnetTLS" {
+Describe "DotnetTLS" -Skip:(Test-IsWin22) {
     It "Tls 1.2 is enabled" {
         [Net.ServicePointManager]::SecurityProtocol -band "Tls12" | Should -Be Tls12
-    }
-}
-
-Describe "Jq" {
-    It "Jq" {
-        "jq -n ." | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Julia" {
-    It "Julia path exists" {
-        "C:\Julia" | Should -Exist
-    }
-
-    It "Julia" {
-        "julia --version" | Should -ReturnZeroExitCode
     }
 }
 
@@ -128,13 +91,7 @@ Describe "Mingw64" {
     }
 }
 
-Describe "InnoSetup" {
-    It "InnoSetup" {
-        (Get-Command -Name iscc).CommandType | Should -BeExactly "Application"
-    }
-}
-
-Describe "GoogleCloudSDK"  {
+Describe "GoogleCloudSDK" -Skip:(Test-IsWin22) {
     It "<ToolName>" -TestCases @(
         @{ ToolName = "bq" }
         @{ ToolName = "gcloud" }
@@ -151,33 +108,9 @@ Describe "NET48" {
     }
 }
 
-Describe "NSIS" {
+Describe "NSIS" -Skip:(Test-IsWin22) {
     It "NSIS" {
        "makensis /VERSION" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Nuget" {
-    It "Nuget" {
-       "nuget" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "OpenSSL" {
-    It "OpenSSL" {
-       "openssl version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Packer" {
-    It "Packer" {
-       "packer --version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Perl" {
-    It "Perl" {
-       "perl --version" | Should -ReturnZeroExitCode
     }
 }
 
@@ -191,39 +124,21 @@ Describe "PowerShell Core" {
     }
 }
 
-Describe "Pulumi" {
-    It "pulumi" {
-       "pulumi version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Sbt" {
+Describe "Sbt" -Skip:(Test-IsWin22) {
     It "sbt" {
         "sbt --version" | Should -ReturnZeroExitCode
     }
 }
 
-Describe "ServiceFabricSDK" {
+Describe "ServiceFabricSDK" -Skip:(Test-IsWin22) {
     It "PowerShell Module" {
         Get-Module -Name ServiceFabric -ListAvailable | Should -Not -BeNullOrEmpty
-    }
-}
-
-Describe "Svn" {
-    It "svn" {
-        "svn --version --quiet" | Should -ReturnZeroExitCode
     }
 }
 
 Describe "Stack" {
     It "Stack" {
         "stack --version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Typescript" {
-    It "tsc" {
-        "tsc --version" | Should -ReturnZeroExitCode
     }
 }
 
@@ -241,13 +156,7 @@ Describe "Vcpkg" {
     }
 }
 
-Describe "VSWhere" {
-    It "vswhere" {
-        "vswhere" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "WebPlatformInstaller" {
+Describe "WebPlatformInstaller" -Skip:(Test-IsWin22) {
     It "WebPlatformInstaller" {
         "WebPICMD" | Should -ReturnZeroExitCode
     }
@@ -262,11 +171,5 @@ Describe "Zstd" {
 Describe "Pipx" {
     It "Pipx" {
         "pipx --version" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "Swig" {
-    It "Swig" {
-        "swig -version" | Should -ReturnZeroExitCode
     }
 }

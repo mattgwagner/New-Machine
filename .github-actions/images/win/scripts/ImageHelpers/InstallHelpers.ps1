@@ -318,7 +318,8 @@ function Get-VSExtensionVersion
 
 function Get-ToolsetContent
 {
-    $toolsetJson = Get-Content -Path $env:TOOLSET_JSON_PATH -Raw
+    $toolsetPath = Join-Path "C:\\image" "toolset.json"
+    $toolsetJson = Get-Content -Path $toolsetPath -Raw
     ConvertFrom-Json -InputObject $toolsetJson
 }
 
@@ -379,6 +380,11 @@ function Get-WinVersion
     (Get-CimInstance -ClassName Win32_OperatingSystem).Caption
 }
 
+function Test-IsWin22
+{
+    (Get-WinVersion) -match "2022"
+}
+
 function Test-IsWin19
 {
     (Get-WinVersion) -match "2019"
@@ -416,6 +422,7 @@ function Install-AndroidSDKPackages {
         [Parameter(Mandatory=$true)]
         [string]$AndroidSDKRootPath,
         [Parameter(Mandatory=$true)]
+        [AllowEmptyCollection()]
         [string[]]$AndroidPackages,
         [string] $PrefixPackageName
     )
@@ -432,7 +439,7 @@ function Get-AndroidPackages {
         [string]$AndroidSDKManagerPath
     )
 
-    return (& $AndroidSDKManagerPath --list --verbose).Trim() | Foreach-Object { $_.Split()[0] } | Where-Object {$_}
+    return (cmd /c "$AndroidSDKManagerPath --list --verbose 2>&1").Trim() | Foreach-Object { $_.Split()[0] } | Where-Object {$_}
 }
 
 function Get-AndroidPackagesByName {
