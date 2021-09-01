@@ -32,7 +32,7 @@
   "provisioners": [
     {
       "scripts": [
-        "{{template_dir}}/../Install-Chocolatey.ps1",
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Choco.ps1",
         "{{template_dir}}/../Install-Boxstarter.ps1",
         "{{template_dir}}/../Install-Common.ps1"
       ],
