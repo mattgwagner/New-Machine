@@ -14,12 +14,8 @@ cask "hermes"
 
 cask "keepingyouawake"
 
-cask "microsoft-office"
-
 cask "microsoft-teams"
 
 cask "spectacle"
 
 cask "google-chrome"
-
-cask "iterm2"
