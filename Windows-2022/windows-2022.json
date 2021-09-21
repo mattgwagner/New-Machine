@@ -1,0 +1,226 @@
+{
+    "variables": {
+      "disk_size": "204800",
+      "headless": "true",
+      "iso_checksum": "DC6877B430A559DBC3440C65F4B5B1C685E71B4B19934AC049C8ED0E00206CD0",
+      "iso_checksum_type": "sha256",
+      "iso_url": "{{template_dir}}/en-us_windows_server_version_2022_updated_sep_2021_x64_dvd_ae6b4843.iso",
+      "password": "vagrant",
+      "username": "vagrant"
+    },
+    "builders": [
+      {
+        "communicator": "winrm",
+        "cpus": 4,
+        "disk_size": "{{user `disk_size`}}",
+        "enable_virtualization_extensions": true,
+        "floppy_files": [
+          "{{template_dir}}/autounattend.xml",
+          "{{template_dir}}/../Enable-PSRemoting.ps1"
+        ],
+        "generation": 1,
+        "headless": true,
+        "iso_checksum": "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}",
+        "iso_url": "{{user `iso_url`}}",
+        "memory": 8192,
+        "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+        "shutdown_timeout": "1h",
+        "type": "hyperv-iso",
+        "winrm_password": "{{user `password`}}",
+        "winrm_timeout": "12h",
+        "winrm_username": "{{user `username`}}"
+      },
+      {
+        "communicator": "winrm",
+        "disk_size": "{{user `disk_size`}}",
+        "floppy_files": [
+          "{{template_dir}}/autounattend.xml",
+          "{{template_dir}}/../Enable-PSRemoting.ps1"
+        ],
+        "guest_additions_mode": "attach",
+        "guest_os_type": "Windows2019_64",
+        "hard_drive_interface": "sata",
+        "headless": "{{user `headless`}}",
+        "iso_checksum": "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}",
+        "iso_url": "{{user `iso_url`}}",
+        "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+        "shutdown_timeout": "1h",
+        "type": "virtualbox-iso",
+        "vboxmanage": [
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--memory",
+            "8192"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--cpus",
+            "4"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--vram",
+            "64"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--audio",
+            "none"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--nictype1",
+            "82545EM"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--nictype2",
+            "82545EM"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--nictype3",
+            "82545EM"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--nictype4",
+            "82545EM"
+          ]
+        ],
+        "winrm_password": "{{user `password`}}",
+        "winrm_timeout": "12h",
+        "winrm_username": "{{user `username`}}"
+      }
+    ],
+    "post-processors": [
+      {
+        "name": "vagrant-image",
+        "output": "{{.BuildName}}.box",
+        "type": "vagrant",
+        "vagrantfile_template": "Vagrantfile.template"
+      }
+    ],
+    "provisioners": [
+      {
+        "destination": "C:\\Program Files\\WindowsPowerShell\\Modules\\",
+        "source": "{{template_dir}}/../.github-actions/images/win/scripts/ImageHelpers",
+        "type": "file"
+      },
+      {
+        "type": "file",
+        "source": "{{template_dir}}/../.github-actions/images/win/scripts/SoftwareReport",
+        "destination": "c:\\image"
+      },
+      {
+          "type": "file",
+          "source": "{{template_dir}}/../.github-actions/images/win/scripts/Tests",
+          "destination": "c:\\image"
+      },
+      {
+        "scripts": [
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Configure-Antivirus.ps1"
+        ],
+        "type": "powershell"
+      },
+      {
+        "only": [
+          "virtualbox-iso"
+        ],
+        "script": "{{template_dir}}/../Install-VirtualBoxGuestAdditions.ps1",
+        "type": "powershell"
+      },
+      {
+        "only": [
+          "virtualbox-iso"
+        ],
+        "type": "windows-restart"
+      },
+      {
+        "scripts": [
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Choco.ps1",
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Nuget.ps1",
+          "{{template_dir}}/../Install-Boxstarter.ps1"
+        ],
+        "type": "powershell"
+      },
+      {
+        "only": [
+          "hyperv-iso"
+        ],
+        "scripts": [
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Docker.ps1",
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Windows2019/Install-WSL.ps1"
+        ],
+        "type": "powershell",
+        "elevated_user": "SYSTEM",
+        "elevated_password": ""
+      },
+      {
+        "only": [
+          "hyperv-iso"
+        ],
+        "type": "windows-restart"
+      },
+      {
+        "scripts": [
+          "{{template_dir}}/../Install-Common.ps1",
+          "{{template_dir}}/../Install-PowerShellProfile.ps1",
+          "{{template_dir}}/../Install-VsCode.ps1",
+          "{{template_dir}}/../Install-DevTools.ps1",
+          "{{template_dir}}/../Install-GitTools.ps1",
+          "{{template_dir}}/../Install-DotnetCore.ps1",
+          "{{template_dir}}/../Install-VisualStudio2019.ps1",
+          "{{template_dir}}/../SQL-Server/Install-SqlServer.ps1",
+          "{{template_dir}}/../Install-CosmosDb.ps1"
+        ],
+        "type": "powershell",
+        "valid_exit_codes": [
+          0,
+          3010
+        ]
+      },
+      {
+        "type": "windows-restart"
+      },
+      {
+        "scripts": [
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-PowershellCore.ps1",
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-SQLPowerShellTools.ps1",
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Git.ps1",
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1"
+        ],
+        "type": "powershell"
+      },
+      {
+        "type": "windows-restart"
+      },
+      {
+        "scripts": [
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-WindowsUpdates.ps1"
+        ],
+        "type": "powershell"
+      },
+      {
+        "type": "windows-restart"
+      },
+      {
+        "scripts": [
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Finalize-VM.ps1",
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Configure-AntiVirus.ps1"
+        ],
+        "type": "powershell"
+      }
+    ]
+  }
+  
+  
