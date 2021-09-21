@@ -1,32 +1,35 @@
 | Announcements |
 |-|
-| [[macOS, Windows] .NET SDK pre-installation policy will be changed on September, 6](https://github.com/actions/virtual-environments/issues/3809) |
+| [(Public Beta) Windows Server 2022 with Visual Studio 2022 is now available](https://github.com/actions/virtual-environments/issues/3949) |
 ***
 # Microsoft Windows Server 2022 Datacenter
 - OS Version: 10.0.20348 Build 169
-- Image Version: 20210819.7
+- Image Version: 20210914.2
+
+## Enabled windows optional features
+- Windows Subsystem for Linux [WSLv1]
 
 ## Installed Software
 ### Language and Runtime
 - Bash 4.4.23(1)-release
-- Go 1.16.7
+- Go 1.16.8
 - Julia 1.6.2
 - Kotlin 1.5.20
-- Node 14.17.5
-- PHP 8.0.9
-- Python 3.9.6
+- Node 14.17.6
+- PHP 8.0.10
+- Python 3.9.7
 - Ruby 3.0.2p107
 
 ### Package Management
-- Chocolatey 0.10.15
-- Composer 2.1.5
+- Chocolatey 0.11.1
+- Composer 2.1.7
 - Helm 3.6.3
-- NPM 6.14.14
+- NPM 6.14.15
 - NuGet 5.11.0.10
 - pip 21.2.4 (python 3.9)
 - Pipx 0.16.4
 - RubyGems 3.2.22
-- Vcpkg  (build from master \<bd7fc2c>)
+- Vcpkg  (build from master \<e201002>)
 - Yarn 1.22.11
 
 #### Environment variables
@@ -36,20 +39,20 @@
 
 ### Project Management
 - Ant 1.10.11
-- Gradle 7.1
-- Maven 3.8.1
+- Gradle 7.2
+- Maven 3.8.2
 
 ### Tools
 - 7zip 19.00
-- aria2 1.35.0
-- azcopy 10.11.0
-- Bazel 4.2.0
+- aria2 1.36.0
+- azcopy 10.12.1
+- Bazel 4.2.1
 - Bazelisk 1.10.1
 - Bicep 0.4.613
 - Cabal 3.4.0.0
-- CMake 3.21.1
-- CodeQL Action Bundle 2.5.9
-- Docker 20.10.6
+- CMake 3.21.2
+- CodeQL Action Bundle 2.6.1
+- Docker 20.10.7
 - Docker-compose 1.29.2
 - ghc 9.0.1
 - Git 2.33.0
@@ -57,52 +60,52 @@
 - GVFS 1.0.21085.9
 - jq 1.6
 - Kind 0.11.1
-- Kubectl 1.22.0
+- Kubectl 1.22.1
 - Mercurial 5.0
 - Mingw-w64 8.1.0
-- Newman 5.2.4
+- Newman 5.3.0
 - OpenSSL 1.1.1
 - Packer 1.7.4
-- Pulumi v3.10.2
+- Pulumi v3.12.0
 - R 4.1.1
 - Stack 2.7.3
 - Subversion (SVN) 1.14.1
 - Swig 4.0.2
 - VSWhere 2.8.4
 - WinAppDriver 1.2.2009.02003
-- yamllint 1.26.2
+- yamllint 1.26.3
 - zstd 1.5.0
 
 ### CLI Tools
-- Alibaba Cloud CLI 3.0.88
-- AWS CLI 2.2.30
-- AWS SAM CLI 1.28.0
+- Alibaba Cloud CLI 3.0.90
+- AWS CLI 2.2.37
+- AWS SAM CLI 1.31.0
 - AWS Session Manager CLI 1.2.245.0
-- Azure CLI 2.27.1
+- Azure CLI 2.28.0
 - Azure DevOps CLI extension 0.20.0
-- GitHub CLI 1.14.0
+- GitHub CLI 2.0.0
 - Hub CLI 2.14.2
 
 ### Rust Tools
-- Cargo 1.54.0
-- Rust 1.54.0
-- Rustdoc 1.54.0
+- Cargo 1.55.0
+- Rust 1.55.0
+- Rustdoc 1.55.0
 - Rustup 1.24.3
 
 #### Packages
 - bindgen 0.59.1
-- cargo-audit 0.14.1
+- cargo-audit 0.15.2
 - cargo-outdated v0.9.17
 - cbindgen 0.20.0
-- Clippy 0.1.54
+- Clippy 0.1.55
 - Rustfmt 1.4.37
 
 ### Browsers and webdrivers
-- Google Chrome 92.0.4515.159
-- Chrome Driver 92.0.4515.107
-- Microsoft Edge 92.0.902.73
-- Microsoft Edge Driver 92.0.902.73
-- Mozilla Firefox 91.0.1
+- Google Chrome 93.0.4577.82
+- Chrome Driver 93.0.4577.63
+- Microsoft Edge 93.0.961.47
+- Microsoft Edge Driver 93.0.961.47
+- Mozilla Firefox 92.0
 - Gecko Driver 0.29.1
 - IE Driver 3.150.1.1
 
@@ -114,10 +117,10 @@
 | GECKOWEBDRIVER  | C:\SeleniumWebDrivers\GeckoDriver  |
 
 ### Java
-| Version             | Vendor        | Environment Variable |
-| ------------------- | ------------- | -------------------- |
-| 8.0.302+8 (default) | Adopt OpenJDK | JAVA_HOME_8_X64      |
-| 11.0.12+7           | Adopt OpenJDK | JAVA_HOME_11_X64     |
+| Version             | Vendor          | Environment Variable |
+| ------------------- | --------------- | -------------------- |
+| 8.0.302+8 (default) | Eclipse Temurin | JAVA_HOME_8_X64      |
+| 11.0.12+7           | Eclipse Temurin | JAVA_HOME_11_X64     |
 
 ### Shells
 | Name          | Target                            |
@@ -127,7 +130,7 @@
 | wslbash.exe   | C:\Windows\System32\bash.exe      |
 
 ### MSYS2
-- Pacman 6.0.0
+- Pacman 6.0.1
 ##### Notes:
 ```
 Location: C:\msys64
@@ -139,15 +142,16 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | Version | Architecture | Environment Variable |
 | ------- | ------------ | -------------------- |
 | 1.15.15 | x64          | GOROOT_1_15_X64      |
-| 1.16.7 (Default) | x64          | GOROOT_1_16_X64      |
+| 1.16.8 (Default) | x64          | GOROOT_1_16_X64      |
+| 1.17.1  | x64          | GOROOT_1_17_X64      |
 
 
 #### Node
 | Version | Architecture |
 | ------- | ------------ |
 | 10.24.1 | x64          |
-| 12.22.5 | x64          |
-| 14.17.5 | x64          |
+| 12.22.6 | x64          |
+| 14.17.6 | x64          |
 
 
 #### Python
@@ -155,7 +159,7 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | ------- | ------------ |
 | 3.7.9   | x64          |
 | 3.8.10  | x64          |
-| 3.9.6 (Default) | x64          |
+| 3.9.7 (Default) | x64          |
 
 
 #### Ruby
@@ -195,9 +199,9 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 
 
 ### Database tools
-- Azure CosmosDb Emulator 2.14.2.0
+- Azure CosmosDb Emulator 2.14.3.0
 - DacFx 15.0.5164.1
-- MySQL 5.7.21.0
+- MySQL 8.0.26.0
 - SQLPS 1.0
 
 
@@ -205,7 +209,7 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | Name   | Version | ConfigFile                            | ServiceName | ServiceStatus | ListenPort |
 | ------ | ------- | ------------------------------------- | ----------- | ------------- | ---------- |
 | Apache | 2.4.48  | C:\tools\Apache24\conf\httpd.conf     | Apache      | Stopped       | 80         |
-| Nginx  | 1.21.1  | C:\tools\nginx-1.21.1\conf\nginx.conf | nginx       | Stopped       | 80         |
+| Nginx  | 1.21.3  | C:\tools\nginx-1.21.3\conf\nginx.conf | nginx       | Stopped       | 80         |
 
 ### Visual Studio Enterprise 2022
 | Name                          | Version        | Path                                                  |
@@ -313,6 +317,8 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | Microsoft.VisualStudio.Component.Unity                                    | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.VC.ASAN                                  | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.VC.ATL                                   | 17.0.31530.272 |
+| Microsoft.VisualStudio.Component.VC.ATL.Spectre                           | 17.0.31530.272 |
+| Microsoft.VisualStudio.Component.VC.ATLMFC.Spectre                        | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.VC.CLI.Support                           | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.VC.CMake.Project                         | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.VC.CoreIde                               | 17.0.31530.272 |
@@ -335,6 +341,7 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | Microsoft.VisualStudio.Component.WebDeploy                                | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.Windows10SDK                             | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.Windows10SDK.19041                       | 17.0.31530.272 |
+| Microsoft.VisualStudio.Component.Windows10SDK.20348                       | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.Workflow                                 | 17.0.31530.272 |
 | Microsoft.VisualStudio.Component.WslDebugging                             | 17.0.31530.272 |
 | Microsoft.VisualStudio.ComponentGroup.ArchitectureTools.Native            | 17.0.31530.272 |
@@ -408,7 +415,7 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 #### Azure Powershell Modules
 | Module  | Version                                                                         | Path                           |
 | ------- | ------------------------------------------------------------------------------- | ------------------------------ |
-| Az      | 6.1.0                                                                           | C:\Modules\az_\<version\>      |
+| Az      | 6.4.0                                                                           | C:\Modules\az_\<version\>      |
 | Azure   | 2.1.0 [Installed]<br>3.8.0.zip<br>4.2.1.zip<br>5.1.1.zip<br>5.3.0               | C:\Modules\azure_\<version\>   |
 | AzureRM | 2.1.0 [Installed]<br>3.8.0.zip<br>4.2.1.zip<br>5.1.1.zip<br>6.7.0.zip<br>6.13.1 | C:\Modules\azurerm_\<version\> |
 ```
@@ -423,7 +430,7 @@ All other versions are saved but not installed.
 | MarkdownPS         | 1.9              |
 | Pester             | 3.4.0<br>5.3.0   |
 | PowerShellGet      | 1.0.0.1<br>2.2.5 |
-| PSScriptAnalyzer   | 1.19.1           |
+| PSScriptAnalyzer   | 1.20.0           |
 | PSWindowsUpdate    | 2.2.0.2          |
 | SqlServer          | 21.1.18256       |
 | VSSetup            | 2.2.16           |
@@ -452,6 +459,15 @@ All other versions are saved but not installed.
 | ANDROID_NDK_PATH        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.4.7075529 |
 | ANDROID_NDK_ROOT        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.4.7075529 |
 | ANDROID_SDK_ROOT        | C:\Android\android-sdk                                                       |
+
+### Cached Docker images
+| Repository:Tag                                                            | Digest                                                                   | Created    |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------- |
+| mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2022  | sha256:38857a55ffcfc715fd4f79d1524db88ec0a8fefe11543db42a030424329b0bf6  | 2021-08-18 |
+| mcr.microsoft.com/dotnet/framework/runtime:4.8-windowsservercore-ltsc2022 | sha256:f449e95b12aa5e1c79681a5dd0dc35c4dcd95a2ca4c4568343b2b87cb6341084  | 2021-08-18 |
+| mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2022     | sha256:a3632ef8d3a55159f006cefd6306b832c67093564b1a89c1ae7e299299b7f175  | 2021-08-18 |
+| mcr.microsoft.com/windows/nanoserver:ltsc2022                             | sha256:3df3372895223b44475125ab3553fd39a71d89a896099d463d3216f1e22a3ab0  | 2021-08-09 |
+| mcr.microsoft.com/windows/servercore:ltsc2022                             | sha256:8f756a7fd4fe963cc7dd2c3ad1597327535da8e8f55a7d1932780934efa87e04  | 2021-08-09 |
 
 
 
