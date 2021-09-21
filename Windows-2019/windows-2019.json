@@ -147,7 +147,6 @@
     {
       "scripts": [
         "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Choco.ps1",
-        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Nuget.ps1",
         "{{template_dir}}/../Install-Boxstarter.ps1"
       ],
       "type": "powershell"
