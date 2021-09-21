@@ -156,8 +156,7 @@
         "hyperv-iso"
       ],
       "scripts": [
-        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Docker.ps1",
-        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Windows2019/Install-WSL.ps1"
+        "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Docker.ps1"
       ],
       "type": "powershell",
       "elevated_user": "SYSTEM",
