@@ -119,6 +119,27 @@
                     </LocalAccount>
                 </LocalAccounts>
             </UserAccounts>
+                        <FirstLogonCommands>
+                <SynchronousCommand wcm:action="add">
+                    <Order>1</Order>
+                    <CommandLine>PowerShell "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force"</CommandLine>
+                    <Description>Change the default PowerShell Execution Policy from Restricted to RemoteSigned</Description>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Order>2</Order>
+                    <CommandLine>C:\Windows\SysWOW64\cmd /c PowerShell -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force"</CommandLine>
+                    <Description>Change the default PowerShell (32-bit) Execution Policy from Restricted to RemoteSigned</Description>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Order>3</Order>
+                    <CommandLine>PowerShell -File a:\Enable-PSRemoting.ps1</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>cmd.exe /c wmic useraccount where "name='vagrant'" set PasswordExpires=FALSE</CommandLine>
+                    <Order>4</Order>
+                    <Description>Disable password expiration for vagrant user</Description>
+                </SynchronousCommand>
+            </FirstLogonCommands>
         </component>
     </settings>
     <cpi:offlineImage cpi:source="wim:c:/wims/install.wim#Windows Server 2022 SERVERDATACENTER" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
