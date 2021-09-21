@@ -43,7 +43,7 @@ choco install adobereader
 ## choco install greenshot
 choco install cloudapp
 
-choco install google-drive-file-stream
+choco install google-drive-file-stream --ignore-checksums
 
 ## These are more common bare-metal / desktop usage installations
 
