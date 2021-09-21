@@ -106,6 +106,18 @@
                     <Value>vagrant</Value>
                     <PlainText>true</PlainText>
                 </AdministratorPassword>
+                <LocalAccounts>
+                    <LocalAccount wcm:action="add">
+                        <Password>
+                            <Value>vagrant</Value>
+                            <PlainText>true</PlainText>
+                        </Password>
+                        <Description>Vagrant</Description>
+                        <DisplayName>Vagrant</DisplayName>
+                        <Group>Administrators</Group>
+                        <Name>vagrant</Name>
+                    </LocalAccount>
+                </LocalAccounts>
             </UserAccounts>
         </component>
     </settings>
