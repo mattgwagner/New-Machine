@@ -139,7 +139,7 @@
       {
           "type": "file",
           "source": "{{template_dir}}/../Install-Dotfiles.ps1",
-          "destination": "c:\\users\\vagrant\\desktop"
+          "destination": "c:\\users\\vagrant\\desktop\\"
       },
       {
         "scripts": [
