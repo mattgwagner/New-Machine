@@ -194,8 +194,7 @@
           "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-PowershellCore.ps1",
           "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-SQLPowerShellTools.ps1",
           "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-Git.ps1",
-          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-NET48.ps1",
-          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-NodeLts.ps1"
+          "{{template_dir}}/../.github-actions/images/win/scripts/Installers/Install-NET48.ps1"
         ],
         "type": "powershell"
       },
