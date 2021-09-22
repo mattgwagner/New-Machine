@@ -6,7 +6,9 @@
       "iso_checksum_type": "sha256",
       "iso_url": "{{template_dir}}/en-us_windows_server_version_2022_updated_sep_2021_x64_dvd_ae6b4843.iso",
       "password": "vagrant",
-      "username": "vagrant"
+      "username": "vagrant",
+      "helper_script_folder": "C:\\Program Files\\WindowsPowerShell\\Modules\\",
+      "image_folder": "C:\\image"
     },
     "builders": [
       {
@@ -111,19 +113,33 @@
     ],
     "provisioners": [
       {
-        "destination": "C:\\Program Files\\WindowsPowerShell\\Modules\\",
+        "destination": "{{user `helper_script_folder`}}",
         "source": "{{template_dir}}/../.github-actions/images/win/scripts/ImageHelpers",
         "type": "file"
       },
       {
         "type": "file",
         "source": "{{template_dir}}/../.github-actions/images/win/scripts/SoftwareReport",
-        "destination": "c:\\image"
+        "destination": "{{user `image_folder`}}"
       },
       {
           "type": "file",
           "source": "{{template_dir}}/../.github-actions/images/win/scripts/Tests",
-          "destination": "c:\\image"
+          "destination": "{{user `image_folder`}}"
+      },
+      {
+        "type": "windows-shell",
+        "inline": [
+            "net user {{user `username`}} {{user `install_password`}} /add /passwordchg:no /passwordreq:yes /active:yes /Y",
+            "net localgroup Administrators {{user `username`}} /add",
+            "winrm set winrm/config/service/auth @{Basic=\"true\"}",
+            "winrm get winrm/config/service/auth"
+        ]
+      },
+      {
+          "type": "file",
+          "source": "{{template_dir}}/../Install-Dotfiles.ps1",
+          "destination": "c:\\users\\vagrant\\desktop"
       },
       {
         "scripts": [
@@ -174,7 +190,6 @@
           "{{template_dir}}/../Install-VsCode.ps1",
           "{{template_dir}}/../Install-DevTools.ps1",
           "{{template_dir}}/../Install-GitTools.ps1",
-          "{{template_dir}}/../Install-Dotfiles.ps1",
           "{{template_dir}}/../Install-DotnetCore.ps1",
           "{{template_dir}}/../Install-VisualStudio2019.ps1",
           "{{template_dir}}/../Install-VisualStudio2022.ps1",

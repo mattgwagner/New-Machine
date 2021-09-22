@@ -134,11 +134,6 @@
                     <Order>3</Order>
                     <CommandLine>PowerShell -File a:\Enable-PSRemoting.ps1</CommandLine>
                 </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c wmic useraccount where "name='vagrant'" set PasswordExpires=FALSE</CommandLine>
-                    <Order>4</Order>
-                    <Description>Disable password expiration for vagrant user</Description>
-                </SynchronousCommand>
             </FirstLogonCommands>
         </component>
     </settings>
