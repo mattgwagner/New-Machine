@@ -170,11 +170,11 @@
       },
       {
         "scripts": [
-          "{{template_dir}}/../Install-Common.ps1",
-          "{{template_dir}}/../Install-PowerShellProfile.ps1",
+          "{{template_dir}}/../Install-Common.ps1",  
           "{{template_dir}}/../Install-VsCode.ps1",
           "{{template_dir}}/../Install-DevTools.ps1",
           "{{template_dir}}/../Install-GitTools.ps1",
+          "{{template_dir}}/../Install-Dotfiles.ps1",
           "{{template_dir}}/../Install-DotnetCore.ps1",
           "{{template_dir}}/../Install-VisualStudio2019.ps1",
           "{{template_dir}}/../SQL-Server/Install-SqlServer.ps1",
