@@ -177,6 +177,7 @@
           "{{template_dir}}/../Install-Dotfiles.ps1",
           "{{template_dir}}/../Install-DotnetCore.ps1",
           "{{template_dir}}/../Install-VisualStudio2019.ps1",
+          "{{template_dir}}/../Install-VisualStudio2022.ps1",
           "{{template_dir}}/../SQL-Server/Install-SqlServer.ps1",
           "{{template_dir}}/../Install-CosmosDb.ps1"
         ],
