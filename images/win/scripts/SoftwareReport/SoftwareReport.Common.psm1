@@ -94,6 +94,11 @@ function Get-JuliaVersion {
     return "Julia $juliaVersion"
 }
 
+function Get-LLVMVersion {
+    $llvmVersion = [regex]::matches($(clang --version), "\d+\.\d+\.\d+").Value
+    return "LLVM $llvmVersion"
+}
+
 function Get-PerlVersion {
     ($(perl --version) | Out-String) -match "\(v(?<version>\d+\.\d+\.\d+)\)" | Out-Null
     $perlVersion = $Matches.Version
@@ -106,9 +111,7 @@ function Get-NodeVersion {
 }
 
 function Get-ChocoVersion {
-    ($(choco version) | Out-String) -match "v(?<version>\d+\.\d+\.\d+)" | Out-Null
-    $chocoVersion = $Matches.Version
-    return "Chocolatey $chocoVersion"
+    return "Chocolatey $(choco --version)"
 }
 
 function Get-VcpkgVersion {
@@ -322,13 +325,6 @@ function Get-BizTalkVersion {
 function Get-PipxVersion {
     $pipxVersion = pipx --version
     return "Pipx $pipxVersion"
-}
-
-function Get-GDKVersion {
-    $regKey = "HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*"
-    $installedApplications = Get-ItemProperty -Path $regKey
-    $GDKRelease = $installedApplications | Where-Object DisplayName -match "Microsoft Game Development Kit"
-    return "$($GDKRelease.DisplayName) $($GDKRelease.DisplayVersion)"
 }
 
 function Build-PackageManagementEnvironmentTable {

@@ -91,12 +91,6 @@ Describe "Mingw64" {
     }
 }
 
-Describe "Microsoft GDK" -Skip:(-not (Test-IsWin19)) {
-    It "GDK" {
-        "$($env:GRDKLatest)grdk.ini" | Should -Exist
-    }
-}
-
 Describe "GoogleCloudSDK" -Skip:(Test-IsWin22) {
     It "<ToolName>" -TestCases @(
         @{ ToolName = "bq" }
@@ -114,7 +108,7 @@ Describe "NET48" {
     }
 }
 
-Describe "NSIS" -Skip:(Test-IsWin22) {
+Describe "NSIS" {
     It "NSIS" {
        "makensis /VERSION" | Should -ReturnZeroExitCode
     }
@@ -162,9 +156,31 @@ Describe "Vcpkg" {
     }
 }
 
+Describe "VCRedist" -Skip:(Test-IsWin22) {
+    It "vcredist_140" -Skip:(Test-IsWin19) {
+        "C:\Windows\System32\vcruntime140.dll" | Should -Exist
+    }
+
+    It "vcredist_2010_x64" -Skip:(Test-IsWin16) {
+        "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{1D8E6291-B0D5-35EC-8441-6616F567A0F7}" | Should -Exist
+        "C:\Windows\System32\msvcr100.dll" | Should -Exist
+    }
+
+    It "vcredist_2010_x64" -Skip:(Test-IsWin16) {
+        "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{1D8E6291-B0D5-35EC-8441-6616F567A0F7}" | Should -Exist
+        "C:\Windows\System32\msvcr100.dll" | Should -Exist
+    }
+}
+
 Describe "WebPlatformInstaller" -Skip:(Test-IsWin22) {
     It "WebPlatformInstaller" {
         "WebPICMD" | Should -ReturnZeroExitCode
+    }
+}
+
+Describe "WiX" {
+    It "WiX directory exists" {
+      $env:WIX | Should -Exist
     }
 }
 

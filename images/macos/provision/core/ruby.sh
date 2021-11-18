@@ -4,11 +4,10 @@ source ~/utils/utils.sh
 DEFAULT_RUBY_VERSION=$(get_toolset_value '.ruby.default')
 echo Installing Ruby...
 brew_smart_install "ruby@${DEFAULT_RUBY_VERSION}"
-
-#if High Sierra - skip installation from toolset
-if is_HighSierra; then
-    exit 0
-fi
+export PATH=/usr/local/opt/ruby@${DEFAULT_RUBY_VERSION}/bin:$PATH
+GEM_PATH=`gem env|awk '/EXECUTABLE DIRECTORY/ {print $4}'`
+echo "GEM_PATH=$GEM_PATH" >> "$HOME/.bashrc"
+echo 'export PATH="$GEM_PATH:/usr/local/opt/ruby@'${DEFAULT_RUBY_VERSION}'/bin:$PATH"'  >> "$HOME/.bashrc"
 
 echo "Install Ruby from toolset..."
 PACKAGE_TAR_NAMES=$(curl -s "https://api.github.com/repos/ruby/ruby-builder/releases/latest" | jq -r '.assets[].name')
