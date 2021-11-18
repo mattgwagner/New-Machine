@@ -8,7 +8,7 @@ Describe "azcopy" {
     }
 }
 
-Describe "Bicep" -Skip:(Test-IsUbuntu16) {
+Describe "Bicep" {
     It "Bicep" {
         "bicep --version" | Should -ReturnZeroExitCode
     }
@@ -66,6 +66,10 @@ Describe "Docker" {
         "docker buildx" | Should -ReturnZeroExitCode
     }
 
+    It "docker compose v2" {
+        "docker compose" | Should -ReturnZeroExitCode
+    }
+
     Context "docker images" {
         $testCases = (Get-ToolsetContent).docker.images | ForEach-Object { @{ ImageName = $_ } }
 
@@ -75,7 +79,7 @@ Describe "Docker" {
     }
 }
 
-Describe "Docker-compose" {
+Describe "Docker-compose v1" {
     It "docker-compose" {
         "docker-compose --version"| Should -ReturnZeroExitCode
     }
@@ -190,8 +194,10 @@ Describe "Sbt" {
 }
 
 Describe "Selenium" {
-    It "Selenium Server 'selenium-server-standalone.jar' is installed" {
-        "/usr/share/java/selenium-server-standalone.jar" | Should -Exist
+    It "Selenium is installed" {
+        $seleniumBinaryName = (Get-ToolsetContent).selenium.binary_name
+        $seleniumPath = Join-Path "/usr/share/java" "$seleniumBinaryName.jar"
+        $seleniumPath | Should -Exist
     }
 }
 
@@ -285,12 +291,6 @@ Describe "Leiningen" {
     }
 }
 
-Describe "Mercurial" {
-    It "mercurial" {
-        "hg --version" | Should -ReturnZeroExitCode
-    }
-}
-
 Describe "Conda" {
     It "conda" {
         "conda --version" | Should -ReturnZeroExitCode
@@ -325,7 +325,7 @@ Describe "GraalVM" -Skip:(-not (Test-IsUbuntu20)) {
     }
 }
 
-Describe "Containers" -Skip:(Test-IsUbuntu16) {
+Describe "Containers" {
     $testCases = @("podman", "buildah", "skopeo") | ForEach-Object { @{ContainerCommand = $_} }
 
     It "<ContainerCommand>" -TestCases $testCases {
