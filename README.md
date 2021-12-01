@@ -3,17 +3,21 @@ New-Machine
 
 This repo contains several small PowerShell scripts that utilize Chocolatey and BoxStarter to setup new machines to my preferences. I've found golden images to go out of date extremely quickly, to the point of making it pointless. These scripts help grab the latest versions of many of my daily use applications, so that I can hit the ground running on new machines.
 
+# Important Note!
+
+This is mostly crafted based on my own use cases and work that I do. I built but no longer use the Windows 10 images, so they may not work as expected anymore. My current preferred working image is Windows Server 2022.
+
 # Creating a Bootable USB
 
 Use Rufus -- I had a PowerShell script but it failed a few times. Use the tools!
 
 # Building an Image
 
-The `Windows-2019.json` Packer file references a copy of the Windows Server 2019 ISO. I grabbed it off of MSDN and put it into the same folder -- ideally, it would download this from a public source before building.
+The `Windows-2022.json` Packer file references a copy of the Windows Server 2022 ISO. I grabbed it off of MSDN and put it into the same folder -- ideally, it would download this from a public source before building.
 
 You can build the image via:
 
-packer build windows-2019.json
+packer build windows-2022.json
 
 # Vagrant Info
 
