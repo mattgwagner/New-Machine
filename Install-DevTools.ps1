@@ -8,3 +8,5 @@ choco install conemu
 choco install sqlitebrowser
 
 choco install winmerge
+
+choco install azure-cli
