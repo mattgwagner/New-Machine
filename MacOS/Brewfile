@@ -16,6 +16,6 @@ cask "keepingyouawake"
 
 cask "microsoft-teams"
 
-cask "spectacle"
+cask "rectangle"
 
 cask "google-chrome"
