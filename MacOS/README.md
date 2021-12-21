@@ -12,7 +12,7 @@
 - Notion
 - OBS
 - Spotify?
-- Spectacle (move, quadrant windows)
+- Rectangle (move, quadrant windows)
 - VSCode
 - XCode?
 - zoom.us
