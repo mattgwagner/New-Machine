@@ -2,13 +2,7 @@
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-sudo chown -R `whoami`:admin /usr/local/bin
-
-sudo chown -R `whoami`:admin /usr/local/share
-
-# Assumes the Brewfile is on the same path
-
-brew bundle 
+# Add to .zshrc -> eval $(/opt/homebrew/bin/brew shellenv)
 
 # Install Microsoft Remote Desktop via AppStore?
 
