@@ -19,3 +19,5 @@ cask "microsoft-teams"
 cask "rectangle"
 
 cask "google-chrome"
+
+cask "powershell"
