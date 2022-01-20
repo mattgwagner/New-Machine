@@ -1,15 +1,9 @@
-brew cask install powershell
+brew install --cask powershell
 
-brew cask install visual-studio-code
+brew install --cask visual-studio-code
 
-brew cask install azure-data-studio
+brew install --cask azure-data-studio
 
 brew install node
 
-brew cask install vagrant
-
-brew cask install virtualbox
-
-brew cask install packer
-
-brew cask install github
+brew install --cask github
