@@ -1,6 +1,6 @@
 
 # Depends on git being installed
 
-git clone https://github.com/mattgwagner/dotfiles.git
+git clone https://github.com/mattgwagner/dotfiles.git $Home
 
-& ".\dotfiles\Install-Profile.ps1"
+& "$Home\dotfiles\Install-Profile.ps1"
