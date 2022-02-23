@@ -47,6 +47,8 @@ choco install google-drive-file-stream --ignore-checksums
 
 choco install notion
 
+chcoo install powershell-core
+
 ## These are more common bare-metal / desktop usage installations
 
 # choco install f.lux
