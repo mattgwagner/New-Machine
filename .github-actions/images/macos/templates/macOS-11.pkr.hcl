@@ -98,6 +98,7 @@ build {
   }
   provisioner "shell" {
     scripts = [
+      "./provision/core/xcode-clt.sh",
       "./provision/configuration/configure-tccdb-macos11.sh",
       "./provision/configuration/add-network-interface-detection.sh",
       "./provision/configuration/autologin.sh",
@@ -117,7 +118,6 @@ build {
     scripts = [
       "./provision/configuration/preimagedata.sh",
       "./provision/configuration/configure-ssh.sh",
-      "./provision/core/xcode-clt.sh",
       "./provision/configuration/configure-machine.sh"
     ]
     environment_vars = [
@@ -135,6 +135,7 @@ build {
     pause_before = "30s"
     scripts = [
       "./provision/core/homebrew.sh",
+      "./provision/core/open_windows_check.sh",
       "./provision/core/powershell.sh",
       "./provision/core/dotnet.sh",
       "./provision/core/python.sh",
@@ -191,7 +192,8 @@ build {
                 "./provision/core/firefox.sh",
                 "./provision/core/pypy.sh",
                 "./provision/core/pipx-packages.sh",
-                "./provision/core/bicep.sh"
+                "./provision/core/bicep.sh",
+                "./provision/core/graalvm.sh"
     ]
     execute_command = "chmod +x {{ .Path }}; source $HOME/.bash_profile; {{ .Vars }} {{ .Path }}"
   }
@@ -205,7 +207,7 @@ build {
   }
   provisioner "shell" {
     inline = [
-      "pwsh -File \"$HOME/image-generation/software-report/SoftwareReport.Generator.ps1\" -OutputDirectory \"$HOME/image-generation/output/software-report\" -ImageName UUID=${build.PackerRunUUID}",
+      "pwsh -File \"$HOME/image-generation/software-report/SoftwareReport.Generator.ps1\" -OutputDirectory \"$HOME/image-generation/output/software-report\" -ImageName ${var.build_id}",
       "pwsh -File \"$HOME/image-generation/tests/RunAll-Tests.ps1\""
     ]
     execute_command = "source $HOME/.bash_profile; {{ .Vars }} {{ .Path }}"

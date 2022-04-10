@@ -40,7 +40,9 @@ function Install-PyPy
         New-Item -ItemType Directory -Path $pypyVersionPath -Force | Out-Null
 
         Write-Host "Move PyPy '${pythonVersion}' files to '${pypyArchPath}'"
-        Move-Item -Path $tempFolder -Destination $pypyArchPath | Out-Null
+        Invoke-SBWithRetry -Command {
+            Move-Item -Path $tempFolder -Destination $pypyArchPath -ErrorAction Stop | Out-Null
+        }
 
         Write-Host "Install PyPy '${pythonVersion}' in '${pypyArchPath}'"
         if (Test-Path "$pypyArchPath\python.exe") {
@@ -48,6 +50,14 @@ function Install-PyPy
         } else {
             $pypyName = $pypyApp.Name
             cmd.exe /c "cd /d $pypyArchPath && mklink python.exe $pypyName && python.exe -m ensurepip && python.exe -m pip install --upgrade pip"
+        }
+
+        # Create pip.exe if missing
+        $pipPath = Join-Path -Path $pypyArchPath -ChildPath "Scripts/pip.exe"
+        if (-not (Test-Path $pipPath))
+        {
+            $pip3Path = Join-Path -Path $pypyArchPath -ChildPath "Scripts/pip3.exe"
+            Copy-Item -Path $pip3Path -Destination $pipPath 
         }
 
         if ($LASTEXITCODE -ne 0)

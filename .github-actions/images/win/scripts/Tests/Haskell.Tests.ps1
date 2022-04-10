@@ -24,6 +24,15 @@ Describe "Haskell" {
         }
     }
 
+    $ghcupEnvExists = @(
+        @{envVar = "GHCUP_INSTALL_BASE_PREFIX"}
+        @{envVar = "GHCUP_MSYS2"}
+    )
+
+    It "<envVar> environment variable exists" -TestCases $ghcupEnvExists {
+        Test-Path env:\$envVar
+    }
+
     It "Accurate 3 versions of GHC are installed" -TestCases @{ghcCount = $ghcCount} {
         $ghcCount | Should -BeExactly 3
     }
@@ -38,5 +47,17 @@ Describe "Haskell" {
 
     It "Cabal is installed" {
         "cabal --version" | Should -ReturnZeroExitCode
+    }
+
+    It "cabal folder does not exist" {
+        $env:CABAL_DIR | Should -Not -Exist
+    }
+
+    It "CABAL_DIR environment variable exists" {
+        Get-EnvironmentVariable CABAL_DIR | Should -BeExactly "C:\cabal"
+    }
+
+    It "ghcup is installed" {
+        "ghcup --version" | Should -ReturnZeroExitCode
     }
 }

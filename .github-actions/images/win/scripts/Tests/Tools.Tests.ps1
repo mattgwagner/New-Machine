@@ -41,7 +41,7 @@ Describe "R" {
 Describe "DACFx" {
     It "DACFx" {
         (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*).DisplayName -Contains "Microsoft SQL Server Data-Tier Application Framework (x64)" | Should -BeTrue
-        $sqlPackagePath = 'C:\Program Files\Microsoft SQL Server\150\DAC\bin\SqlPackage.exe'
+        $sqlPackagePath = 'C:\Program Files\Microsoft SQL Server\160\DAC\bin\SqlPackage.exe'
         "${sqlPackagePath}" | Should -Exist
     }
 
@@ -124,15 +124,19 @@ Describe "PowerShell Core" {
     }
 }
 
-Describe "Sbt" -Skip:(Test-IsWin22) {
+Describe "Sbt" {
     It "sbt" {
         "sbt --version" | Should -ReturnZeroExitCode
     }
 }
 
-Describe "ServiceFabricSDK" -Skip:(Test-IsWin22) {
+Describe "ServiceFabricSDK" {
     It "PowerShell Module" {
         Get-Module -Name ServiceFabric -ListAvailable | Should -Not -BeNullOrEmpty
+    }
+
+    It "ServiceFabricSDK version" {
+        Get-ItemPropertyValue 'HKLM:\SOFTWARE\Microsoft\Service Fabric\' -Name FabricVersion | Should -Not -BeNullOrEmpty
     }
 }
 
@@ -172,15 +176,9 @@ Describe "VCRedist" -Skip:(Test-IsWin22) {
     }
 }
 
-Describe "WebPlatformInstaller" -Skip:(Test-IsWin22) {
+Describe "WebPlatformInstaller" {
     It "WebPlatformInstaller" {
         "WebPICMD" | Should -ReturnZeroExitCode
-    }
-}
-
-Describe "WiX" {
-    It "WiX directory exists" {
-      $env:WIX | Should -Exist
     }
 }
 
@@ -199,7 +197,13 @@ Describe "Pipx" {
 Describe "Kotlin" {
     $kotlinPackages =  @("kapt", "kotlin", "kotlinc", "kotlin-dce-js", "kotlinc-js", "kotlinc-jvm")
 
-    It "<toolName> is available" -TestCases ($kotlinPackages | ForEach-Object { @{ toolName = $_ } })  { 
+    It "<toolName> is available" -TestCases ($kotlinPackages | ForEach-Object { @{ toolName = $_ } })  {
         "$toolName -version" | Should -ReturnZeroExitCode
+    }
+}
+
+Describe "SQL OLEDB Driver" -Skip:(Test-IsWin16) {
+    It "SQL OLEDB Driver" {
+        "HKLM:\SOFTWARE\Microsoft\MSOLEDBSQL" | Should -Exist
     }
 }
