@@ -13,12 +13,10 @@ function Enable-AutoLogon {
         [string] $Password
     )
 
-    $url = "https://raw.githubusercontent.com/actions/virtual-environments/main/images/macos/provision/bootstrap-provisioner/kcpassword.py"
+    $url = "https://raw.githubusercontent.com/actions/virtual-environments/main/images/macos/provision/bootstrap-provisioner/setAutoLogin.sh"
     $script = Invoke-RestMethod -Uri $url
     $base64 = [Convert]::ToBase64String($script.ToCharArray())
-    $kcpassword = "echo $base64 | base64 --decode > ~/kcpassword;sudo python ./kcpassword '${Password}';rm ./kcpassword"
-    $loginwindow = "sudo /usr/bin/defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser '${UserName}';sudo /usr/bin/defaults write /Library/Preferences/com.apple.loginwindow autoLoginUserScreenLocked -bool false"
-    $command = "${kcpassword};$loginwindow"
+    $command = "echo $base64 | base64 --decode > ./setAutoLogin.sh;sudo bash ./setAutoLogin.sh '${UserName}' '${Password}';rm ./setAutoLogin.sh"
     Invoke-SSHPassCommand -HostName $HostName -Command $command
 }
 
@@ -92,6 +90,10 @@ function Get-MacOSInstaller {
         Write-Host "`t[*] Removing '$previousInstallerPath' installation app before downloading the new one"
         sudo rm -rf "$previousInstallerPath"
     }
+
+    # Clear LastRecommendedMajorOSBundleIdentifier to prevent error during fetching updates
+    # Install failed with error: Update not found
+    Update-SoftwareBundle
 
     # Download macOS installer
     Write-Host "`t[*] Requested macOS '$MacOSVersion' version installer found, fetching it from Apple Software Update"
@@ -232,6 +234,17 @@ function Show-StringWithFormat {
     }
 }
 
+function Remove-CurrentBetaSeed {
+    param(
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string] $HostName
+    )
+
+    $command = "sudo /System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/seedutil unenroll"
+    Invoke-SSHPassCommand -HostName $HostName -Command $command | Out-String
+}
+
 function Test-AutoLogon {
     param(
         [Parameter(Mandatory)]
@@ -312,4 +325,13 @@ function Wait-LoginWindow {
         $proc.Contains($lw) -and $proc.Contains($ctk)
     }
     Invoke-WithRetry -RetryCount $RetryCount -Seconds $Seconds -BreakCondition $condition
+}
+
+function Update-SoftwareBundle {
+    $productVersion = sw_vers -productVersion
+
+    if ( $productVersion.StartsWith('11.') ) {
+        sudo rm -rf /Library/Preferences/com.apple.commerce.plist
+        sudo /usr/bin/defaults delete /Library/Preferences/com.apple.SoftwareUpdate.plist LastRecommendedMajorOSBundleIdentifier | Out-Null
+    }
 }
