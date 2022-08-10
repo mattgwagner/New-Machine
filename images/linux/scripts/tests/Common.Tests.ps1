@@ -20,10 +20,6 @@ Describe "PHP" {
         "composer --version" | Should -ReturnZeroExitCode
     }
 
-    It "Composer 2.2.9 on Ubuntu Server 18" -Skip:(-not (Test-IsUbuntu18)) {
-        composer --version | Should -Match "2.2.9"
-    }
-
     It "Pear" {
         "pear" | Should -ReturnZeroExitCode
     }
@@ -33,13 +29,17 @@ Describe "PHP" {
     }
 }
 
-Describe "Swift" {
+Describe "Swift" -Skip:(Test-IsUbuntu22) {
     It "swift" {
         "swift --version" | Should -ReturnZeroExitCode
     }
 
     It "swiftc" {
         "swiftc --version" | Should -ReturnZeroExitCode
+    }
+
+    It "libsourcekitd" {
+        "/usr/local/lib/libsourcekitdInProc.so" | Should -Exist
     }
 }
 

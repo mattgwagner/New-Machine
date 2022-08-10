@@ -6,7 +6,8 @@
             "platform" : "win32",
             "versions": [
                 "2.7",
-                "3.0"
+                "3.0",
+                "3.1"
             ],
             "default": "3.0"
         },
@@ -65,7 +66,8 @@
             "versions": [
                 "1.16.*",
                 "1.17.*",
-                "1.18.*"
+                "1.18.*",
+                "1.19.*"
             ],
             "default": "1.17.*"
         }
@@ -116,7 +118,7 @@
             "name": "az",
             "url" : "https://raw.githubusercontent.com/Azure/az-ps-module-versions/main/versions-manifest.json",
             "versions": [
-                "7.3.2"
+                "7.5.0"
             ],
             "zip_versions": [
                 "6.6.0"
@@ -138,6 +140,7 @@
         ]
     },
     "android": {
+        "cmdline-tools": "latest",
         "platform_min_version": "27",
         "build_tools_min_version": "27.0.0",
         "extra_list": [
@@ -148,14 +151,18 @@
         "addon_list": [],
         "additional_tools": [
             "cmake;3.18.1",
+            "cmake;3.22.1",
             "patcher;v4"
         ],
         "ndk": {
-            "default": "21",
+            "default": "25",
             "versions": [
-                "21", "22", "23"
+                "23", "24", "25"
             ]
         }
+    },
+    "mingw": {
+	"version": "11.2.0.07112021"
     },
     "MsysPackages": {
         "msys2": [],
@@ -175,6 +182,7 @@
         "edition" : "Enterprise",
         "channel": "release",
         "workloads": [
+            "Component.Dotfuscator",
             "Component.Linux.CMake",
             "Component.UnityEngine.x64",
             "Component.Unreal.Android",
@@ -194,20 +202,29 @@
             "Microsoft.VisualStudio.Component.TestTools.CodedUITest",
             "Microsoft.VisualStudio.Component.TestTools.WebLoadTest",
             "Microsoft.VisualStudio.Component.UWP.VC.ARM64",
+            "Microsoft.VisualStudio.Component.UWP.VC.ARM64EC",
             "Microsoft.VisualStudio.Component.VC.CLI.Support",
             "Microsoft.VisualStudio.Component.VC.CMake.Project",
             "Microsoft.VisualStudio.Component.VC.DiagnosticTools",
             "Microsoft.VisualStudio.Component.VC.Llvm.Clang",
             "Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset",
+            "Microsoft.VisualStudio.Component.VC.Runtimes.ARM.Spectre",
             "Microsoft.VisualStudio.Component.VC.Runtimes.ARM64.Spectre",
+            "Microsoft.VisualStudio.Component.VC.Runtimes.ARM64EC.Spectre",
             "Microsoft.VisualStudio.Component.VC.Runtimes.x86.x64.Spectre",
             "Microsoft.VisualStudio.Component.VC.TestAdapterForBoostTest",
             "Microsoft.VisualStudio.Component.VC.TestAdapterForGoogleTest",
             "Microsoft.VisualStudio.Component.VC.Tools.ARM",
             "Microsoft.VisualStudio.Component.VC.MFC.ARM",
+            "Microsoft.VisualStudio.Component.VC.MFC.ARM.Spectre",
             "Microsoft.VisualStudio.Component.VC.ATL.ARM64",
+            "Microsoft.VisualStudio.Component.VC.ATL.ARM64.Spectre",
+            "Microsoft.VisualStudio.Component.VC.ATL.ARM64EC",
+            "Microsoft.VisualStudio.Component.VC.ATL.ARM64EC.Spectre",
             "Microsoft.VisualStudio.Component.VC.MFC.ARM64",
+            "Microsoft.VisualStudio.Component.VC.MFC.ARM64.Spectre",
             "Microsoft.VisualStudio.Component.VC.MFC.ARM64EC",
+            "Microsoft.VisualStudio.Component.VC.MFC.ARM64EC.Spectre",
             "Microsoft.VisualStudio.Component.VC.Modules.x86.x64",
             "Microsoft.VisualStudio.Component.VC.Tools.ARM64",
             "Microsoft.VisualStudio.Component.VC.Tools.ARM64EC",
@@ -228,11 +245,30 @@
             "Microsoft.VisualStudio.Component.VC.14.29.16.11.ATL.Spectre",
             "Microsoft.VisualStudio.Component.VC.14.29.16.11.MFC",
             "Microsoft.VisualStudio.Component.VC.14.29.16.11.MFC.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ARM",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ARM.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ARM64",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ARM64.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.x86.x64",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.x86.x64.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ATL",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ATL.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ATL.ARM",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ATL.ARM.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ATL.ARM64",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.ATL.ARM64.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.MFC",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.MFC.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.MFC.ARM",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.MFC.ARM.Spectre",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.MFC.ARM64",
+            "Microsoft.VisualStudio.Component.VC.14.32.17.2.MFC.ARM64.Spectre",
             "Microsoft.VisualStudio.Component.VC.ATLMFC",
             "Microsoft.VisualStudio.Component.VC.ATLMFC.Spectre",
             "Microsoft.VisualStudio.Component.Windows10SDK.19041",
             "Microsoft.VisualStudio.Component.Windows10SDK.20348",
             "Microsoft.VisualStudio.Component.Windows11SDK.22000",
+            "Microsoft.VisualStudio.Component.Windows11SDK.22621",
             "Microsoft.VisualStudio.Component.Workflow",
             "Microsoft.VisualStudio.ComponentGroup.Azure.CloudServices",
             "Microsoft.VisualStudio.ComponentGroup.Azure.ResourceManager.Tools",
@@ -260,7 +296,9 @@
         ],
         "vsix": [
             "VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects",
-            "WixToolset.WixToolsetVisualStudio2022Extension"
+            "WixToolset.WixToolsetVisualStudio2022Extension",
+            "ProBITools.MicrosoftReportProjectsforVisualStudio2022",
+            "ProBITools.MicrosoftAnalysisServicesModelingProjects2022"
         ]
     },
     "docker": {
@@ -343,7 +381,7 @@
         "version": "3.08"
     },
     "llvm": {
-        "version": "13"
+        "version": "14"
     },
     "php": {
         "version": "8.1"

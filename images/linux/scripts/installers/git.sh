@@ -15,6 +15,11 @@ add-apt-repository $GIT_REPO -y
 apt-get update
 apt-get install git -y
 git --version
+# Git version 2.35.2 introduces security fix that breaks action\checkout https://github.com/actions/checkout/issues/760
+cat <<EOF >> /etc/gitconfig
+[safe]
+        directory = *
+EOF
 
 # Install git-lfs
 curl -s $GIT_LFS_REPO/script.deb.sh | bash
@@ -40,7 +45,7 @@ tar xzf "$tmp_hub"/hub-linux-amd64-*.tgz --strip-components 1 -C "$tmp_hub"
 mv "$tmp_hub"/bin/hub /usr/local/bin
 
 # Add well-known SSH host keys to known_hosts
-ssh-keyscan -t rsa github.com >> /etc/ssh/ssh_known_hosts
+ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> /etc/ssh/ssh_known_hosts
 ssh-keyscan -t rsa ssh.dev.azure.com >> /etc/ssh/ssh_known_hosts
 
 invoke_tests "Tools" "Git"

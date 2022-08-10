@@ -94,6 +94,7 @@ $toolsList = @(
     (Get-CodeQLBundleVersion),
     (Get-DockerVersion),
     (Get-DockerComposeVersion),
+    (Get-DockerComposeVersionV2),
     (Get-DockerWincredVersion),
     (Get-GHCVersion),
     (Get-GitVersion),
@@ -120,7 +121,7 @@ $toolsList = @(
     (Get-ZstdVersion),
     (Get-YAMLLintVersion)
 )
-if ((Test-IsWin16) -or (Test-IsWin19)) {
+if (Test-IsWin19) {
     $toolsList += @(
         (Get-GoogleCloudSDKVersion),
         (Get-ParcelVersion)
@@ -139,7 +140,7 @@ $cliTools = @(
     (Get-GHVersion),
     (Get-HubVersion)
 )
-if ((Test-IsWin16) -or (Test-IsWin19)) {
+if (Test-IsWin19) {
     $cliTools += @(
         (Get-CloudFoundryVersion)
     )
@@ -219,13 +220,9 @@ $databaseTools = @(
     (Get-AzCosmosDBEmulatorVersion),
     (Get-DacFxVersion),
     (Get-MySQLVersion),
-    (Get-SQLPSVersion)
+    (Get-SQLPSVersion),
+    (Get-SQLOLEDBDriverVersion)
 )
-
-if (-not (Test-IsWin16))
-{
-    $databaseTools += Get-SQLOLEDBDriverVersion
-}
 
 $markdown += New-MDList -Style Unordered -Lines ($databaseTools | Sort-Object)
 
@@ -266,12 +263,15 @@ Get-DotnetRuntimes | Foreach-Object {
 }
 
 $markdown += New-MDHeader ".NET Framework" -Level 3
-$frameworks = Get-DotnetFrameworkTools
 $markdown += "``Type: Developer Pack``"
 $markdown += New-MDNewLine
-$markdown += "``Location $($frameworks.Path)``"
-$markdown += New-MDNewLine
-$markdown += New-MDList -Lines $frameworks.Versions -Style Unordered
+Get-DotnetFrameworkTools | Foreach-Object {
+    $path = $_.Path
+    $versions = $_.Versions
+    $markdown += "``Location: $path``"
+    $markdown += New-MDNewLine
+    $markdown += New-MDList -Lines $versions -Style Unordered
+}
 
 $markdown += New-MDHeader ".NET tools" -Level 3
 $tools = Get-DotnetTools
