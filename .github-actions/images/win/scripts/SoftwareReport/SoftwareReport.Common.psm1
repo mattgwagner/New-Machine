@@ -60,7 +60,7 @@ function Get-CbindgenVersion {
 }
 
 function Get-CargoAuditVersion {
-    return cargo audit --version
+    return cargo-audit --version
 }
 
 function Get-CargoOutdatedVersion {
@@ -226,15 +226,14 @@ function Get-DotnetRuntimes {
 
 function Get-DotnetFrameworkTools {
     $path = "${env:ProgramFiles(x86)}\Microsoft SDKs\Windows\*\*\NETFX*"
-    $frameworkVersions = @()
-    Get-ChildItem -Path $path -Directory | ForEach-Object {
-        $frameworkVersions += ($_.Name -Split(" "))[1]
-        $frameworkPath = $_.Fullname -Replace " \d+\.\d+(\.\d+)?", " <version>"
-    }
+    Get-ChildItem -Path $path -Directory | Group-Object {
+        $_.Fullname -Replace " \d+\.\d+(\.\d+)?", " <version>"
+    } | ForEach-Object {
         [PSCustomObject]@{
-            Versions = $frameworkVersions -Join " "
-            Path = $frameworkPath
+            Versions =  $_.Group.Name | ForEach-Object { $_.Split(" ")[1] }
+            Path = $_.Name
         }
+    }
 }
 
 function Get-PowerShellAzureModules {
@@ -350,7 +349,7 @@ function Build-PackageManagementEnvironmentTable {
             "Value" = $env:VCPKG_INSTALLATION_ROOT
         }
     )
-    if ((Test-IsWin16) -or (Test-IsWin19)) {
+    if (Test-IsWin19) {
         $envVariables += @(
             @{
                 "Name" = "CONDA"
