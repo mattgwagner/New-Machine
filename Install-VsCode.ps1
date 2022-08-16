@@ -10,7 +10,8 @@ $Extensions = @(
     'eamodio.gitlens',
     'ms-mssql.mssql',
     'esbenp.prettier-vscode',
-    'ms-azuretools.vscode-cosmosdb'
+    'ms-azuretools.vscode-cosmosdb',
+    'savranweb.cosmosdbsqlapi'
 )
 
 choco install vscode
