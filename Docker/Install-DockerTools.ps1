@@ -1,0 +1,1 @@
+choco install docker-engine docker-cli docker-compose rancher-desktop

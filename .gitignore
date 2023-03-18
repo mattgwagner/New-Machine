@@ -115,3 +115,5 @@ packer_cache
 .DS_Store
 
 output
+
+.idea
