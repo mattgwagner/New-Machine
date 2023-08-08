@@ -45,7 +45,7 @@ choco install adobereader
 
 choco install google-drive-file-stream --ignore-checksums
 
-chcoo install powershell-core
+choco install powershell-core
 
 ## These are more common bare-metal / desktop usage installations
 
