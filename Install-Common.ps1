@@ -41,11 +41,9 @@ choco install 7zip.install
 choco install adobereader
 
 ## choco install greenshot
-choco install cloudapp --ignore-checksums
+## choco install cloudapp --ignore-checksums
 
 choco install google-drive-file-stream --ignore-checksums
-
-choco install notion
 
 chcoo install powershell-core
 
