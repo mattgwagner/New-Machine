@@ -3,15 +3,13 @@
 ###
 
 $Extensions = @(
-    'ms-dotnettools.csharp',
+    'ms-dotnettools.csdevkit'
     'github.codespaces',
     'ms-vscode.powershell',
     'ms-azuretools.vscode-docker',
     'eamodio.gitlens',
     'ms-mssql.mssql',
-    'esbenp.prettier-vscode',
-    'ms-azuretools.vscode-cosmosdb',
-    'savranweb.cosmosdbsqlapi'
+    'esbenp.prettier-vscode'
 )
 
 choco install vscode
