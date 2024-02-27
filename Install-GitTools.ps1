@@ -1,22 +1,20 @@
-## Development Tools - Git
+if($IsWindows)
+{
+    ## Development Tools - Git
 
-choco install TortoiseGit
-choco install github-desktop
-choco install git-credential-winstore
-choco install gh
+    choco install TortoiseGit
+    choco install github-desktop
+    choco install git-credential-winstore
+    choco install gh
 
-mkdir "$($env:USERPROFILE)\.ssh" # Create .ssh folder for keys
+    mkdir "$($env:USERPROFILE)\.ssh" # Create .ssh folder for keys
 
-Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+    Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+
+    $env:GIT_SSH = "C:\WINDOWS\System32\OpenSSH\ssh.exe"
+
+}
 
 Write-Output "Installing PoshGit"
 
-choco install poshgit
-
-RefreshEnv
-
-Write-Output "Installing PoshGit to Profile"
-
-Add-PoshGitToProfile
-
-$env:GIT_SSH = "C:\WINDOWS\System32\OpenSSH\ssh.exe"
+PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
