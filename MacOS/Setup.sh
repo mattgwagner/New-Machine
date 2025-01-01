@@ -18,12 +18,14 @@ brew tap "homebrew/bundle"
 
 brew install "git"
 
-brew install "flux"
+brew install --cask "iterm2"
 
-brew install "google-backup-and-sync"
+brew install --cask "flux"
+
+brew install --cask "google-backup-and-sync"
 
 brew install "keepingyouawake"
 
-brew install "rectangle"
+brew install --cask "rectangle"
 
 brew install "powershell"
