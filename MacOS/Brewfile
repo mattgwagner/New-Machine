@@ -4,20 +4,12 @@ tap "homebrew/core"
 
 brew "git"
 
-cask "adobe-acrobat-reader"
-
 cask "flux"
 
 cask "google-backup-and-sync"
 
-cask "hermes"
-
 cask "keepingyouawake"
 
-cask "microsoft-teams"
-
 cask "rectangle"
-
-cask "google-chrome"
 
 cask "powershell"

@@ -1,10 +1,8 @@
 # Install Homebrew via shell script
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Add to .zshrc -> eval $(/opt/homebrew/bin/brew shellenv)
-
-# Install Microsoft Remote Desktop via AppStore?
 
 # Require password as soon as screensaver or sleep mode starts
 defaults write com.apple.screensaver askForPassword -int 1
